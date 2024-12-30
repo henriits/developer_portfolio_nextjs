@@ -1,47 +1,95 @@
-// app/admin/page.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project } from "@/types/projectTypes";
 import ProjectForm from "@/components/ProjectForm";
 import ProjectList from "@/components/ProjectList";
 import EditingIndicator from "@/components/EditingIndicator";
-import { projects as initialProjects } from "@/data/projects"; // Simulated project data
 
 const AdminPage = () => {
-    const [projectsList, setProjectsList] =
-        useState<Project[]>(initialProjects);
+    const [projectsList, setProjectsList] = useState<Project[]>([]);
     const [editingProject, setEditingProject] = useState<Project | undefined>(
         undefined
     );
 
+    // Function to fetch projects from the API
+    const fetchProjects = async () => {
+        try {
+            const response = await fetch("/api/projects");
+            const data = await response.json();
+            setProjectsList(data);
+        } catch (error) {
+            console.error("Error fetching projects:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchProjects(); // Fetch projects when the component mounts
+    }, []);
+
     // Function to add a new project
-    const addProject = (project: Project) => {
-        const nextId = (projectsList.length + 1).toString();
-        const newProject = { ...project, id: nextId };
-        setProjectsList((prevProjects) => [...prevProjects, newProject]);
+    const addProject = async (project: Project) => {
+        try {
+            const response = await fetch("/api/projects", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(project),
+            });
+
+            if (response.ok) {
+                fetchProjects(); // Refresh the list after adding a project
+            } else {
+                console.error("Error adding project:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error adding project:", error);
+        }
     };
 
-    // Function to edit an existing project
-    const editProject = (updatedProject: Project) => {
-        setProjectsList((prevProjects) =>
-            prevProjects.map((project) =>
-                project.id === updatedProject.id ? updatedProject : project
-            )
-        );
-        setEditingProject(undefined); // Reset editing state
-    };
+    // Function to update an existing project
+    const updateProject = async (updatedProject: Project) => {
+        try {
+            const response = await fetch(`/api/projects/${updatedProject.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedProject),
+            });
 
-    // Function to cancel editing and reset the form
-    const cancelEdit = () => {
-        setEditingProject(undefined); // Clear the editing state
+            if (response.ok) {
+                fetchProjects(); // Refresh the list after updating a project
+                setEditingProject(undefined); // Clear editing state
+            } else {
+                console.error("Error updating project:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error updating project:", error);
+        }
     };
 
     // Function to delete a project
-    const deleteProject = (id: string) => {
-        setProjectsList((prevProjects) =>
-            prevProjects.filter((project) => project.id !== id)
-        );
+    const deleteProject = async (id: string) => {
+        try {
+            const response = await fetch(`/api/projects/${id}`, {
+                method: "DELETE",
+            });
+
+            if (response.ok) {
+                fetchProjects(); // Refresh the list after deleting a project
+            } else {
+                console.error("Error deleting project:", await response.json());
+            }
+        } catch (error) {
+            console.error("Error deleting project:", error);
+        }
+    };
+
+    // Function to cancel editing
+    const cancelEdit = () => {
+        setEditingProject(undefined); // Clear editing state
     };
 
     return (
@@ -57,7 +105,7 @@ const AdminPage = () => {
                 <div>
                     <ProjectForm
                         project={editingProject}
-                        onSave={editingProject ? editProject : addProject}
+                        onSave={editingProject ? updateProject : addProject}
                     />
                     {/* Show cancel button if we are editing a project */}
                     {editingProject && (

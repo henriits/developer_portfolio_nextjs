@@ -1,34 +1,12 @@
-// components/ProjectForm.tsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-// Define the project type
-type Project = {
-    id: string;
-    title: string;
-    description: string;
-    githubLink: string;
-    liveLink: string;
-};
-
-type ProjectFormProps = {
-    project?: Project; // Allow project to be undefined
-    onSave: (project: Project) => void;
-};
-
-const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
-    const [formData, setFormData] = useState<Project>({
-        id: "",
+const ProjectForm = ({ onSave }: { onSave: () => void }) => {
+    const [formData, setFormData] = useState({
         title: "",
         description: "",
         githubLink: "",
         liveLink: "",
     });
-
-    useEffect(() => {
-        if (project) {
-            setFormData({ ...project });
-        }
-    }, [project]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -38,13 +16,34 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        onSave(formData); // Call the onSave function with the form data
+
+        try {
+            const response = await fetch("/api/projects", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                onSave(); // Notify the parent to refresh the list
+                setFormData({
+                    title: "",
+                    description: "",
+                    githubLink: "",
+                    liveLink: "",
+                });
+            } else {
+                console.error("Failed to add project");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
     };
 
     return (
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
             <div>
                 <label className="block text-lg font-medium">Title</label>
                 <input

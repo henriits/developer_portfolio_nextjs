@@ -1,37 +1,48 @@
-// components/ProjectList.tsx
-import { Project, ProjectListProps } from "@/types/projectTypes";
-import ProjectActions from "./ProjectActions";
+import { Project } from "@/types/projectTypes";
 
-const ProjectList = ({
+type ProjectListProps = {
+    projects: Project[];
+    onEdit: (project: Project) => void;
+    onDelete: (id: string) => void;
+    editingProjectId?: string;
+};
+
+const ProjectList: React.FC<ProjectListProps> = ({
     projects,
     onEdit,
     onDelete,
     editingProjectId,
-}: ProjectListProps) => {
+}) => {
     return (
-        <div>
-            <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-            <div className="space-y-4">
+        <div className="mt-4">
+            <ul>
                 {projects.map((project) => (
-                    <div
-                        key={project.id}
-                        className={`p-4 border border-gray-300 rounded-lg shadow-sm ${
-                            editingProjectId === project.id
-                                ? "bg-yellow-50 border-yellow-300"
-                                : ""
-                        }`}
-                    >
-                        <h3 className="text-xl font-semibold">
-                            {project.title}
-                        </h3>
-                        <p>{project.description}</p>
-                        <ProjectActions
-                            onEdit={() => onEdit(project)}
-                            onDelete={() => onDelete(project.id)}
-                        />
-                    </div>
+                    <li key={project.id} className="mb-4 p-4 border rounded">
+                        <div className="flex justify-between items-center">
+                            <div>
+                                <h3 className="text-xl font-semibold">
+                                    {project.title}
+                                </h3>
+                                <p>{project.description}</p>
+                            </div>
+                            <div className="space-x-2">
+                                <button
+                                    onClick={() => onEdit(project)}
+                                    className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    onClick={() => onDelete(project.id)}
+                                    className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 };
