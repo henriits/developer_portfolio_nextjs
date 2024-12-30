@@ -10,15 +10,15 @@ interface ProjectCardProps {
     liveLink?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
+const ProjectCard = ({
     id,
     title,
     description,
     githubLink,
     liveLink,
-}) => {
+}: ProjectCardProps) => {
     return (
-        <div className="border p-4 rounded-lg">
+        <div className="border p-4 rounded-lg hover:shadow-lg transition-shadow duration-300">
             <h3 className="font-bold text-xl mb-2">{title}</h3>
             <p className="mb-4">{description}</p>
             <div className="flex space-x-4">

@@ -1,13 +1,45 @@
 // src/app/projects/[id]/page.tsx
 
 import { projects } from "@/data/projects"; // Import the projects data
+import { notFound } from "next/navigation"; // Import notFound for handling errors
+import Link from "next/link"; // Import Link for navigation
 
-const ProjectPage = ({ params }: { params: { id: string } }) => {
-    // Find the project with the matching id
-    const project = projects.find((project) => project.id === params.id);
+// Define the Project type
+interface Project {
+    id: string;
+    title: string;
+    description: string;
+    githubLink: string;
+    liveLink: string;
+}
 
+type ProjectPageProps = {
+    params: { id: string };
+};
+
+export default async function ProjectPage({ params }: ProjectPageProps) {
+    // Await params to access its properties correctly
+    const { id } = await params; // Access the id after awaiting it
+
+    // Simulate async operation (e.g., fetching from an API or database)
+    const fetchProjectById = async (
+        id: string
+    ): Promise<Project | undefined> => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const project = projects.find((project) => project.id === id);
+                resolve(project);
+            }, 100); // Simulate a slight delay
+        });
+    };
+
+    // Await the project data
+    const project = await fetchProjectById(id);
+
+    // If project is not found, show the 404 page
     if (!project) {
-        return <div>Project not found</div>; // If no project is found, show an error
+        console.log("Project not found with id:", id);
+        notFound(); // Trigger 404 error page
     }
 
     return (
@@ -34,8 +66,13 @@ const ProjectPage = ({ params }: { params: { id: string } }) => {
                     </a>
                 </p>
             )}
+            <div className="mt-6">
+                <Link href="/projects">
+                    <button className="bg-gray-500 text-white p-2 rounded">
+                        Back to Projects
+                    </button>
+                </Link>
+            </div>
         </div>
     );
-};
-
-export default ProjectPage;
+}
