@@ -1,6 +1,5 @@
 // src/app/projects/[id]/page.tsx
 
-import { projects } from "@/data/projects"; // Import the projects data
 import { notFound } from "next/navigation"; // Import notFound for handling errors
 import Link from "next/link"; // Import Link for navigation
 
@@ -17,26 +16,32 @@ type ProjectPageProps = {
     params: { id: string };
 };
 
+// Fetch project data from an API or database based on id
+const fetchProjectById = async (id: string): Promise<Project | undefined> => {
+    try {
+        // Ensure to use the full URL for the API request
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${id}`
+        );
+        if (!response.ok) {
+            throw new Error("Project not found");
+        }
+        const project = await response.json();
+        return project;
+    } catch (error) {
+        console.error("Error fetching project:", error);
+        return undefined;
+    }
+};
+
 export default async function ProjectPage({ params }: ProjectPageProps) {
-    // Await params to access its properties correctly
-    const { id } = await params; // Access the id after awaiting it
+    // Extract the id from params
+    const { id } = params;
 
-    // Simulate async operation (e.g., fetching from an API or database)
-    const fetchProjectById = async (
-        id: string
-    ): Promise<Project | undefined> => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                const project = projects.find((project) => project.id === id);
-                resolve(project);
-            }, 100); // Simulate a slight delay
-        });
-    };
-
-    // Await the project data
+    // Fetch the project data from API
     const project = await fetchProjectById(id);
 
-    // If project is not found, show the 404 page
+    // If project is not found, trigger 404
     if (!project) {
         console.log("Project not found with id:", id);
         notFound(); // Trigger 404 error page
