@@ -3,41 +3,44 @@
 interface ProjectCardProps {
     title: string;
     description: string;
-    githubUrl: string;
-    liveUrl?: string; // Live URL is optional
+    githubLink?: string;
+    liveLink?: string;
 }
 
-export default function ProjectCard({
+const ProjectCard = ({
     title,
     description,
-    githubUrl,
-    liveUrl,
-}: ProjectCardProps) {
+    githubLink,
+    liveLink,
+}: ProjectCardProps) => {
     return (
-        <div className="p-6 border rounded-lg shadow-lg bg-white">
-            <h2 className="text-xl font-bold text-indigo-600">{title}</h2>
-            <p className="mt-2 text-gray-600">{description}</p>
-
-            <div className="mt-4 flex justify-between">
-                <a
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-600 hover:text-indigo-800"
-                >
-                    GitHub Repo
-                </a>
-                {liveUrl && (
+        <div className="project-card border p-4 rounded-lg shadow-md">
+            <h3 className="text-xl font-bold">{title}</h3>
+            <p className="text-gray-600">{description}</p>
+            <div className="mt-2">
+                {githubLink && (
                     <a
-                        href={liveUrl}
+                        href={githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-600 hover:text-indigo-800"
+                        className="text-blue-500"
                     >
-                        Live Demo
+                        GitHub Repository
+                    </a>
+                )}
+                {liveLink && (
+                    <a
+                        href={liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 ml-4"
+                    >
+                        Live Project
                     </a>
                 )}
             </div>
         </div>
     );
-}
+};
+
+export default ProjectCard;

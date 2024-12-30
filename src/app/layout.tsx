@@ -3,6 +3,7 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
 import Head from "next/head";
+import Navbar from "@/components/NavBar";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -17,9 +18,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <Head>
-                <link rel="icon" href="favicon.ico" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
-            <body>{children}</body>
+            <body>
+                <Navbar />
+                <main>{children}</main>
+            </body>
         </html>
     );
 }
