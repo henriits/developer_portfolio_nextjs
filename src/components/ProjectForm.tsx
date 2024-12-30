@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Project } from "@/types/projectTypes";
 
-const ProjectForm = ({ onSave }: { onSave: () => void }) => {
+type ProjectFormProps = {
+    project?: Project; // If editing, this will be the existing project
+    onSave: (project: Project) => void; // The onSave function should accept a Project as an argument
+};
+
+const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
     const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        githubLink: "",
-        liveLink: "",
+        title: project?.title || "",
+        description: project?.description || "",
+        githubLink: project?.githubLink || "",
+        liveLink: project?.liveLink || "",
     });
+
+    useEffect(() => {
+        if (project) {
+            setFormData({
+                title: project.title,
+                description: project.description,
+                githubLink: project.githubLink || "",
+                liveLink: project.liveLink || "",
+            });
+        }
+    }, [project]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -19,27 +36,14 @@ const ProjectForm = ({ onSave }: { onSave: () => void }) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {
-            const response = await fetch("/api/projects", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+        // Prepare the project data to pass to onSave.
+        // If we're editing a project, the id is provided.
+        const projectData: Project = {
+            ...formData,
+            id: project?.id ?? Date.now(), // Assign a unique id for a new project (use current timestamp as fallback)
+        };
 
-            if (response.ok) {
-                onSave(); // Notify the parent to refresh the list
-                setFormData({
-                    title: "",
-                    description: "",
-                    githubLink: "",
-                    liveLink: "",
-                });
-            } else {
-                console.error("Failed to add project");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-        }
+        onSave(projectData); // Pass the project data to onSave
     };
 
     return (
@@ -52,6 +56,7 @@ const ProjectForm = ({ onSave }: { onSave: () => void }) => {
                     value={formData.title}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
+                    required
                 />
             </div>
             <div>
@@ -62,6 +67,7 @@ const ProjectForm = ({ onSave }: { onSave: () => void }) => {
                     value={formData.description}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
+                    required
                 />
             </div>
             <div>

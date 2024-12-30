@@ -71,7 +71,7 @@ const AdminPage = () => {
     };
 
     // Function to delete a project
-    const deleteProject = async (id: string) => {
+    const deleteProject = async (id: number) => {
         try {
             const response = await fetch(`/api/projects/${id}`, {
                 method: "DELETE",
@@ -102,30 +102,28 @@ const AdminPage = () => {
             {editingProject && <EditingIndicator project={editingProject} />}
 
             <div>
-                <div>
-                    <ProjectForm
-                        project={editingProject}
-                        onSave={editingProject ? updateProject : addProject}
-                    />
-                    {/* Show cancel button if we are editing a project */}
-                    {editingProject && (
-                        <button
-                            onClick={cancelEdit}
-                            className="mt-4 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-                        >
-                            Cancel Edit
-                        </button>
-                    )}
-                </div>
+                <ProjectForm
+                    project={editingProject}
+                    onSave={editingProject ? updateProject : addProject}
+                />
+                {/* Show cancel button if we are editing a project */}
+                {editingProject && (
+                    <button
+                        onClick={cancelEdit}
+                        className="mt-4 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    >
+                        Cancel Edit
+                    </button>
+                )}
+            </div>
 
-                <div>
-                    <ProjectList
-                        projects={projectsList}
-                        onEdit={setEditingProject}
-                        onDelete={deleteProject}
-                        editingProjectId={editingProject?.id}
-                    />
-                </div>
+            <div>
+                <ProjectList
+                    projects={projectsList}
+                    onEdit={setEditingProject}
+                    onDelete={deleteProject} // Pass delete function with id as number
+                    editingProjectId={editingProject?.id ?? undefined} // Pass id as number
+                />
             </div>
         </div>
     );

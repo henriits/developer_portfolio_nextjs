@@ -1,5 +1,5 @@
 export type Project = {
-    id: string;
+    id: number;
     title: string;
     description: string;
     githubLink: string;
@@ -14,6 +14,6 @@ export type ProjectFormProps = {
 export type ProjectListProps = {
     projects: Project[];
     onEdit: (project: Project) => void;
-    onDelete: (id: string) => void;
-    editingProjectId?: string;
+    onDelete: (id: number) => void; // Change to number
+    editingProjectId?: number; // Change to number
 };

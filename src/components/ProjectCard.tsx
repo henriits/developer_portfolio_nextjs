@@ -1,14 +1,7 @@
 // src/components/ProjectCard.tsx
 
+import { Project } from "@/types/projectTypes";
 import Link from "next/link";
-
-interface ProjectCardProps {
-    id: string;
-    title: string;
-    description: string;
-    githubLink: string;
-    liveLink?: string;
-}
 
 const ProjectCard = ({
     id,
@@ -16,7 +9,7 @@ const ProjectCard = ({
     description,
     githubLink,
     liveLink,
-}: ProjectCardProps) => {
+}: Project) => {
     return (
         <div className="border p-4 rounded-lg hover:shadow-lg transition-shadow duration-300">
             <h3 className="font-bold text-xl mb-2">{title}</h3>

@@ -1,18 +1,11 @@
-import { Project } from "@/types/projectTypes";
+import { Project, ProjectListProps } from "@/types/projectTypes";
 
-type ProjectListProps = {
-    projects: Project[];
-    onEdit: (project: Project) => void;
-    onDelete: (id: string) => void;
-    editingProjectId?: string;
-};
-
-const ProjectList: React.FC<ProjectListProps> = ({
+const ProjectList = ({
     projects,
     onEdit,
     onDelete,
     editingProjectId,
-}) => {
+}: ProjectListProps) => {
     return (
         <div className="mt-4">
             <ul>

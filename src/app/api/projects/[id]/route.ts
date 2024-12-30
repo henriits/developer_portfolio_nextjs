@@ -1,4 +1,3 @@
-// app/api/projects/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../../lib/prisma";
 
@@ -8,7 +7,7 @@ export async function DELETE(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = params; // Extract the ID from params
+        const { id } = await params; // Await the params to get the id value
         console.log(`Deleting project with ID: ${id}`); // Debugging line
 
         const projectId = parseInt(id, 10);
@@ -42,7 +41,7 @@ export async function PUT(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = params; // Extract project ID from URL params
+        const { id } = await params; // Await the params to get the id value
         const body = await req.json(); // Extract data from the request body
 
         console.log(`Updating project with ID: ${id}`); // Debugging line
