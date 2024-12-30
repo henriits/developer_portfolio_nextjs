@@ -2,13 +2,11 @@
 "use client";
 
 import { useState } from "react";
-
+import { Project } from "@/types/projectTypes";
 import ProjectForm from "@/components/ProjectForm";
 import ProjectList from "@/components/ProjectList";
-
-import { projects as initialProjects } from "@/data/projects"; // Simulated project data
-import { Project } from "@/types/projectTypes";
 import EditingIndicator from "@/components/EditingIndicator";
+import { projects as initialProjects } from "@/data/projects"; // Simulated project data
 
 const AdminPage = () => {
     const [projectsList, setProjectsList] =
@@ -34,6 +32,11 @@ const AdminPage = () => {
         setEditingProject(undefined); // Reset editing state
     };
 
+    // Function to cancel editing and reset the form
+    const cancelEdit = () => {
+        setEditingProject(undefined); // Clear the editing state
+    };
+
     // Function to delete a project
     const deleteProject = (id: string) => {
         setProjectsList((prevProjects) =>
@@ -50,15 +53,24 @@ const AdminPage = () => {
             {/* Displaying which project is being edited */}
             {editingProject && <EditingIndicator project={editingProject} />}
 
-            <div className="flex gap-12">
-                <div className="w-2/3">
+            <div>
+                <div>
                     <ProjectForm
                         project={editingProject}
                         onSave={editingProject ? editProject : addProject}
                     />
+                    {/* Show cancel button if we are editing a project */}
+                    {editingProject && (
+                        <button
+                            onClick={cancelEdit}
+                            className="mt-4 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                        >
+                            Cancel Edit
+                        </button>
+                    )}
                 </div>
 
-                <div className="w-1/3">
+                <div>
                     <ProjectList
                         projects={projectsList}
                         onEdit={setEditingProject}
