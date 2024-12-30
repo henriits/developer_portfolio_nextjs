@@ -19,7 +19,6 @@ type ProjectPageProps = {
 // Fetch project data from an API or database based on id
 const fetchProjectById = async (id: string): Promise<Project | undefined> => {
     try {
-        // Ensure to use the full URL for the API request
         const response = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${id}`
         );
@@ -35,8 +34,8 @@ const fetchProjectById = async (id: string): Promise<Project | undefined> => {
 };
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-    // Extract the id from params
-    const { id } = params;
+    // Await params to access its properties correctly
+    const { id } = await params; // Extract the id after awaiting it
 
     // Fetch the project data from API
     const project = await fetchProjectById(id);
