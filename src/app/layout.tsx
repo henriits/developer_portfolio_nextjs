@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+// src/app/layout.tsx
+
+import { Metadata } from "next";
 import "../styles/globals.css";
+import Head from "next/head";
 
 export const metadata: Metadata = {
     title: "Portfolio",
@@ -8,11 +11,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-}: Readonly<{
+}: {
     children: React.ReactNode;
-}>) {
+}) {
     return (
         <html lang="en">
+            <Head>
+                <link rel="icon" href="favicon.ico" />
+            </Head>
             <body>{children}</body>
         </html>
     );
