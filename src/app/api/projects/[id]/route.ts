@@ -6,7 +6,7 @@ export async function GET(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const project = await prisma.project.findUnique({
             where: { id: parseInt(id) },
         });
