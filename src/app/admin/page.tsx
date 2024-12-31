@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Project } from "@/types/projectTypes";
-import ProjectForm from "@/components/ProjectForm";
-import ProjectList from "@/components/ProjectList";
+import ProjectForm from "@/app/projects/components/ProjectForm";
+import ProjectList from "@/app/projects/components/ProjectList";
 import EditingIndicator from "@/components/EditingIndicator";
 import { signIn, signOut, useSession } from "next-auth/react";
 
