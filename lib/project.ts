@@ -5,6 +5,7 @@ export async function addProject(data: {
     description: string;
     githubLink?: string;
     liveLink?: string;
+    imageUrl?: string;
 }) {
     return await prisma.project.create({
         data,

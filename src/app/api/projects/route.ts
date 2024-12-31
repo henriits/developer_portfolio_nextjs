@@ -1,3 +1,5 @@
+//src/app/api/projects/route.ts
+
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 
@@ -22,6 +24,7 @@ export async function POST(req: NextRequest) {
                 description: body.description,
                 githubLink: body.githubLink, // Use camelCase here
                 liveLink: body.liveLink, // Use camelCase here
+                imageUrl: body.imageUrl,
             },
         });
 

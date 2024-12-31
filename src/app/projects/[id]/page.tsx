@@ -2,15 +2,7 @@
 
 import { notFound } from "next/navigation"; // Import notFound for handling errors
 import Link from "next/link"; // Import Link for navigation
-
-// Define the Project type
-interface Project {
-    id: string;
-    title: string;
-    description: string;
-    githubLink: string;
-    liveLink: string;
-}
+import { Project } from "@/types/projectTypes";
 
 type ProjectPageProps = {
     params: { id: string };
@@ -50,6 +42,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="p-8">
             <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
             <p className="mb-4">{project.description}</p>
+            <div className="w-36 h-36 overflow-hidden border border-gray-300">
+                <img
+                    src={project.imageUrl}
+                    alt="Project Image"
+                    className="w-full h-full object-cover"
+                />
+            </div>
             <p>
                 <a
                     href={project.githubLink}

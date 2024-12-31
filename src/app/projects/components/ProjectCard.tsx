@@ -9,6 +9,7 @@ const ProjectCard = ({
     description,
     githubLink,
     liveLink,
+    imageUrl,
 }: Project) => {
     return (
         <div className="border p-4 rounded-lg hover:shadow-lg transition-shadow duration-300">
@@ -27,6 +28,13 @@ const ProjectCard = ({
                         Live
                     </a>
                 )}
+                <div className="w-36 h-36 overflow-hidden border border-gray-300">
+                    <img
+                        src={imageUrl}
+                        alt="Project Image"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
             </div>
             <Link href={`/projects/${id}`}>
                 <button className="mt-4 bg-blue-500 text-white p-2 rounded">

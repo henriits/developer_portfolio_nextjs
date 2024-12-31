@@ -8,9 +8,10 @@ generator client {
 }
 
 model Project {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String
   githubLink  String?
   liveLink    String?
+  imageUrl    String?  // Optional field for storing the image URL
 }

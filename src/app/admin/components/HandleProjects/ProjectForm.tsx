@@ -12,6 +12,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
         description: project?.description || "",
         githubLink: project?.githubLink || "",
         liveLink: project?.liveLink || "",
+        imageUrl: project?.imageUrl || "",
     });
 
     useEffect(() => {
@@ -21,6 +22,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                 description: project.description,
                 githubLink: project.githubLink || "",
                 liveLink: project.liveLink || "",
+                imageUrl: project?.imageUrl || "",
             });
         }
     }, [project]);
@@ -86,6 +88,16 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     type="text"
                     name="liveLink"
                     value={formData.liveLink}
+                    onChange={handleChange}
+                    className="w-full p-2 border border-gray-300 rounded"
+                />
+            </div>
+            <div>
+                <label className="block text-lg font-medium">Image URL</label>
+                <input
+                    type="text"
+                    name="imageUrl"
+                    value={formData.imageUrl}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
