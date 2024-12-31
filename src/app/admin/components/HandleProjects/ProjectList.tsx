@@ -1,4 +1,4 @@
-import { Project, ProjectListProps } from "@/types/projectTypes";
+import { ProjectListProps } from "@/types/projectTypes";
 
 const ProjectList = ({
     projects,

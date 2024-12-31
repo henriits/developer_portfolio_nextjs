@@ -15,7 +15,18 @@ import {
     updateProject,
     deleteProject,
 } from "@/app/admin/services/projectService";
-import EditingIndicator from "./components/HandleProjects/EditingIndicator";
+
+interface EditingIndicatorProps {
+    project: Project;
+}
+
+const EditingIndicator = ({ project }: EditingIndicatorProps) => {
+    return (
+        <div className="mb-4 p-4 border rounded bg-yellow-100 text-yellow-800">
+            Editing project: <strong>{project.title}</strong>
+        </div>
+    );
+};
 
 const AdminPage = () => {
     const { data: session, status } = useSession(); // Check session status
