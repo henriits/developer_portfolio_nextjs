@@ -1,14 +1,10 @@
 // src/app/layout.tsx
+"use client";
 
-import { Metadata } from "next";
 import "../styles/globals.css";
 import Head from "next/head";
 import Navbar from "@/components/NavBar";
-
-export const metadata: Metadata = {
-    title: "Portfolio",
-    description: "Portfolio application with Next.js",
-};
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
     children,
@@ -22,7 +18,10 @@ export default function RootLayout({
             </Head>
             <body>
                 <Navbar />
-                <main>{children}</main>
+                <main>
+                    {" "}
+                    <SessionProvider>{children}</SessionProvider>
+                </main>
             </body>
         </html>
     );
