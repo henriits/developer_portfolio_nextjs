@@ -4,8 +4,8 @@
 
 import { useState, useEffect } from "react";
 import { Project } from "@/types/projectTypes";
-import ProjectForm from "@/app/admin/components/ProjectForm";
-import ProjectList from "@/app/admin/components/ProjectList";
+import ProjectForm from "@/app/admin/components/HandleProjects/ProjectForm";
+import ProjectList from "@/app/admin/components/HandleProjects/ProjectList";
 
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "./components/LoginForm";
@@ -15,7 +15,7 @@ import {
     updateProject,
     deleteProject,
 } from "@/app/admin/services/projectService";
-import EditingIndicator from "./components/EditingIndicator";
+import EditingIndicator from "./components/HandleProjects/EditingIndicator";
 
 const AdminPage = () => {
     const { data: session, status } = useSession(); // Check session status
