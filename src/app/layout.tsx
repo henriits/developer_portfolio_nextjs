@@ -2,7 +2,7 @@
 
 import "../styles/globals.css";
 import Head from "next/head";
-import Navbar from "@/components/NavBar";
+import Navbar from "@/app/home/NavBar";
 
 import { Metadata } from "next";
 
