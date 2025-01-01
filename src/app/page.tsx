@@ -6,17 +6,20 @@ import TechStackSection from "../components/TechStackSection";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import ProjectSection from "@/components/ProjectSection";
+import { SessionProvider } from "next-auth/react";
 
 export default function Home() {
     return (
         <div>
-            <HeroSection />
-            <AboutSection />
-            <ExperienceSection />
-            <TechStackSection />
-            <ProjectSection />
-            <ContactForm />
-            <Footer />
+            <SessionProvider>
+                <HeroSection />
+                <AboutSection />
+                <ExperienceSection />
+                <TechStackSection />
+                <ProjectSection />
+                <ContactForm />
+                <Footer />
+            </SessionProvider>
         </div>
     );
 }
