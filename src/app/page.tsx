@@ -1,5 +1,6 @@
 // src/app/page.tsx
-
+"use client";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,7 +10,6 @@ export default function Home() {
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
             />
-
             {/* Hero Section */}
             <section className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
                 <h1 className="text-5xl font-bold mb-4">
@@ -47,7 +47,6 @@ export default function Home() {
                     </a>
                 </div>
             </section>
-
             {/* About Section */}
             <section id="about" className="py-16 bg-white">
                 <h2 className="text-3xl font-bold mb-6 text-center">
@@ -60,7 +59,6 @@ export default function Home() {
                     impactful solutions.
                 </p>
             </section>
-
             {/* Experience Section */}
             <section id="experience" className="py-16 bg-gray-50">
                 <h2 className="text-3xl font-bold mb-6 text-center">
@@ -88,44 +86,153 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Tech Stack Section */}
-            <section id="tech-stack" className="py-16 bg-white">
+            <section id="tech-stack" className="py-16 bg-white overflow-hidden">
                 <h2 className="text-3xl font-bold mb-6 text-center">
                     Tech Stack
                 </h2>
                 <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                    <div className="text-center">
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4, // Slower duration
+                            repeat: Infinity, // Repeat indefinitely
+                            repeatType: "loop", // Loop the animation
+                            ease: "easeInOut", // Smooth easing for continuous movement
+                        }}
+                    >
                         <i className="ci ci-js ci-4x"></i>
                         <p className="mt-2">JavaScript</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.1, // Slight delay for staggered animation
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-react ci-4x"></i>
                         <p className="mt-2">React</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.2,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-html5 ci-4x"></i>
                         <p className="mt-2">HTML5</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.3,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-css3 ci-4x"></i>
                         <p className="mt-2">CSS3</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.4,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-tailwindcss ci-4x"></i>
                         <p className="mt-2">Tailwind CSS</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.5,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-ts ci-4x"></i>
                         <p className="mt-2">TypeScript</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.6,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-nextjs ci-2x"></i>
                         <p className="mt-2">Next js</p>
-                    </div>
-                    <div className="text-center">
+                    </motion.div>
+
+                    <motion.div
+                        className="text-center"
+                        animate={{
+                            x: ["-100px", "100px", "0px"], // Move left to right and back to center
+                            opacity: [0, 1, 0], // Fade in and out
+                        }}
+                        transition={{
+                            duration: 4,
+                            delay: 0.7,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                    >
                         <i className="ci ci-nodejs ci-2x"></i>
                         <p className="mt-2">Node js</p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -165,7 +272,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
             {/* Contact Form */}
             <section id="contact" className="py-16 bg-white">
                 <h2 className="text-3xl font-bold mb-6 text-center">
@@ -216,7 +322,6 @@ export default function Home() {
                     </button>
                 </form>
             </section>
-
             {/* Footer */}
             <footer className="py-8 bg-gray-800 text-white text-center">
                 <p>
