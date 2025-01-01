@@ -26,8 +26,7 @@ const fetchProjectById = async (id: string): Promise<Project | undefined> => {
 };
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-    // Await params to access its properties correctly
-    const { id } = await params; // Extract the id after awaiting it
+    const { id } = await params; // Extract the id
 
     // Fetch the project data from API
     const project = await fetchProjectById(id);
@@ -39,39 +38,51 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     }
 
     return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
-            <p className="mb-4">{project.description}</p>
-            <div className="w-36 h-36 overflow-hidden border border-gray-300">
+        <div className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+            {/* Project Title */}
+            <h1 className="text-4xl font-bold text-gray-800 mb-6">
+                {project.title}
+            </h1>
+
+            {/* Project Image */}
+            <div className="w-full h-72 mb-8 overflow-hidden rounded-lg shadow-md">
                 <img
                     src={project.imageUrl}
-                    alt="Project Image"
-                    className="w-full h-full object-cover"
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-lg"
                 />
             </div>
-            <p>
+
+            {/* Project Description */}
+            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                {project.description}
+            </p>
+
+            {/* Links Section */}
+            <div className="flex space-x-6 mb-6">
                 <a
                     href={project.githubLink}
                     target="_blank"
-                    className="text-blue-500"
+                    className="text-blue-600 hover:text-blue-800 font-semibold transition-all duration-200"
                 >
                     GitHub Repo
                 </a>
-            </p>
-            {project.liveLink && (
-                <p>
+
+                {project.liveLink && (
                     <a
                         href={project.liveLink}
                         target="_blank"
-                        className="text-blue-500"
+                        className="text-blue-600 hover:text-blue-800 font-semibold transition-all duration-200"
                     >
                         Live Project
                     </a>
-                </p>
-            )}
-            <div className="mt-6">
+                )}
+            </div>
+
+            {/* Back Button */}
+            <div className="mt-8 text-center">
                 <Link href="/projects">
-                    <button className="bg-gray-500 text-white p-2 rounded">
+                    <button className="bg-blue-600 text-white py-3 px-6 rounded-full text-lg font-semibold shadow-md hover:bg-blue-700 transition-all duration-200">
                         Back to Projects
                     </button>
                 </Link>
