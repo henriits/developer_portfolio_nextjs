@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
                 githubLink: body.githubLink, // Use camelCase here
                 liveLink: body.liveLink, // Use camelCase here
                 imageUrl: body.imageUrl,
+                technologies: body.technologies || [],
             },
         });
 

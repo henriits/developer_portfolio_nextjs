@@ -5,6 +5,7 @@ export type Project = {
     githubLink: string;
     liveLink: string;
     imageUrl: string;
+    technologies: string[];
 };
 
 export type ProjectFormProps = {

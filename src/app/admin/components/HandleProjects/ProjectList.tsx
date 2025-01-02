@@ -26,6 +26,11 @@ const ProjectList = ({
                                         {project.title}
                                     </h3>
                                     <p>{project.description}</p>
+                                    <p>{project.imageUrl}</p>
+                                    <p>{project.technologies}</p>
+                                    <p>{project.githubLink}</p>
+                                    <p>{project.liveLink}</p>
+
                                     {isEditing && (
                                         <span className="text-yellow-800 font-medium text-sm">
                                             (Editing)

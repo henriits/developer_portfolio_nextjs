@@ -10,6 +10,7 @@ const ProjectCard = ({
     githubLink,
     liveLink,
     imageUrl,
+    technologies,
 }: Project) => {
     return (
         <div className="relative group w-full max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
@@ -30,6 +31,16 @@ const ProjectCard = ({
                 <p className="text-white text-lg mb-6 line-clamp-3">
                     {description}
                 </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {technologies.map((tech) => (
+                        <span
+                            key={tech}
+                            className="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
 
                 <div className="flex justify-between items-center">
                     <div className="space-x-4">

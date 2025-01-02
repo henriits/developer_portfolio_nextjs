@@ -58,6 +58,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.description}
             </p>
 
+            <div className="flex flex-wrap gap-2 mb-6">
+                {project.technologies.map((tech) => (
+                    <span
+                        key={id}
+                        className="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm"
+                    >
+                        {tech}
+                    </span>
+                ))}
+            </div>
             {/* Links Section */}
             <div className="flex space-x-6 mb-6">
                 <a
