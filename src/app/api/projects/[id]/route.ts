@@ -99,6 +99,8 @@ export async function PUT(
                 description: body.description,
                 githubLink: body.githubLink,
                 liveLink: body.liveLink,
+                technologies: body.technologies,
+                imageUrl: body.imageUrl,
             },
         });
 
