@@ -1,5 +1,3 @@
-// src/app/admin/page.tsx
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -109,6 +107,7 @@ const AdminPage = () => {
 
             <div>
                 <ProjectForm
+                    key={editingProject?.id || "new"}
                     project={editingProject}
                     onSave={
                         editingProject ? handleUpdateProject : handleAddProject

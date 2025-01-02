@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project } from "@/types/projectTypes";
 
 type ProjectFormProps = {
@@ -7,108 +7,124 @@ type ProjectFormProps = {
 };
 
 const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
-    const initialState = {
-        title: project?.title || "",
-        description: project?.description || "",
-        githubLink: project?.githubLink || "",
-        liveLink: project?.liveLink || "",
-        imageUrl: project?.imageUrl || "",
-        technologies: project?.technologies.join(", ") || "",
-    };
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        githubLink: "",
+        liveLink: "",
+        imageUrl: "",
+        technologies: "",
+    });
 
-    const [formState, setFormState] = useState(initialState);
+    useEffect(() => {
+        if (project) {
+            setFormData({
+                title: project.title,
+                description: project.description,
+                githubLink: project.githubLink || "",
+                liveLink: project.liveLink || "",
+                imageUrl: project.imageUrl || "",
+                technologies: project.technologies.join(", ") || "",
+            });
+        }
+    }, [project]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
-        setFormState((prevState) => ({ ...prevState, [name]: value }));
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const techArray: string[] = formState.technologies
-            .split(",")
-            .map((tech) => tech.trim());
-        onSave({
-            id: project?.id || 0,
-            ...formState,
-            technologies: techArray,
-        });
+
+        // Prepare the project data to pass to onSave.
+        const projectData: Project = {
+            ...formData,
+            id: project?.id ?? Date.now(), // Assign a unique id for a new project (use current timestamp as fallback)
+            technologies: formData.technologies
+                .split(",")
+                .map((tech) => tech.trim()),
+        };
+
+        onSave(projectData); // Pass the project data to onSave
     };
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg"
-        >
-            <div className="mb-4">
-                <label className="block text-gray-700">Title</label>
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+                <label className="block text-lg font-medium">Title</label>
                 <input
                     type="text"
                     name="title"
-                    value={formState.title}
+                    value={formData.title}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
+                    required
                 />
             </div>
-            <div className="mb-4">
-                <label className="block text-gray-700">Description</label>
+            <div>
+                <label className="block text-lg font-medium">Description</label>
                 <textarea
                     name="description"
-                    value={formState.description}
+                    value={formData.description}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
+                    required
                 />
             </div>
-            <div className="mb-4">
-                <label className="block text-gray-700">GitHub Link</label>
+            <div>
+                <label className="block text-lg font-medium">GitHub Link</label>
                 <input
                     type="text"
                     name="githubLink"
-                    value={formState.githubLink}
+                    value={formData.githubLink}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
             </div>
-            <div className="mb-4">
-                <label className="block text-gray-700">Live Link</label>
+            <div>
+                <label className="block text-lg font-medium">Live Link</label>
                 <input
                     type="text"
                     name="liveLink"
-                    value={formState.liveLink}
+                    value={formData.liveLink}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
             </div>
-            <div className="mb-4">
-                <label className="block text-gray-700">Image URL</label>
+            <div>
+                <label className="block text-lg font-medium">Image URL</label>
                 <input
                     type="text"
                     name="imageUrl"
-                    value={formState.imageUrl}
+                    value={formData.imageUrl}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
             </div>
-            <div className="mb-4">
-                <label className="block text-gray-700">Technologies</label>
+            <div>
+                <label className="block text-lg font-medium">
+                    Technologies
+                </label>
                 <input
                     type="text"
                     name="technologies"
-                    value={formState.technologies}
+                    value={formData.technologies}
                     onChange={handleChange}
                     className="w-full p-2 border border-gray-300 rounded"
                 />
             </div>
-            <div className="flex space-x-4">
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded"
-                >
-                    Submit
-                </button>
-            </div>
+            <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+                Submit
+            </button>
         </form>
     );
 };
