@@ -1,5 +1,3 @@
-// src/app/projects/[id]/page.tsx
-
 import { notFound } from "next/navigation"; // Import notFound for handling errors
 import Link from "next/link"; // Import Link for navigation
 import { Project } from "@/types/projectTypes";
@@ -58,16 +56,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.description}
             </p>
 
+            {/* Technologies */}
             <div className="flex flex-wrap gap-2 mb-6">
-                {project.technologies.map((tech) => (
+                {project.technologies.map((tech, index) => (
                     <span
-                        key={id}
+                        key={index} // Use index as key since IDs are not provided
                         className="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm"
                     >
-                        {tech}
+                        {tech.trim()} {/* Trim whitespace */}
                     </span>
                 ))}
             </div>
+
             {/* Links Section */}
             <div className="flex space-x-6 mb-6">
                 <a
