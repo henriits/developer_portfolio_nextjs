@@ -1,7 +1,7 @@
 // src/app/projects/page.tsx
 "use client";
 
-import ProjectSection from "@/app/home/ProjectSection";
+import ProjectSection from "@/app/home/components/ProjectSection";
 
 const Projects = () => {
     return <ProjectSection />;
