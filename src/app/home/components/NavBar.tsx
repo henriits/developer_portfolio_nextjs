@@ -4,13 +4,13 @@ import Link from "next/link";
 
 const Navbar = () => {
     return (
-        <nav className="bg-gray-800 text-white p-4 shadow-md fixed top-0 left-0 right-0 z-50">
+        <nav className="bg-gray-900 text-white p-4 shadow-md fixed top-0 left-0 right-0 z-50">
             <div className="container mx-auto flex justify-center items-center">
                 <ul className="flex space-x-4">
                     <li>
                         <Link
                             href="/"
-                            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full transition duration-300"
+                            className="bg-gray-800 hover:bg-neonGreen text-white py-2 px-4 rounded-full transition duration-300"
                         >
                             Home
                         </Link>
@@ -18,7 +18,7 @@ const Navbar = () => {
                     <li>
                         <Link
                             href="/projects"
-                            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full transition duration-300"
+                            className="bg-gray-800 hover:bg-neonGreen text-white py-2 px-4 rounded-full transition duration-300"
                         >
                             Projects
                         </Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
                     <li>
                         <Link
                             href="/#about"
-                            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full transition duration-300"
+                            className="bg-gray-800 hover:bg-neonGreen text-white py-2 px-4 rounded-full transition duration-300"
                         >
                             About
                         </Link>
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <li>
                         <Link
                             href="/#contact"
-                            className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-full transition duration-300"
+                            className="bg-gray-800 hover:bg-neonGreen text-white py-2 px-4 rounded-full transition duration-300"
                         >
                             Contact
                         </Link>
