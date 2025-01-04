@@ -1,25 +1,21 @@
-// src/app/layout.tsx
-"use client";
+import type { Metadata } from "next";
 import "../styles/globals.css";
-import Head from "next/head";
-import Navbar from "@/app/home/NavBar";
-import { SessionProvider } from "next-auth/react";
+
+import ClientLayout from "@/components/ClientLayout";
+
+export const metadata: Metadata = {
+    title: "Portfolio",
+    description: "Portfolio application with Next.js",
+};
 
 export default function RootLayout({
     children,
-}: {
-    children: React.ReactNode;
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <body>
-                <SessionProvider>
-                    <Navbar />
-                    <main>{children}</main>
-                </SessionProvider>
+                {/* Only the client layout will use SessionProvider */}
+                <ClientLayout>{children}</ClientLayout>
             </body>
         </html>
     );
