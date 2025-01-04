@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
 
 const TechStackSection = () => (
-    <section id="tech-stack" className="py-16 bg-white overflow-hidden">
+    <section
+        id="tech-stack"
+        className=" flex flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative"
+    >
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
         />
-
-        <h2 className="text-3xl font-bold mb-6 text-center">Tech Stack</h2>
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+        <h2 className="text-3xl font-bold mb-6 text-center z-10">Tech Stack</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center z-10">
             {[
                 { icon: "ci-js", label: "JavaScript" },
                 { icon: "ci-react", label: "React" },
@@ -34,8 +36,8 @@ const TechStackSection = () => (
                         ease: "easeInOut",
                     }}
                 >
-                    <i className={`ci ${tech.icon} ci-4x`}></i>
-                    <p className="mt-2">{tech.label}</p>
+                    <i className={`ci ${tech.icon} ci-4x z-10`}></i>
+                    <p className="mt-2 z-10">{tech.label}</p>
                 </motion.div>
             ))}
         </div>

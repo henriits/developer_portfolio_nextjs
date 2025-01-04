@@ -56,7 +56,7 @@ const AdminPage = () => {
     // If no session exists, show login form
     if (!session) {
         return (
-            <div className="container mx-auto p-6">
+            <div className="container mx-auto p-6 bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white">
                 <h1 className="text-3xl font-semibold text-center mb-6 p-12">
                     Please Sign In
                 </h1>
@@ -98,7 +98,7 @@ const AdminPage = () => {
     };
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container mx-auto p-6 bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white">
             <h1 className="text-3xl font-semibold text-center mb-6">
                 Admin Panel
             </h1>

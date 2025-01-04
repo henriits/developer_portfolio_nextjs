@@ -1,5 +1,5 @@
 const Footer = () => (
-    <footer className="py-8 bg-gray-800 text-white text-center">
+    <footer className="text-center flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative">
         <p>
             &copy; {new Date().getFullYear()} My Portfolio. All rights reserved.
         </p>

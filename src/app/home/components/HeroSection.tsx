@@ -4,7 +4,6 @@ import { motion } from "framer-motion"; // Import Framer Motion
 const HeroSection = () => (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative">
         {/* Background Overlay (darkened to make content pop) */}
-        <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
 
         {/* Title */}
         <motion.h1

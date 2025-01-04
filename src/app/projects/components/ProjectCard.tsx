@@ -15,7 +15,7 @@ const ProjectCard = ({
     return (
         <div className="relative group w-full max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 ">
                 <img
                     src={imageUrl}
                     alt="Project Image"
@@ -47,7 +47,7 @@ const ProjectCard = ({
                         <a
                             href={githubLink}
                             target="_blank"
-                            className="text-blue-400 hover:text-blue-500 transition-colors duration-200"
+                            className="text-neonGreen hover:text-blue-500 transition-colors duration-200"
                         >
                             GitHub
                         </a>
@@ -55,14 +55,14 @@ const ProjectCard = ({
                             <a
                                 href={liveLink}
                                 target="_blank"
-                                className="text-blue-400 hover:text-blue-500 transition-colors duration-200"
+                                className="text-neonGreen hover:text-blue-500 transition-colors duration-200"
                             >
                                 Live
                             </a>
                         )}
                     </div>
                     <Link href={`/projects/${id}`}>
-                        <button className="bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 transform group-hover:scale-105 hover:bg-blue-600">
+                        <button className="border-2 border-neonGreen text-white py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 transform group-hover:scale-105 hover:bg-neonGreen hover:text-black">
                             See Details
                         </button>
                     </Link>
