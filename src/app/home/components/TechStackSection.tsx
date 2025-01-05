@@ -1,47 +1,55 @@
 import { motion } from "framer-motion";
+import React from "react";
 
-const TechStackSection = () => (
-    <section
-        id="tech-stack"
-        className=" w-full flex flex-col items-center justify-center bg-neutral-800 text-white px-6 py-12"
-    >
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
-        />
-        <h2 className="text-3xl font-bold mb-6 text-center z-10">Tech Stack</h2>
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center z-10">
-            {[
-                { icon: "ci-js", label: "JavaScript" },
-                { icon: "ci-react", label: "React" },
-                { icon: "ci-html5", label: "HTML5" },
-                { icon: "ci-css3", label: "CSS3" },
-                { icon: "ci-tailwindcss", label: "Tailwind CSS" },
-                { icon: "ci-ts", label: "TypeScript" },
-                { icon: "ci-nextjs", label: "Next js" },
-                { icon: "ci-nodejs", label: "Node js" },
-            ].map((tech, index) => (
+const TechStackData: Array<{ icon: string; label: string }> = [
+    { icon: "ci-js", label: "JavaScript" },
+    { icon: "ci-react", label: "React" },
+    { icon: "ci-html5", label: "HTML5" },
+    { icon: "ci-css3", label: "CSS3" },
+    { icon: "ci-tailwindcss", label: "Tailwind CSS" },
+    { icon: "ci-ts", label: "TypeScript" },
+    { icon: "ci-nextjs", label: "Next.js" },
+    { icon: "ci-nodejs", label: "Node.js" },
+];
+
+const TechStackSection = () => {
+    return (
+        <div className="w-full p-5 bg-neutral-800 text-white overflow-hidden">
+            <link
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
+            />
+            <h2 className="text-center text-3xl font-bold mb-6">
+                Technology I mostly use
+            </h2>
+            <div className="w-full overflow-hidden">
                 <motion.div
-                    key={tech.label}
-                    className="text-center"
-                    animate={{
-                        x: ["-100px", "100px", "0px"],
-                        opacity: [0, 1, 0],
-                    }}
                     transition={{
-                        duration: 4,
-                        delay: index * 0.1,
+                        duration: 20,
+                        ease: "linear",
                         repeat: Infinity,
-                        repeatType: "loop",
-                        ease: "easeInOut",
                     }}
+                    initial={{ translateX: "0%" }}
+                    animate={{ translateX: "-50%" }}
+                    className="flex gap-16 pr-16 w-max"
                 >
-                    <i className={`ci ${tech.icon} ci-4x z-10`}></i>
-                    <p className="mt-2 z-10">{tech.label}</p>
+                    {[...new Array(2)].fill(0).map((_, index) => (
+                        <React.Fragment key={index}>
+                            {TechStackData.map(({ icon, label }) => (
+                                <div
+                                    key={label}
+                                    className="text-center flex-none"
+                                >
+                                    <i className={`ci ${icon} ci-4x`}></i>
+                                    <p className="mt-2">{label}</p>
+                                </div>
+                            ))}
+                        </React.Fragment>
+                    ))}
                 </motion.div>
-            ))}
+            </div>
         </div>
-    </section>
-);
+    );
+};
 
 export default TechStackSection;
