@@ -1,7 +1,7 @@
 const ExperienceSection = () => (
     <section
         id="experience"
-        className=" flex flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative"
+        className=" w-full flex flex-col items-center justify-center bg-neutral-800 text-white px-6 py-12"
     >
         <h2 className="text-3xl font-bold mb-6 text-center z-10">Experience</h2>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 z-10">

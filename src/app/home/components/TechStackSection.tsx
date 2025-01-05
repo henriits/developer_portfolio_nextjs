@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const TechStackSection = () => (
     <section
         id="tech-stack"
-        className=" flex flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative"
+        className=" w-full flex flex-col items-center justify-center bg-neutral-800 text-white px-6 py-12"
     >
         <link
             rel="stylesheet"

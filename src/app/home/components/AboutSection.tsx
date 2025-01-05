@@ -1,7 +1,7 @@
 const AboutSection = () => (
     <section
         id="about"
-        className="flex flex-col items-center justify-center bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative"
+        className=" w-full flex flex-col items-center justify-center bg-neutral-800 text-white px-6 py-12"
     >
         <h2 className="text-3xl font-bold mb-6 text-center z-10">About Me</h2>
         <p className="text-center max-w-3xl mx-auto ">

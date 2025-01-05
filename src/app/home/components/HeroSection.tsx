@@ -41,48 +41,53 @@ const HeroSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 1 }}
                 >
-                    <motion.a
-                        href={process.env.NEXT_PUBLIC_LINKEDIN_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition duration-300"
-                        whileHover={{ scale: 1.2 }}
+                    <motion.div
+                        whileHover={{ scale: 1.3 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
                     >
-                        <i className="ci ci-linkedin ci-3x"></i>
-                    </motion.a>
-                    <motion.a
-                        href={process.env.NEXT_PUBLIC_GITHUB_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className=" transition duration-300"
-                        whileHover={{ scale: 1.2 }}
+                        <Link
+                            href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "/"}
+                        >
+                            <i className="ci ci-linkedin ci-3x"></i>
+                        </Link>
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ scale: 1.3 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
                     >
-                        <i className="ci ci-github-light ci-3x"></i>
-                    </motion.a>
-                    <motion.a
-                        href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className=" transition duration-300"
-                        whileHover={{ scale: 1.2 }}
+                        <Link href={process.env.NEXT_PUBLIC_GITHUB_URL || "/"}>
+                            <i className="ci ci-github-light ci-3x"></i>
+                        </Link>
+                    </motion.div>
+                    <motion.div
+                        whileHover={{ scale: 1.3 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
                     >
-                        <i className="ci ci-instagram ci-3x"></i>
-                    </motion.a>
+                        <Link
+                            href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "/"}
+                        >
+                            <i className="ci ci-instagram ci-3x"></i>
+                        </Link>
+                    </motion.div>
                 </motion.div>
 
                 {/* Contact Button */}
-                <Link href="#contact">
-                    <motion.button
+
+                <motion.div
+                    whileHover={{ scale: 1.3 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                >
+                    <Link
+                        href="#contact"
                         className="border-2 border-neonGreen text-white py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        whileHover={{
-                            scale: 1.1,
-                        }}
                     >
-                        Contact Me
-                    </motion.button>
-                </Link>
+                        Contact me!
+                    </Link>
+                </motion.div>
             </section>
         </BackgroundBeamsWithCollision>
     );

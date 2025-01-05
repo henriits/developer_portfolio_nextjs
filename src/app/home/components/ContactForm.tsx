@@ -1,8 +1,5 @@
 const ContactForm = () => (
-    <section
-        id="contact"
-        className="py-16 bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white relative"
-    >
+    <section id="contact" className="py-16 bg-neutral-800 text-white px-6 ">
         <h2 className="text-3xl font-bold mb-6 text-center z-10">Contact Me</h2>
         <form className="max-w-3xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md z-10">
             <div className="mb-4">
