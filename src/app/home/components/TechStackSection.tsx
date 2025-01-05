@@ -5,11 +5,15 @@ const TechStackData: Array<{ icon: string; label: string }> = [
     { icon: "ci-js", label: "JavaScript" },
     { icon: "ci-react", label: "React" },
     { icon: "ci-html5", label: "HTML5" },
-    { icon: "ci-css3", label: "CSS3" },
     { icon: "ci-tailwindcss", label: "Tailwind CSS" },
     { icon: "ci-ts", label: "TypeScript" },
     { icon: "ci-nextjs", label: "Next.js" },
     { icon: "ci-nodejs", label: "Node.js" },
+    { icon: "ci-npm", label: "npm" },
+    { icon: "ci-framer-motion", label: "Framer Motion" },
+    { icon: "ci-git", label: "Git" },
+    { icon: "ci-css3", label: "CSS3" },
+    { icon: "ci-vscode", label: "VS Code" },
 ];
 
 const TechStackSection = () => {
@@ -19,13 +23,13 @@ const TechStackSection = () => {
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
             />
-            <h2 className="text-center text-3xl font-bold mb-6">
+            <h2 className="text-center text-3xl font-bold mb-6 p-12">
                 Technology I mostly use
             </h2>
-            <div className="w-full overflow-hidden">
+            <div className="w-auto overflow-hidden">
                 <motion.div
                     transition={{
-                        duration: 20,
+                        duration: 10,
                         ease: "linear",
                         repeat: Infinity,
                     }}
@@ -40,7 +44,9 @@ const TechStackSection = () => {
                                     key={label}
                                     className="text-center flex-none"
                                 >
-                                    <i className={`ci ${icon} ci-4x`}></i>
+                                    <i
+                                        className={`ci ${icon} ci-2x md:ci-4x`}
+                                    ></i>
                                     <p className="mt-2">{label}</p>
                                 </div>
                             ))}
