@@ -15,7 +15,11 @@ const HeroSection = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    Hi, I'm <FlipWords words={words} /> developer
+                    Hi, I'm{" "}
+                    <span className="text-shadow-colored">
+                        <FlipWords words={words} />
+                    </span>{" "}
+                    developer
                 </motion.h1>
 
                 {/* Description */}

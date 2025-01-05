@@ -202,7 +202,7 @@ const CollisionMechanism = React.forwardRef<
                     repeatDelay: beamOptions.repeatDelay || 0,
                 }}
                 className={cn(
-                    "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-amber-400 via-lime-500 to-transparent z-0",
+                    "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-lime-700 via-lime-400 to-transparent z-0",
                     beamOptions.className
                 )}
             />
@@ -244,7 +244,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-lime-500 to-transparent blur-sm z-0"
+                className="absolute -inset-x-10 top-0 m-auto h-20 w-20 rounded-full bg-gradient-to-r from-transparent via-lime-400 to-transparent blur-sm z-0"
             ></motion.div>
             {spans.map((span) => (
                 <motion.span
@@ -259,7 +259,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
                         duration: Math.random() * 1.5 + 0.5,
                         ease: "easeOut",
                     }}
-                    className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-lime-500 to-amber-400"
+                    className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-lime-700 to-lime-400"
                 />
             ))}
         </div>

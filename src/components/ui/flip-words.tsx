@@ -57,10 +57,7 @@ export const FlipWords = ({
                     scale: 2,
                     position: "absolute",
                 }}
-                className={cn(
-                    " text-orange-300 dark:text-orange-700",
-                    className
-                )}
+                className={cn(className)}
                 key={currentWord}
             >
                 {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
@@ -74,6 +71,9 @@ export const FlipWords = ({
                             duration: 0.1,
                         }}
                         className="inline-block whitespace-nowrap"
+                        style={{
+                            color: ["#13dF14"][wordIndex % 2],
+                        }}
                     >
                         {word.split("").map((letter, letterIndex) => (
                             <motion.span
