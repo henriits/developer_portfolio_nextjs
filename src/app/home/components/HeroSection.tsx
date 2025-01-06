@@ -83,7 +83,7 @@ const HeroSection = () => {
                 >
                     <Link
                         href="#contact"
-                        className="border-2 border-neonGreen text-white py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden"
+                        className="border-2 border-neonGreen text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden"
                     >
                         Contact me!
                     </Link>

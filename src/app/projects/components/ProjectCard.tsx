@@ -13,72 +13,83 @@ const ProjectCard = ({
     technologies,
 }: Project) => {
     return (
-        <div className="shadow-lg bg-neutral-800 border border-gray-700 rounded-xl transition-transform duration-300 text-white w-full">
-            <Card>
+        <div className="relative w-full shadow-lg rounded-xl transition-all duration-300 group">
+            {/* Neon Shadow Effect */}
+            <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14] opacity-50"></div>
+
+            <Card className="relative z-10 bg-transparent border  rounded-xl flex flex-col h-full">
                 {/* Card Header */}
-                <CardHeader className="p-4 flex flex-col items-start gap-2">
-                    <h3 className="text-lg font-semibold ">{title}</h3>
+                <CardHeader className="p-6 flex flex-col items-start gap-2">
+                    <h3 className="text-xl font-semibold text-white">
+                        {title}
+                    </h3>
                     <p className="text-sm text-gray-300">{description}</p>
                 </CardHeader>
+
                 {/* Card Body */}
-                <CardBody className="p-4 flex flex-col gap-4 w-full">
+                <CardBody className="p-6 flex flex-col gap-4 flex-grow">
                     {/* Image */}
-                    <div className="relative ">
+                    <div className="relative flex justify-center items-center transition-all duration-300 ease-in-out">
                         <Image
                             alt={`Project ${title}`}
                             src={imageUrl}
-                            className=" rounded-xl"
+                            className="rounded-lg shadow-md"
                             width={300}
                             height={200}
                         />
                     </div>
+
                     {/* Technologies */}
+
                     <div className="flex flex-wrap gap-2">
                         {technologies.map((tech) => (
                             <span
                                 key={tech}
-                                className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm"
+                                className=" text-gray-300 px-3 py-1 rounded-lg border-white-600 text-sm border-2  hover:text-[#13DF14]"
                             >
                                 {tech}
                             </span>
                         ))}
                     </div>
+                </CardBody>
+
+                {/* Links and Button Section */}
+                <div className="p-6 flex flex-col gap-4 mt-auto">
                     {/* Links */}
-                    <div className="flex justify-between items-center mt-2">
-                        <div className="flex space-x-4">
+                    <div className="flex justify-between items-center space-x-4">
+                        <motion.a
+                            whileHover={{ scale: 1.1 }}
+                            href={githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${title} on GitHub`}
+                            className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
+                        >
+                            GitHub
+                        </motion.a>
+                        {liveLink && (
                             <motion.a
-                                whileHover={{ scale: 1.2 }}
-                                href={githubLink}
+                                whileHover={{ scale: 1.1 }}
+                                href={liveLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                aria-label={`View ${title} on GitHub`}
-                                className=" hover:text-green-400 transition-colors duration-200"
+                                aria-label={`View ${title} Live`}
+                                className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
                             >
-                                GitHub
+                                Live
                             </motion.a>
-                            {liveLink && (
-                                <motion.a
-                                    whileHover={{ scale: 1.2 }}
-                                    href={liveLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={`View ${title} Live`}
-                                    className=" hover:text-green-400 transition-colors duration-200"
-                                >
-                                    Live
-                                </motion.a>
-                            )}
-                        </div>
+                        )}
                     </div>
+
                     {/* See Details Button */}
-                    <motion.div whileHover={{ scale: 1.02 }}>
+                    <motion.div whileHover={{ scale: 1.09 }}>
                         <Link href={`/projects/${id}`} passHref>
-                            <button className="w-full mt-4 border-2 border-neonGreen  py-2 rounded-lg text-sm font-semibold transition-all duration-200  hover:text-green-400">
+                            <button className="w-full mt-4 border-2 hover:text-[#13DF14] py-2 rounded-lg text-sm font-semibold text-white  transition-all duration-300">
                                 See Details
                             </button>
                         </Link>
                     </motion.div>
-                </CardBody>
+                </div>
             </Card>
         </div>
     );

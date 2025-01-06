@@ -15,7 +15,7 @@ const ProjectSection = () => {
             <motion.button whileHover={{ scale: 1.3 }}>
                 <Link
                     href="/projects"
-                    className="border-2 border-neonGreen text-white py-2 px-4 rounded-full transition duration-300 relative overflow-hidden"
+                    className="border-2 hover:text-[#13DF14] text-white py-2 px-4 rounded-lg  transition duration-300 relative overflow-hidden"
                 >
                     See more!
                 </Link>
