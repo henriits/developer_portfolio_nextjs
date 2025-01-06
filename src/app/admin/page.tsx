@@ -98,30 +98,26 @@ const AdminPage = () => {
     };
 
     return (
-        <div className="container mx-auto p-6 ">
+        <div className="container mx-auto p-6  ">
             <h1 className="text-3xl font-semibold text-center mb-6">
                 Admin Panel
             </h1>
 
             {editingProject && <EditingIndicator project={editingProject} />}
 
-            <div>
-                <ProjectForm
-                    key={editingProject?.id || "new"}
-                    project={editingProject}
-                    onSave={
-                        editingProject ? handleUpdateProject : handleAddProject
-                    }
-                />
-                {editingProject && (
-                    <button
-                        onClick={cancelEdit}
-                        className="mt-4 w-full p-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-                    >
-                        Cancel Edit
-                    </button>
-                )}
-            </div>
+            <ProjectForm
+                key={editingProject?.id || "new"}
+                project={editingProject}
+                onSave={editingProject ? handleUpdateProject : handleAddProject}
+            />
+            {editingProject && (
+                <button
+                    onClick={cancelEdit}
+                    className="mt-4 w-full p-2 bg-gray-500  rounded hover:bg-gray-600"
+                >
+                    Cancel Edit
+                </button>
+            )}
 
             <div>
                 <ProjectList

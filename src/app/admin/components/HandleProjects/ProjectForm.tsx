@@ -64,7 +64,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                     required
                 />
             </div>
@@ -74,7 +74,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                     required
                 />
             </div>
@@ -85,7 +85,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="githubLink"
                     value={formData.githubLink}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                 />
             </div>
             <div>
@@ -95,7 +95,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="liveLink"
                     value={formData.liveLink}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                 />
             </div>
             <div>
@@ -105,7 +105,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="imageUrl"
                     value={formData.imageUrl}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                 />
             </div>
             <div>
@@ -117,7 +117,7 @@ const ProjectForm = ({ project, onSave }: ProjectFormProps) => {
                     name="technologies"
                     value={formData.technologies}
                     onChange={handleChange}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded text-black"
                 />
             </div>
             <button

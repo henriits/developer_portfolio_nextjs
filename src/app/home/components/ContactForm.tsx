@@ -1,9 +1,9 @@
 const ContactForm = () => (
-    <section id="contact" className="py-16 bg-neutral-800 text-white px-6 ">
+    <section id="contact" className="py-16   px-6 ">
         <h2 className="text-3xl font-bold mb-6 text-center z-10">
             Contact <span className="text-[#13DF14]">Me</span>
         </h2>
-        <form className="max-w-3xl mx-auto p-8 rounded-lg shadow-2xl bg-neutral-900 ">
+        <form className="max-w-3xl mx-auto p-8  bg-neutral-900 ">
             <div className="mb-4">
                 <input
                     type="text"
@@ -31,7 +31,7 @@ const ContactForm = () => (
 
             <button
                 type="submit"
-                className="border-2 border-neonGreen text-white py-3 px-8 rounded-lg text-xl font-bold transition duration-300 hover:text-[#13DF14] hover:scale-105"
+                className="border-2 bg-neutral-950 text-white py-3 px-8 rounded-lg text-xl font-bold transition duration-300 hover:text-[#13DF14] hover:scale-105"
             >
                 Send Message
             </button>

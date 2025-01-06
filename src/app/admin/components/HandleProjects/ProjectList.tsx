@@ -14,10 +14,10 @@ const ProjectList = ({
                     return (
                         <li
                             key={project.id}
-                            className={`mb-4 p-4 border rounded ${
+                            className={`mb-4 p-4 border rounded transition-all ${
                                 isEditing
-                                    ? "bg-yellow-100 border-yellow-500"
-                                    : ""
+                                    ? "bg-yellow-100 text-black border-yellow-500"
+                                    : "bg-neutral-900 text-white border-neutral-600"
                             }`}
                         >
                             <div className="flex justify-between items-center">

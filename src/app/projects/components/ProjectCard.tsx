@@ -17,7 +17,7 @@ const ProjectCard = ({
             {/* Neon Shadow Effect */}
             <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14] "></div>
 
-            <Card className="relative z-10 bg-transparent border-neutral-950 bg-neutral-900 rounded-xl flex flex-col h-full">
+            <Card className="relative z-10 bg-transparent border-neutral-900 bg-neutral-800 rounded-xl flex flex-col h-full">
                 {/* Card Header */}
                 <CardHeader className="p-6 flex flex-col items-start gap-2">
                     <h3 className="text-xl font-semibold text-white">
@@ -45,7 +45,7 @@ const ProjectCard = ({
                         {technologies.map((tech) => (
                             <span
                                 key={tech}
-                                className=" text-gray-300 px-3 py-1 rounded-lg border-white-600 text-sm border-2  hover:text-[#13DF14]"
+                                className=" text-gray-300 px-3 py-1 rounded-lg border-white-600 bg-neutral-900 text-sm border-2  hover:text-[#13DF14]"
                             >
                                 {tech}
                             </span>
@@ -84,7 +84,7 @@ const ProjectCard = ({
                     {/* See Details Button */}
                     <motion.div whileHover={{ scale: 1.09 }}>
                         <Link href={`/projects/${id}`} passHref>
-                            <button className="w-full mt-4 border-2 hover:text-[#13DF14] py-2 rounded-lg text-sm font-semibold text-white  transition-all duration-300">
+                            <button className="w-full mt-4 border-2 bg-neutral-900 hover:text-[#13DF14] py-2 rounded-lg text-sm font-semibold text-white  transition-all duration-300">
                                 See Details
                             </button>
                         </Link>

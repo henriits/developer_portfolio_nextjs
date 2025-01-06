@@ -1,10 +1,7 @@
 import Slide from "@/components/Slide";
 
 const ExperienceSection = () => (
-    <section
-        id="experience"
-        className="w-full text-center bg-neutral-800 text-white px-6 py-12"
-    >
+    <section id="experience" className="w-full text-center  px-6 py-12">
         <Slide delay={0.3}>
             <h2 className="text-3xl font-bold mb-6 text-center z-10">
                 E<span className="text-[#13DF14]">xp</span>erience

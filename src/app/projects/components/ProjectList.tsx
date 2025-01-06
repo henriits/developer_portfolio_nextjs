@@ -44,7 +44,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ limit }) => {
     const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 ">
             {displayedProjects.map((project) => (
                 <ProjectCard key={project.id} {...project} />
             ))}

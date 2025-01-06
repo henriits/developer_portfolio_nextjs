@@ -18,7 +18,7 @@ const TechStackData: Array<{ icon: string; label: string }> = [
 
 const TechStackSection = () => {
     return (
-        <div className="w-full p-5 bg-neutral-800 text-white overflow-hidden">
+        <div className="w-full p-5  overflow-hidden">
             <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"; // Import Framer Motion
 
 const Navbar = () => {
     return (
-        <nav className="bg-gray-900 bg-opacity-10 backdrop-blur-md text-white p-4 shadow-md fixed top-0 left-0 right-0 z-50">
+        <nav className=" bg-opacity-10 backdrop-blur-md text-white p-4 shadow-md fixed top-0 left-0 right-0 z-50">
             <div className="container mx-auto flex justify-center items-center ">
                 <ul className="flex space-x-4 ">
                     <li>

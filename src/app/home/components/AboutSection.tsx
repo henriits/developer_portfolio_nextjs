@@ -1,7 +1,7 @@
 const AboutSection = () => (
     <section
         id="about"
-        className=" w-full flex flex-col items-center justify-center bg-neutral-800 text-white px-6 py-12"
+        className=" w-full flex flex-col items-center justify-center  px-6 py-12"
     >
         <h2 className="text-3xl font-bold mb-6 text-center z-10">
             About <span className="text-[#13DF14]">Me</span>

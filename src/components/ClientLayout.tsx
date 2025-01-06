@@ -5,10 +5,12 @@ import { SessionProvider } from "next-auth/react";
 
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <SessionProvider>
-            <Navbar />
-            {children}
-        </SessionProvider>
+        <div className="bg-neutral-900 text-white">
+            <SessionProvider>
+                <Navbar />
+                {children}
+            </SessionProvider>
+        </div>
     );
 };
 
