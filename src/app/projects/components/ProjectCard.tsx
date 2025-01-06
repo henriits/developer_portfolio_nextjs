@@ -15,9 +15,9 @@ const ProjectCard = ({
     return (
         <div className="relative w-full shadow-lg rounded-xl transition-all duration-300 group">
             {/* Neon Shadow Effect */}
-            <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14] opacity-50"></div>
+            <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14] "></div>
 
-            <Card className="relative z-10 bg-transparent border  rounded-xl flex flex-col h-full">
+            <Card className="relative z-10 bg-transparent border-neutral-950 bg-neutral-900 rounded-xl flex flex-col h-full">
                 {/* Card Header */}
                 <CardHeader className="p-6 flex flex-col items-start gap-2">
                     <h3 className="text-xl font-semibold text-white">

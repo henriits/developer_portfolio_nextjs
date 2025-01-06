@@ -3,27 +3,36 @@ import Slide from "@/components/Slide";
 const ExperienceSection = () => (
     <section
         id="experience"
-        className=" w-full  text-center   bg-neutral-800 text-white px-6 py-12"
+        className="w-full text-center bg-neutral-800 text-white px-6 py-12"
     >
         <Slide delay={0.3}>
             <h2 className="text-3xl font-bold mb-6 text-center z-10">
-                Experience
+                E<span className="text-[#13DF14]">xp</span>erience
             </h2>
         </Slide>
         <Slide delay={0.3}>
-            <h3 className="text-xl font-bold">Software Engineer</h3>
-            <p>ABC Corp (2021 - Present)</p>
+            <h3 className="text-xl font-bold">
+                Full Stack Development Bootcamp
+            </h3>
+            <p>ABC Bootcamp (2024)</p>
             <p>
-                Developed scalable web applications and improved system
-                performance.
+                Completed an intensive program focused on front-end and back-end
+                development, learning modern technologies like JavaScript,
+                React, Node.js, and databases.
             </p>
         </Slide>
-        <div> |</div>
+        <div>
+            {" "}
+            <span className="text-[#13DF14]">|</span>
+        </div>
 
         <Slide delay={0.3}>
-            <h3 className="text-xl font-bold">Frontend Developer</h3>
-            <p>XYZ Inc. (2019 - 2021)</p>
-            <p>Designed intuitive UI/UX for customer-facing applications.</p>
+            <h3 className="text-xl font-bold">Frontend Development Bootcamp</h3>
+            <p>XYZ Bootcamp (2023)</p>
+            <p>
+                Gained expertise in building responsive and user-friendly web
+                interfaces using HTML, CSS, and JavaScript.
+            </p>
         </Slide>
     </section>
 );
