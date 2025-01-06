@@ -1,10 +1,13 @@
-// src/app/projects/components/ProjectsList.tsx
 "use client";
 import { useState, useEffect } from "react";
 import ProjectCard from "./ProjectCard"; // Import ProjectCard component
 import { Project } from "@/types/projectTypes";
 
-const ProjectsList = () => {
+interface ProjectsListProps {
+    limit?: number; // Optional limit for the number of projects to display
+}
+
+const ProjectsList: React.FC<ProjectsListProps> = ({ limit }) => {
     const [projects, setProjects] = useState<Project[]>([]); // State to store projects
     const [loading, setLoading] = useState<boolean>(true); // State to track loading status
     const [error, setError] = useState<string | null>(null); // State for error handling
@@ -37,9 +40,12 @@ const ProjectsList = () => {
         return <div>Error: {error}</div>; // Show error message
     }
 
+    // Determine which projects to display based on the limit prop
+    const displayedProjects = limit ? projects.slice(0, limit) : projects;
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
-            {projects.map((project) => (
+            {displayedProjects.map((project) => (
                 <ProjectCard key={project.id} {...project} />
             ))}
         </div>

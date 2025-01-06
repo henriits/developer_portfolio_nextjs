@@ -1,10 +1,10 @@
 // src/app/projects/page.tsx
 "use client";
 
-import ProjectSection from "@/app/home/components/ProjectSection";
+import ProjectList from "./components/ProjectList";
 
 const Projects = () => {
-    return <ProjectSection />;
+    return <ProjectList />;
 };
 
 export default Projects;

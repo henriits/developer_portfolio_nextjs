@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.6.11",
     "@prisma/client": "^6.1.0",
     "@tabler/icons-react": "^3.26.0",
     "autoprefixer": "^10.4.20",
