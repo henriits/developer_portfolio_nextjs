@@ -4,7 +4,11 @@
 import ProjectList from "./components/ProjectList";
 
 const Projects = () => {
-    return <ProjectList />;
+    return (
+        <div className="w-full min-h-screen pt-24">
+            <ProjectList />
+        </div>
+    );
 };
 
 export default Projects;
