@@ -6,7 +6,7 @@ export async function GET(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = await params;
+        const { id } = params;
         const project = await prisma.project.findUnique({
             where: { id: parseInt(id) },
         });
@@ -34,8 +34,8 @@ export async function DELETE(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = await params; // Await the params to get the id value
-        console.log(`Deleting project with ID: ${id}`); // Debugging line
+        const { id } = params;
+        console.log(`Deleting project with ID: ${id}`);
 
         const projectId = parseInt(id, 10);
         if (isNaN(projectId)) {
@@ -46,7 +46,7 @@ export async function DELETE(
         }
 
         await prisma.project.delete({
-            where: { id: projectId }, // Ensure ID is an integer
+            where: { id: projectId },
         });
 
         return NextResponse.json(
@@ -68,12 +68,11 @@ export async function PUT(
     { params }: { params: { id: string } }
 ) {
     try {
-        const { id } = await params; // Await the params to get the id value
-        const body = await req.json(); // Extract data from the request body
+        const { id } = params;
+        const body = await req.json();
 
-        console.log(`Updating project with ID: ${id}`); // Debugging line
+        console.log(`Updating project with ID: ${id}`);
 
-        // Validate incoming data (make sure title and description exist)
         if (!body.title || !body.description) {
             return NextResponse.json(
                 { error: "Missing required fields: title or description" },
@@ -81,7 +80,6 @@ export async function PUT(
             );
         }
 
-        // Ensure the ID is a valid integer
         const projectId = parseInt(id, 10);
         if (isNaN(projectId)) {
             return NextResponse.json(
@@ -90,11 +88,9 @@ export async function PUT(
             );
         }
 
-        // Update the project in the database
         const updatedProject = await prisma.project.update({
-            where: { id: projectId }, // Find the project by its ID
+            where: { id: projectId },
             data: {
-                // Update fields
                 title: body.title,
                 description: body.description,
                 githubLink: body.githubLink,
