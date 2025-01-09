@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 
-import ClientLayout from "@/components/ClientLayout";
+import ClientLayout from "@/app/ClientLayout";
 
 export const metadata: Metadata = {
     title: "Portfolio",

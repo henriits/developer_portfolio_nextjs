@@ -1,4 +1,4 @@
-import ProjectList from "@/app/projects/components/ProjectList";
+import ProjectList from "@/components/projects/ProjectList";
 import { motion } from "framer-motion";
 import Link from "next/link";
 

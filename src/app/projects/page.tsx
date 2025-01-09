@@ -1,7 +1,7 @@
 // src/app/projects/page.tsx
 "use client";
 
-import ProjectList from "./components/ProjectList";
+import ProjectList from "../../components/projects/ProjectList";
 
 const Projects = () => {
     return (
