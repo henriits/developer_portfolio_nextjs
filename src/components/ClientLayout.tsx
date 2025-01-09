@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/app/home/components/NavBar";
+import Navbar from "@/components/sections/NavBar";
 import { SessionProvider } from "next-auth/react";
 
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {

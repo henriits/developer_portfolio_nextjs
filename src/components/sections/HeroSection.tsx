@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import Framer Motion
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { FlipWords } from "@/components/ui/flip-words";
+import { BackgroundBeamsWithCollision } from "@/components/animations/background-beams-with-collision";
+import { FlipWords } from "@/components/animations/flip-words";
 
 const HeroSection = () => {
     const words = ["React", "Web", "Modern", "Frontend"];
