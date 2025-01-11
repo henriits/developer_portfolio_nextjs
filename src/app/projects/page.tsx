@@ -1,4 +1,4 @@
-import { addProject, getProjects } from "@/actions/projectActions";
+import { getProjects } from "@/actions/projectActions";
 import { Project } from "@/types";
 import Link from "next/link";
 import React from "react";
@@ -23,7 +23,7 @@ export default async function ProjectsPage() {
 
 function ProjectList({ projects }: { projects: Project[] }) {
     return (
-        <ul className="flex flex-wrap gap-5 border-t border-b border-black/10 py-5">
+        <ul className="flex flex-wrap justify-center gap-5 border-t border-b border-black/10 py-5 w-full max-w-screen-lg mx-auto">
             {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
             ))}
@@ -37,11 +37,9 @@ function ProjectCard({ project }: { project: Project }) {
             <div className="relative w-full h-full shadow-lg rounded-xl transition-all duration-300 group">
                 {/* Neon Shadow Effect */}
                 <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14]"></div>
-                {/* Neon Shadow Effect */}
                 <div className="relative z-10 bg-transparent border-neutral-700 bg-neutral-800 rounded-xl flex flex-col h-full">
                     <div className="p-6 flex flex-col items-start gap-2">
                         <h2 className="text-xl font-semibold text-white">
-                            {/* Internal link using Next.js Link component */}
                             <Link href={`/projects/${project.slug}`}>
                                 {project.title}
                             </Link>
@@ -52,7 +50,11 @@ function ProjectCard({ project }: { project: Project }) {
                         <div className="relative flex justify-center items-center transition-all duration-300 ease-in-out">
                             <img
                                 alt={`Project ${project.title}`}
-                                src={project.imageUrl ?? "/default-image.png"}
+                                // Only render image if imageUrl is available
+                                src={
+                                    project.imageUrl ||
+                                    "https://th.bing.com/th/id/OIP.2PV99eYqHuspw4x27SGtAAHaEK?rs=1&pid=ImgDetMain"
+                                }
                                 className="rounded-lg shadow-md object-cover"
                                 width={300}
                                 height={200}
@@ -76,7 +78,11 @@ function ProjectCard({ project }: { project: Project }) {
                             {/* GitHub link */}
                             {project.githubLink && (
                                 <a
-                                    href={project.githubLink} // External URL
+                                    href={
+                                        project.githubLink.startsWith("http")
+                                            ? project.githubLink
+                                            : `https://${project.githubLink}`
+                                    } // Ensure it's an absolute URL
                                     target="_blank" // Open in new tab
                                     rel="noopener noreferrer" // Security
                                     className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
@@ -87,7 +93,11 @@ function ProjectCard({ project }: { project: Project }) {
                             {/* Live Demo link */}
                             {project.liveLink && (
                                 <a
-                                    href="what" // External URL
+                                    href={
+                                        project.liveLink.startsWith("http")
+                                            ? project.liveLink
+                                            : `https://${project.liveLink}`
+                                    } // Ensure it's an absolute URL
                                     target="_blank" // Open in new tab
                                     rel="noopener noreferrer" // Security
                                     aria-label={`View ${project.title} Live`}
