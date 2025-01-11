@@ -23,7 +23,7 @@ export default async function ProjectsPage() {
 
 function ProjectList({ projects }: { projects: Project[] }) {
     return (
-        <ul className="border-t border-b border-black/10 py-5">
+        <ul className="flex flex-wrap gap-5 border-t border-b border-black/10 py-5">
             {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
             ))}
@@ -33,14 +33,15 @@ function ProjectList({ projects }: { projects: Project[] }) {
 
 function ProjectCard({ project }: { project: Project }) {
     return (
-        <li>
-            <div className="relative w-full shadow-lg rounded-xl transition-all duration-300 group">
+        <li className="flex-shrink-0 w-80">
+            <div className="relative w-full h-full shadow-lg rounded-xl transition-all duration-300 group">
                 {/* Neon Shadow Effect */}
-                <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14] "></div>
+                <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14]"></div>
                 {/* Neon Shadow Effect */}
                 <div className="relative z-10 bg-transparent border-neutral-700 bg-neutral-800 rounded-xl flex flex-col h-full">
                     <div className="p-6 flex flex-col items-start gap-2">
                         <h2 className="text-xl font-semibold text-white">
+                            {/* Internal link using Next.js Link component */}
                             <Link href={`/projects/${project.slug}`}>
                                 {project.title}
                             </Link>
@@ -52,9 +53,10 @@ function ProjectCard({ project }: { project: Project }) {
                             <img
                                 alt={`Project ${project.title}`}
                                 src={project.imageUrl ?? "/default-image.png"}
-                                className="rounded-lg shadow-md"
+                                className="rounded-lg shadow-md object-cover"
                                 width={300}
                                 height={200}
+                                style={{ width: "300px", height: "200px" }}
                             />
                         </div>
                         <div className="flex flex-wrap gap-2 mt-2">
@@ -69,20 +71,25 @@ function ProjectCard({ project }: { project: Project }) {
                         </div>
                     </div>
                     <div className="p-6 flex flex-col gap-4 mt-auto">
+                        {/* Conditional Links */}
                         <div className="flex justify-between items-center space-x-4">
-                            <a
-                                href={project.githubLink ?? "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
-                            >
-                                GitHub
-                            </a>
+                            {/* GitHub link */}
+                            {project.githubLink && (
+                                <a
+                                    href={project.githubLink} // External URL
+                                    target="_blank" // Open in new tab
+                                    rel="noopener noreferrer" // Security
+                                    className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
+                                >
+                                    GitHub
+                                </a>
+                            )}
+                            {/* Live Demo link */}
                             {project.liveLink && (
                                 <a
-                                    href={project.liveLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href="what" // External URL
+                                    target="_blank" // Open in new tab
+                                    rel="noopener noreferrer" // Security
                                     aria-label={`View ${project.title} Live`}
                                     className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
                                 >
