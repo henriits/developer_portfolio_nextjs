@@ -1,8 +1,15 @@
 import { addProject, getProjects } from "@/actions/projectActions";
+import { Project } from "@/types";
 import Link from "next/link";
 
 export default async function ProjectsPage() {
-    const projects = await getProjects();
+    let projects: Project[] = [];
+
+    try {
+        projects = await getProjects();
+    } catch (error) {
+        console.error("Error fetching projects:", error);
+    }
     return (
         <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
             <h1 className="text-3xl font-semibold">
