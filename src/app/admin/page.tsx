@@ -8,7 +8,7 @@ import {
     deleteProject,
 } from "@/actions/projectActions";
 import useFetch from "@/hooks/useFetch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Project = {
     id: string;
@@ -26,10 +26,17 @@ const AdminPage = () => {
         data: projects,
         loading,
         error,
+        refetch,
     } = useFetch<Project[]>("/api/projects");
     const [selectedProject, setSelectedProject] = useState<Project | null>(
         null
     );
+    const [hydrationComplete, setHydrationComplete] = useState(false);
+
+    // Wait until hydration is complete
+    useEffect(() => {
+        setHydrationComplete(true);
+    }, []);
 
     // Add or Update Project
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,6 +51,7 @@ const AdminPage = () => {
                 // Add new project
                 await addProject(formData);
             }
+            refetch(); // Trigger the refetch
             // Refetch projects and reset form
             (e.target as HTMLFormElement).reset();
             setSelectedProject(null);
@@ -56,6 +64,8 @@ const AdminPage = () => {
     const handleDeleteProject = async (id: string) => {
         try {
             await deleteProject(id);
+            // Refetch projects after add/update
+            refetch(); // Trigger the refetch
         } catch (err) {
             console.error("Failed to delete project", err);
         }
@@ -69,6 +79,17 @@ const AdminPage = () => {
                     Please Sign In
                 </h1>
                 <LoginForm />
+            </div>
+        );
+    }
+
+    // Render loading state while waiting for data
+    if (!hydrationComplete || loading) {
+        return (
+            <div className="container mx-auto p-6">
+                <h1 className="text-3xl font-semibold text-center mb-6">
+                    Loading...
+                </h1>
             </div>
         );
     }
@@ -139,9 +160,6 @@ const AdminPage = () => {
             </form>
 
             <div>
-                {/* Loading State */}
-                {loading && <p>Loading projects...</p>}
-
                 {/* Error State */}
                 {error && <p className="text-red-500">{error}</p>}
 

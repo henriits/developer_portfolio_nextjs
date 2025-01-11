@@ -1,6 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request) {
+interface MiddlewareRequest extends NextRequest {
+    headers: Headers;
+}
+
+export function middleware(request: MiddlewareRequest): NextResponse {
     const origin = request.headers.get("origin");
     console.log(origin);
 
