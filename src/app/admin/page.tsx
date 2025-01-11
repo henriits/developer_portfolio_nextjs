@@ -8,6 +8,29 @@ import { addProject } from "@/actions/projectActions";
 
 const AdminPage = () => {
     const { data: session, status } = useSession(); // Check session status
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // Fetch projects from API
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const response = await fetch("/api/projects");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch projects");
+                }
+                const data = await response.json();
+                setProjects(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
 
     // If no session exists, show login form
     if (!session) {
@@ -49,7 +72,13 @@ const AdminPage = () => {
                 </button>
             </form>
 
-            <div>project list</div>
+            <div>
+                <ul key={projects.id}>
+                    {projects.map((project) => (
+                        <li>{project.title}</li>
+                    ))}
+                </ul>
+            </div>
 
             {/* Sign Out Button */}
             <div className="mt-6">
