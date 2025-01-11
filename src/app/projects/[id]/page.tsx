@@ -4,39 +4,7 @@ import { notFound } from "next/navigation"; // Import notFound for handling erro
 import Link from "next/link"; // Import Link for navigation
 import { Project } from "@/types/projectTypes";
 
-type ProjectPageProps = {
-    params: { id: string };
-};
-
-// Fetch project data from an API or database based on id
-const fetchProjectById = async (id: string): Promise<Project | undefined> => {
-    try {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects/${id}`
-        );
-        if (!response.ok) {
-            throw new Error("Project not found");
-        }
-        const project = await response.json();
-        return project;
-    } catch (error) {
-        console.error("Error fetching project:", error);
-        return undefined;
-    }
-};
-
-export default async function ProjectPage({ params }: ProjectPageProps) {
-    const { id } = await params; // Extract the id
-
-    // Fetch the project data from API
-    const project = await fetchProjectById(id);
-
-    // If project is not found, trigger 404
-    if (!project) {
-        console.log("Project not found with id:", id);
-        notFound(); // Trigger 404 error page
-    }
-
+export default async function ProjectPage({ params }) {
     return (
         <div className="min-h-screen flex flex-col  bg-gradient-to-r from-black via-blue-800 to-blue-300 text-white px-6 py-12 relative">
             <div>

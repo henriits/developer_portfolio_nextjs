@@ -8,11 +8,10 @@ import ProjectList from "@/components/admin/ProjectList";
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../../components/auth/LoginForm";
 import {
-    fetchProjects,
     addProject,
-    updateProject,
     deleteProject,
-} from "@/app/admin/services/projectService";
+    updateProject,
+} from "@/actions/projectActions";
 
 interface EditingIndicatorProps {
     project: Project;
@@ -119,14 +118,7 @@ const AdminPage = () => {
                 </button>
             )}
 
-            <div>
-                <ProjectList
-                    projects={projectsList}
-                    onEdit={setEditingProject}
-                    onDelete={handleDeleteProject}
-                    editingProjectId={editingProject?.id ?? undefined}
-                />
-            </div>
+            <div>project list</div>
 
             {/* Sign Out Button */}
             <div className="mt-6">

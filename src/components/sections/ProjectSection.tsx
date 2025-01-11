@@ -11,7 +11,7 @@ const ProjectSection = () => {
             <h2 className="text-4xl font-bold mb-12 text-center p-12 z-10">
                 <span className="text-[#13DF14]">My</span> Work
             </h2>
-            <ProjectList limit={3} />
+            <div>Project list goes here</div>
             <motion.button whileHover={{ scale: 1.3 }}>
                 <Link
                     href="/projects"
