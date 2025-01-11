@@ -1,4 +1,3 @@
-import ProjectList from "@/components/projects/ProjectList";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
