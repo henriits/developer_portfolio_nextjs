@@ -1,41 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../../components/auth/LoginForm";
 import { addProject } from "@/actions/projectActions";
+import useFetch from "@/hooks/useFetch";
+
+type Project = {
+    id: string;
+    title: string;
+    description: string;
+    githubLink: string | null;
+    liveLink: string | null;
+    imageUrl: string | null;
+    technologies: string[];
+};
 
 const AdminPage = () => {
     const { data: session, status } = useSession(); // Check session status
-    const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    // Fetch projects from API
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await fetch("/api/projects");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
-                }
-                const data = await response.json();
-                setProjects(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProjects();
-    }, []);
+    const {
+        data: projects,
+        loading,
+        error,
+    } = useFetch<Project[]>("/api/projects");
 
     // If no session exists, show login form
     if (!session) {
         return (
-            <div className="container mx-auto p-6 ">
+            <div className="container mx-auto p-6">
                 <h1 className="text-3xl font-semibold text-center mb-6 p-12">
                     Please Sign In
                 </h1>
@@ -45,7 +36,7 @@ const AdminPage = () => {
     }
 
     return (
-        <div className="container mx-auto p-6  ">
+        <div className="container mx-auto p-6">
             <h1 className="text-3xl font-semibold text-center mb-6">
                 Admin Panel
             </h1>
@@ -73,11 +64,37 @@ const AdminPage = () => {
             </form>
 
             <div>
-                <ul key={projects.id}>
-                    {projects.map((project) => (
-                        <li>{project.title}</li>
-                    ))}
-                </ul>
+                {/* Loading State */}
+                {loading && <p>Loading projects...</p>}
+
+                {/* Error State */}
+                {error && <p className="text-red-500">{error}</p>}
+
+                {/* Projects List */}
+                {!loading && !error && projects && (
+                    <ul>
+                        {projects.map((project) => (
+                            <li key={project.id} className="py-2">
+                                <h2 className="font-semibold">
+                                    {project.title}
+                                </h2>
+                                <p>{project.description}</p>
+                                <p className="text-sm text-gray-600">
+                                    Technologies:{" "}
+                                    {project.technologies.join(", ")}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                    GitHub Link:{" "}
+                                    {project.githubLink || "Not available"}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                    Live Link:{" "}
+                                    {project.liveLink || "Not available"}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
 
             {/* Sign Out Button */}
