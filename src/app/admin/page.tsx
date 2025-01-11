@@ -2,8 +2,13 @@
 
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../../components/auth/LoginForm";
-import { addProject } from "@/actions/projectActions";
+import {
+    addProject,
+    updateProject,
+    deleteProject,
+} from "@/actions/projectActions";
 import useFetch from "@/hooks/useFetch";
+import { useState } from "react";
 
 type Project = {
     id: string;
@@ -16,12 +21,45 @@ type Project = {
 };
 
 const AdminPage = () => {
-    const { data: session, status } = useSession(); // Check session status
+    const { data: session } = useSession();
     const {
         data: projects,
         loading,
         error,
     } = useFetch<Project[]>("/api/projects");
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null
+    );
+
+    // Add or Update Project
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.target as HTMLFormElement);
+
+        try {
+            if (selectedProject) {
+                // Update project
+                await updateProject(selectedProject.id, formData);
+            } else {
+                // Add new project
+                await addProject(formData);
+            }
+            // Refetch projects and reset form
+            (e.target as HTMLFormElement).reset();
+            setSelectedProject(null);
+        } catch (err) {
+            console.error("Failed to save project", err);
+        }
+    };
+
+    // Delete Project
+    const handleDeleteProject = async (id: string) => {
+        try {
+            await deleteProject(id);
+        } catch (err) {
+            console.error("Failed to delete project", err);
+        }
+    };
 
     // If no session exists, show login form
     if (!session) {
@@ -40,27 +78,64 @@ const AdminPage = () => {
             <h1 className="text-3xl font-semibold text-center mb-6">
                 Admin Panel
             </h1>
+
+            {/* Add/Update Project Form */}
             <form
-                action={addProject}
-                className="flex flex-col gap-y-5 w-96 text-black"
+                onSubmit={handleFormSubmit}
+                className="flex flex-col gap-y-5 w-96 text-black mb-6"
             >
-                <input type="text" name="title" placeholder="title" />
-                <textarea name="description" rows={2} placeholder="content" />
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    defaultValue={selectedProject?.title || ""}
+                    required
+                />
+                <textarea
+                    name="description"
+                    rows={2}
+                    placeholder="Description"
+                    defaultValue={selectedProject?.description || ""}
+                    required
+                />
                 <input
                     type="text"
                     name="githubLink"
-                    placeholder="github link"
+                    placeholder="GitHub Link"
+                    defaultValue={selectedProject?.githubLink || ""}
                 />
-                <input type="text" name="liveLink" placeholder="live link" />
-                <input type="text" name="imageUrl" placeholder="image url" />
+                <input
+                    type="text"
+                    name="liveLink"
+                    placeholder="Live Link"
+                    defaultValue={selectedProject?.liveLink || ""}
+                />
+                <input
+                    type="text"
+                    name="imageUrl"
+                    placeholder="Image URL"
+                    defaultValue={selectedProject?.imageUrl || ""}
+                />
                 <input
                     type="text"
                     name="technologies"
-                    placeholder="technologies"
+                    placeholder="Technologies (comma-separated)"
+                    defaultValue={
+                        selectedProject?.technologies.join(", ") || ""
+                    }
                 />
                 <button type="submit" className="bg-blue-500 py-2 rounded-sm">
-                    Create
+                    {selectedProject ? "Update Project" : "Create Project"}
                 </button>
+                {selectedProject && (
+                    <button
+                        type="button"
+                        onClick={() => setSelectedProject(null)}
+                        className="bg-gray-400 py-2 rounded-sm"
+                    >
+                        Cancel Update
+                    </button>
+                )}
             </form>
 
             <div>
@@ -71,10 +146,17 @@ const AdminPage = () => {
                 {error && <p className="text-red-500">{error}</p>}
 
                 {/* Projects List */}
-                {!loading && !error && projects && (
+                {!loading && !error && projects && projects.length > 0 && (
                     <ul>
                         {projects.map((project) => (
-                            <li key={project.id} className="py-2">
+                            <li
+                                key={project.id}
+                                className={`py-4 border-b ${
+                                    selectedProject?.id === project.id
+                                        ? "bg-gray-100"
+                                        : ""
+                                }`}
+                            >
                                 <h2 className="font-semibold">
                                     {project.title}
                                 </h2>
@@ -91,6 +173,24 @@ const AdminPage = () => {
                                     Live Link:{" "}
                                     {project.liveLink || "Not available"}
                                 </p>
+                                <div className="flex space-x-2 mt-2">
+                                    <button
+                                        onClick={() =>
+                                            setSelectedProject(project)
+                                        }
+                                        className="text-blue-500 hover:underline"
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        onClick={() =>
+                                            handleDeleteProject(project.id)
+                                        }
+                                        className="text-red-500 hover:underline"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
                             </li>
                         ))}
                     </ul>
