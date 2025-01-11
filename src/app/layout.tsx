@@ -13,7 +13,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <body>
+            <body className="bg-neutral-900 text-white">
                 {/* Only the client layout will use SessionProvider */}
                 <ClientLayout>{children}</ClientLayout>
             </body>
