@@ -1,3 +1,4 @@
+import { addProject } from "@/actions/projectActions";
 import { prisma } from "@/lib/db";
 import Link from "next/link";
 
@@ -22,6 +23,29 @@ export default async function ProjectsPage() {
                     </li>
                 ))}
             </ul>
+            <form
+                action={addProject}
+                className="flex flex-col gap-y-5 w-96 text-black"
+            >
+                <input type="text" name="title" placeholder="title" />
+
+                <textarea name="description" rows={2} placeholder="content" />
+                <input
+                    type="text"
+                    name="githubLink"
+                    placeholder="github link"
+                />
+                <input type="text" name="liveLink" placeholder="live link" />
+                <input type="text" name="imageUrl" placeholder="image url" />
+                <input
+                    type="text"
+                    name="technologies"
+                    placeholder="technologies"
+                />
+                <button type="submit" className="bg-blue-500 py-2 rounded-sm">
+                    Create
+                </button>
+            </form>
         </main>
     );
 }

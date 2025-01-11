@@ -11,34 +11,15 @@ export async function addProject(formData: FormData) {
                 slug: (formData.get("title") as string)
                     .replace(/\s+/g, "-")
                     .toLowerCase(),
-                content: formData.get("content") as string,
+                description: formData.get("description") as string,
+                githubLink: formData.get("githubLink") as string,
+                liveLink: formData.get("liveLink") as string,
+                imageUrl: formData.get("imageUrl") as string,
+                technologies: formData.getAll("technologies") as string[],
             },
         });
     } catch (error) {
         console.error(error);
     }
     revalidatePath("/posts"); // this will reload the page when its updated
-}
-
-export async function updateProject(formData: FormData, id: string) {
-    await prisma.project.update({
-        where: {
-            id,
-        },
-        data: {
-            title: formData.get("title") as string,
-            slug: (formData.get("title") as string)
-                .replace(/\s+/g, "-")
-                .toLowerCase(),
-            content: formData.get("content") as string,
-        },
-    });
-}
-
-export async function deleteProject(id: string) {
-    await prisma.project.delete({
-        where: {
-            id,
-        },
-    });
 }

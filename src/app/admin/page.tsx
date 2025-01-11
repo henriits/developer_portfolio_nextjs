@@ -7,11 +7,7 @@ import ProjectList from "@/components/admin/ProjectList";
 
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../../components/auth/LoginForm";
-import {
-    addProject,
-    deleteProject,
-    updateProject,
-} from "@/actions/projectActions";
+import { addProject } from "@/actions/projectActions";
 
 interface EditingIndicatorProps {
     project: Project;
