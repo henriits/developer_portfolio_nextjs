@@ -23,7 +23,7 @@ const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto ">
             <div className="mb-4">
                 <label
                     htmlFor="username"
@@ -37,7 +37,7 @@ const LoginForm = () => {
                     name="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="mt-2 p-2 w-full border border-gray-300 rounded"
+                    className="mt-2 p-2 w-full border border-gray-300 rounded text-black"
                     required
                 />
             </div>
@@ -55,7 +55,7 @@ const LoginForm = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-2 p-2 w-full border border-gray-300 rounded"
+                    className="mt-2 p-2 w-full border border-gray-300 rounded text-black"
                     required
                 />
             </div>
