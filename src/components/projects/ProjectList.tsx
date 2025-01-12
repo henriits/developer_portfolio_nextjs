@@ -1,40 +1,45 @@
-import { Project } from "@prisma/client"; // Assuming you're using Prisma and have this type
-import { useEffect, useState } from "react";
-
+import useFetch from "@/hooks/useFetch";
+import { Project } from "@prisma/client";
+import ProjectCard from "./ProjectCard";
 const ProjectList = () => {
-    const [projects, setProjects] = useState<Project[]>([]);
+    // here we are fetching the projects to the client side from the server
+    const {
+        data: projects,
+        loading,
+        error,
+        refetch,
+    } = useFetch<Project[]>("/api/projects");
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await fetch("/api/projects");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch projects");
-                }
-                const data: Project[] = await response.json();
-                setProjects(data);
-            } catch (error) {
-                console.error("Error fetching projects:", error);
-            }
-        };
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-        fetchProjects();
-    }, []);
+    if (error) {
+        return (
+            <div>
+                <p>Error: {error}</p>
+                <button
+                    onClick={refetch}
+                    className="mt-4 px-4 py-2 bg-blue-500 text-white"
+                >
+                    Retry
+                </button>
+            </div>
+        );
+    }
 
     return (
-        <div>
+        <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
             <h1 className="text-3xl font-semibold">
-                All projects ({projects.length})
+                All projects ({projects?.length})
             </h1>
 
-            <ul className="border-t border-b border-black/10 py-5">
-                {projects.map((project) => (
-                    <li key={project.id} className="py-2">
-                        {project.title}
-                    </li>
+            <ul className="flex flex-wrap justify-center gap-5 border-t border-b border-black/10 py-5 w-full max-w-screen-lg mx-auto">
+                {projects?.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
                 ))}
             </ul>
-        </div>
+        </main>
     );
 };
 
