@@ -7,11 +7,11 @@ type ProjectFormProps = {
     onCancel: () => void;
 };
 
-const ProjectForm: React.FC<ProjectFormProps> = ({
+const ProjectForm = ({
     selectedProject,
     onSubmit,
     onCancel,
-}) => {
+}: ProjectFormProps) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
