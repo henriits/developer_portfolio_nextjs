@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from "next-auth/react";
 import LoginForm from "../../components/auth/LoginForm";
-import AdminProjectPage from "@/components/admin/Project/AdminProjectPage";
+import AdminProjectPage from "@/components/admin/projects/AdminProjectPage";
 import CustomButton from "@/components/ui/CustomButton";
 import { useEffect, useState } from "react";
 
