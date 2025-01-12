@@ -1,5 +1,5 @@
+import { Project } from "@prisma/client";
 import React from "react";
-import { Project } from "@/types";
 
 type ProjectFormProps = {
     selectedProject: Project | null;
