@@ -8,11 +8,16 @@ generator client {
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  githubLink  String?
-  liveLink    String?
-  imageUrl    String?  // Optional field for storing the image URL
+  id           String   @id @default(cuid())
+  title        String
+  slug         String   @unique
+  description  String
+  githubLink   String?
+  liveLink     String?
+  imageUrl     String? // Optional field for storing the image URL
   technologies String[] // Array of strings to store technologies
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index(slug)
 }
