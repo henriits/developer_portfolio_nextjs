@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ProjectsList from "../projects/ProjectList";
 
 const ProjectSection = () => {
     return (
@@ -10,7 +11,10 @@ const ProjectSection = () => {
             <h2 className="text-4xl font-bold mb-12 text-center p-12 z-10">
                 <span className="text-[#13DF14]">My</span> Work
             </h2>
-            <div>Project list goes here</div>
+            <div>
+                Project list goes here
+                <ProjectsList />
+            </div>
             <motion.button whileHover={{ scale: 1.3 }}>
                 <Link
                     href="/projects"

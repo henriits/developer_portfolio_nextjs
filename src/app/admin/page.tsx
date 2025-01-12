@@ -9,8 +9,8 @@ import {
 } from "@/actions/projectActions";
 import useFetch from "@/hooks/useFetch";
 import { useState, useEffect } from "react";
-import ProjectForm from "../../components/admin/ProjectForm";
-import ProjectList from "../../components/admin/ProjectList";
+import ProjectForm from "../../components/admin/AdminProjectForm";
+import ProjectList from "../../components/admin/AdminProjectList";
 import { Project } from "@/types";
 
 const AdminPage = () => {
