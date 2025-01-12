@@ -5,6 +5,8 @@ import LoginForm from "../../components/auth/LoginForm";
 import AdminProjectPage from "@/components/admin/projects/AdminProjectPage";
 import CustomButton from "@/components/ui/CustomButton";
 import { useEffect, useState } from "react";
+import AdminAboutPage from "@/components/admin/about/AdminAboutPage";
+import AdminExperiencePage from "@/components/admin/experience/AdminExperiencePage";
 
 const AdminPage = () => {
     const { data: session, status } = useSession();
@@ -75,12 +77,20 @@ const AdminPage = () => {
                 </div>
                 <section id="update-about ">
                     <h1 className="p-12 ">Update About Section</h1>
-                    <div className="border-b">About component goes here</div>
+                    <div className="border-b">
+                        About component goes here
+                        <div>
+                            <AdminAboutPage />
+                        </div>
+                    </div>
                 </section>
                 <section id="update-experience">
                     <h1 className="p-12">Update Experience</h1>
                     <div className="border-b">
                         Experience component goes here
+                        <div>
+                            <AdminExperiencePage />
+                        </div>
                     </div>
                 </section>
                 <section id="update-projects " className="border-b">

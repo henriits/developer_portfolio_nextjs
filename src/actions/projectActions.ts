@@ -21,7 +21,7 @@ export async function addProject(formData: FormData) {
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/posts"); // this will reload the page when its updated
+    revalidatePath("/admin"); // this will reload the page when its updated
 }
 
 export async function getProjects() {
@@ -49,7 +49,7 @@ export async function updateProject(id: string, formData: FormData) {
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/posts");
+    revalidatePath("/admin");
 }
 
 export async function deleteProject(id: string) {
@@ -60,5 +60,5 @@ export async function deleteProject(id: string) {
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/posts");
+    revalidatePath("/admin");
 }
