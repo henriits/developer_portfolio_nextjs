@@ -21,8 +21,8 @@ export default async function PostPage({
                 width={400}
                 height={400}
             />
-            <p>{project?.githubLink}</p>
-            <p>{project?.liveLink}</p>
+            <p>{project?.githubLink ?? "No github link available"} </p>
+            <p>{project?.liveLink ?? "No live link available"}</p>
             <ul>
                 {project?.technologies.map((tech) => (
                     <li key={tech}>{tech}</li>
