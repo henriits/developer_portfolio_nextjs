@@ -22,7 +22,10 @@ export default async function PostPage({
                             "https://th.bing.com/th/id/OIP.2PV99eYqHuspw4x27SGtAAHaEK?rs=1&pid=ImgDetMain"
                         }
                         alt={project?.title ?? "Default title"}
-                        className="w-96 h-96 lg:w-96 lg:h-96 object-cover rounded-xl shadow-lg border-4 "
+                        className="lg:h-96 object-cover rounded-xl shadow-lg border-4 "
+                        width={500}
+                        height={500}
+                        loading="lazy"
                     />
                     <h1 className="text-4xl lg:text-6xl font-bold ">
                         {project?.title ?? "No title available"}

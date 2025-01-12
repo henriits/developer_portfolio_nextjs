@@ -23,7 +23,8 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 }
                                 className="rounded-lg shadow-md object-cover"
                                 width={300}
-                                height={200}
+                                height={300}
+                                loading="lazy"
                                 style={{ width: "300px", height: "200px" }}
                             />
                         </div>

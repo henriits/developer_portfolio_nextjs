@@ -1,5 +1,5 @@
+import { Project } from "@prisma/client";
 import React from "react";
-import { Project } from "@/types";
 
 type ProjectListProps = {
     projects: Project[];
@@ -8,12 +8,12 @@ type ProjectListProps = {
     onDelete: (id: string) => void;
 };
 
-const ProjectList: React.FC<ProjectListProps> = ({
+const ProjectList = ({
     projects,
     selectedProject,
     onEdit,
     onDelete,
-}) => {
+}: ProjectListProps) => {
     return (
         <ul>
             {projects.map((project) => (
@@ -38,7 +38,10 @@ const ProjectList: React.FC<ProjectListProps> = ({
                         <img
                             src={project.imageUrl}
                             alt={project.title}
-                            className="w-24 h-24 object-cover rounded-md mt-2"
+                            className="object-cover rounded-md mt-2"
+                            width={50}
+                            height={50}
+                            loading="lazy"
                         />
                     )}
                     <p className="text-sm text-gray-600">
