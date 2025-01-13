@@ -1,7 +1,8 @@
 "use server";
 import { prisma } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
-export async function addExperience(formData: FormData) {
+export async function addExperience(previousState: any, formData: FormData) {
     try {
         await prisma.experience.create({
             data: {
@@ -14,6 +15,16 @@ export async function addExperience(formData: FormData) {
             },
         });
     } catch (error) {
-        console.error(error);
+        return "There was an error adding experience";
     }
+    revalidatePath("/");
+}
+
+export async function deleteExperience(id: string) {
+    try {
+        await prisma.experience.delete({ where: { id } });
+    } catch (error) {
+        return "Error occurred while deleting Experience";
+    }
+    revalidatePath("/");
 }

@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-export async function addAbout(formData: FormData) {
+export async function addAbout(previousState: any, formData: FormData) {
     try {
         await prisma.about.create({
             data: {
@@ -11,9 +11,9 @@ export async function addAbout(formData: FormData) {
             },
         });
     } catch (error) {
-        console.error(error);
+        return "An error occurred while creating About";
     }
-    revalidatePath("/admin");
+    revalidatePath("/");
 }
 
 export async function updateAbout(id: string, formData: FormData) {
@@ -25,7 +25,16 @@ export async function updateAbout(id: string, formData: FormData) {
             },
         });
     } catch (error) {
-        console.error(error);
+        return "An error occurred while updating About";
     }
-    revalidatePath("/admin");
+    revalidatePath("/");
+}
+
+export async function deleteAbout(id: string) {
+    try {
+        await prisma.about.delete({ where: { id } });
+    } catch (error) {
+        return "Error occurred while deleting About";
+    }
+    revalidatePath("/");
 }

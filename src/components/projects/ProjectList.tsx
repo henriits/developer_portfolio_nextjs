@@ -1,33 +1,8 @@
-import useFetch from "@/hooks/useFetch";
-import { Project } from "@prisma/client";
+import { prisma } from "@/lib/db";
 import ProjectCard from "./ProjectCard";
-import { motion } from "framer-motion";
-const ProjectList = () => {
-    // here we are fetching the projects to the client side from the server
-    const {
-        data: projects,
-        loading,
-        error,
-        refetch,
-    } = useFetch<Project[]>("/api/projects");
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return (
-            <div>
-                <p>Error: {error}</p>
-                <button
-                    onClick={refetch}
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white"
-                >
-                    Retry
-                </button>
-            </div>
-        );
-    }
+export default async function ProjectList() {
+    const projects = await prisma.project.findMany();
 
     // i want to display only 3 projects
     const limitedProjects = projects?.slice(0, 3);
@@ -46,20 +21,14 @@ const ProjectList = () => {
                     <ProjectCard key={project.id} project={project} />
                 ))}
             </ul>
-            <motion.div
-                whileHover={{ scale: 1.3 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-            >
+            <div>
                 <a
                     href="/projects"
                     className="border-2 border-neonGreen text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden"
                 >
                     View All Projects
                 </a>
-            </motion.div>
+            </div>
         </main>
     );
-};
-
-export default ProjectList;
+}

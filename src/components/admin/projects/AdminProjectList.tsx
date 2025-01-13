@@ -1,28 +1,12 @@
-import { Project } from "@prisma/client";
-import React from "react";
+import { prisma } from "@/lib/db";
+import DeleteButton from "./DeleteButton";
 
-type ProjectListProps = {
-    projects: Project[];
-    selectedProject: Project | null;
-    onEdit: (project: Project) => void;
-    onDelete: (id: string) => void;
-};
-
-const ProjectList = ({
-    projects,
-    selectedProject,
-    onEdit,
-    onDelete,
-}: ProjectListProps) => {
+export default async function ProjectList() {
+    const projects = await prisma.project.findMany();
     return (
         <ul>
             {projects.map((project) => (
-                <li
-                    key={project.id}
-                    className={`py-4 border-b ${
-                        selectedProject?.id === project.id ? "bg-gray-100" : ""
-                    }`}
-                >
+                <li key={project.id} className="border-b p-3">
                     <h2 className="font-semibold">{project.title}</h2>
                     <p>{project.description}</p>
                     <p className="text-sm text-gray-600">
@@ -47,25 +31,9 @@ const ProjectList = ({
                     <p className="text-sm text-gray-600">
                         Image URL: {project.imageUrl || "Not available"}
                     </p>
-
-                    <div className="flex space-x-2 mt-2">
-                        <button
-                            onClick={() => onEdit(project)}
-                            className="text-blue-500 hover:underline"
-                        >
-                            Update
-                        </button>
-                        <button
-                            onClick={() => onDelete(project.id)}
-                            className="text-red-500 hover:underline"
-                        >
-                            Delete
-                        </button>
-                    </div>
+                    <DeleteButton id={project.id} />
                 </li>
             ))}
         </ul>
     );
-};
-
-export default ProjectList;
+}

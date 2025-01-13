@@ -1,27 +1,10 @@
-"use client";
-import useFetch from "@/hooks/useFetch";
-import { About } from "@prisma/client";
+import { prisma } from "@/lib/db";
+import DeleteButton from "../admin/about/DeleteButton";
 
-const AboutList = () => {
-    const { data: about, loading, error } = useFetch<About[]>("/api/about");
-
-    if (loading) {
-        return (
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-semibold text-center mb-6">
-                    Loading...
-                </h1>
-            </div>
-        );
-    }
-
+export default async function AboutList() {
+    const abouts = await prisma.about.findMany();
     return (
         <div className="border-s-orange-600">
-            {error && (
-                <p className="text-red-500">
-                    "There was an error loading about data"
-                </p>
-            )}
             <section
                 id="about"
                 className=" w-full flex flex-col items-center justify-center  px-6 py-12"
@@ -30,10 +13,11 @@ const AboutList = () => {
                     About <span className="text-[#13DF14]">Me</span>
                 </h2>
                 <ul>
-                    {about?.map((content) => (
-                        <li key={content.id}>
+                    {abouts?.map((about) => (
+                        <li key={about.id}>
                             <p className="text-center max-w-3xl mx-auto ">
-                                {content.content}
+                                {about.content}
+                                <DeleteButton id={about.id} />
                             </p>
                         </li>
                     ))}
@@ -41,5 +25,4 @@ const AboutList = () => {
             </section>
         </div>
     );
-};
-export default AboutList;
+}

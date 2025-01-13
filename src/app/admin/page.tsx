@@ -1,46 +1,10 @@
-"use client";
-
-import { signOut, useSession } from "next-auth/react";
-import LoginForm from "../../components/auth/LoginForm";
 import AdminProjectPage from "@/components/admin/projects/AdminProjectPage";
 import CustomButton from "@/components/ui/CustomButton";
-import { useEffect, useState } from "react";
+
 import AdminAboutPage from "@/components/admin/about/AdminAboutPage";
 import AdminExperiencePage from "@/components/admin/experience/AdminExperiencePage";
 
 const AdminPage = () => {
-    const { data: session, status } = useSession();
-    const [isSessionLoaded, setIsSessionLoaded] = useState(false);
-
-    // Use useEffect to wait until session data is available
-    useEffect(() => {
-        if (status !== "loading") {
-            setIsSessionLoaded(true);
-        }
-    }, [status]);
-
-    // If session data is still loading or not available, render loading state
-    if (!isSessionLoaded) {
-        return (
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-semibold text-center mb-6 p-12">
-                    Loading...
-                </h1>
-            </div>
-        );
-    }
-
-    if (!session) {
-        return (
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-semibold text-center mb-6 p-12">
-                    Please Sign In
-                </h1>
-                <LoginForm />
-            </div>
-        );
-    }
-
     return (
         <>
             <div className="container mx-auto p-16">
@@ -54,46 +18,33 @@ const AdminPage = () => {
                         <CustomButton
                             text="Update Projects"
                             href="#update-projects"
-                            onClick={undefined}
                         />
                         {/* Button 2: Update About */}
                         <CustomButton
                             text="Update About"
-                            onClick={undefined}
                             href="#update-about"
                         />
                         {/* Button 3: Update Experience */}
                         <CustomButton
                             text="Update Experience"
-                            onClick={undefined}
                             href="#update-experience"
                         />
-                        <CustomButton
-                            text="Sign Out"
-                            onClick={() => signOut()}
-                            href={undefined}
-                        />
+                        <CustomButton text="Sign Out" href={undefined} />
                     </div>
                 </div>
                 <section id="update-about ">
                     <h1 className="p-12 ">Update About Section</h1>
                     <div className="border-b">
-                        About component goes here
-                        <div>
-                            <AdminAboutPage />
-                        </div>
+                        <AdminAboutPage />
                     </div>
                 </section>
                 <section id="update-experience">
                     <h1 className="p-12">Update Experience</h1>
                     <div className="border-b">
-                        Experience component goes here
-                        <div>
-                            <AdminExperiencePage />
-                        </div>
+                        <AdminExperiencePage />
                     </div>
                 </section>
-                <section id="update-projects " className="border-b">
+                <section id="update-projects ">
                     <h1 className="p-12">Update Projects</h1>
                     <AdminProjectPage />
                 </section>

@@ -1,16 +1,6 @@
-import { useState, useEffect } from "react";
-
 const ContactForm = () => {
     // this is needed to avoid hydration mismatch error
-    const [isClient, setIsClient] = useState(false);
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    if (!isClient) {
-        return null; // Render nothing on the server
-    }
     return (
         <section id="contact" className="py-16   px-6 ">
             <h2 className="text-3xl font-bold mb-6 text-center z-10">

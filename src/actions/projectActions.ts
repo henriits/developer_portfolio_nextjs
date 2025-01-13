@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-export async function addProject(formData: FormData) {
+export async function addProject(previousSatate: any, formData: FormData) {
     try {
         await prisma.project.create({
             data: {
@@ -19,9 +19,9 @@ export async function addProject(formData: FormData) {
             },
         });
     } catch (error) {
-        console.error(error);
+        return "There was an error adding a project.";
     }
-    revalidatePath("/admin"); // this will reload the page when its updated
+    revalidatePath("/"); // this will reload the page when its updated
 }
 
 export async function getProjects() {
@@ -49,7 +49,7 @@ export async function updateProject(id: string, formData: FormData) {
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/admin");
+    revalidatePath("/");
 }
 
 export async function deleteProject(id: string) {
@@ -60,5 +60,5 @@ export async function deleteProject(id: string) {
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/admin");
+    revalidatePath("/");
 }
