@@ -10,37 +10,37 @@ const ExperienceForm = () => {
                 type="text"
                 name="title"
                 placeholder="enter job title"
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="company"
                 placeholder="enter company name"
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="location"
                 placeholder="enter location / remote"
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="startDate"
                 placeholder="enter year from"
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="endDate"
                 placeholder="enter year until"
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <textarea
                 name="description"
                 rows={2}
                 placeholder="description..."
-                className="py-2 px-2 rounded-sm"
+                className="py-2 px-2 rounded-sm text-black"
             />
             <button
                 type="submit"

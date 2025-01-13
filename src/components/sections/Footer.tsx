@@ -1,3 +1,4 @@
+"use client";
 const Footer = () => (
     <footer className="text-center flex-col items-center justify-center  text-white px-6 py-12 relative">
         <p>
