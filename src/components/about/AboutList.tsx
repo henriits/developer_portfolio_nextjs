@@ -16,14 +16,14 @@ export default async function AboutList() {
                 <ul>
                     {abouts?.map((about) => (
                         <li key={about.id}>
-                            <p className="text-center max-w-3xl mx-auto ">
+                            <div className="text-center max-w-3xl mx-auto ">
                                 {about.content}
                                 <DeleteButton id={about.id} />
                                 <UpdateButton
                                     id={about.id}
                                     content={about.content}
                                 />
-                            </p>
+                            </div>
                         </li>
                     ))}
                 </ul>
