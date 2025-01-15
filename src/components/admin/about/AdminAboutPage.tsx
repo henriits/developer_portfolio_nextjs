@@ -1,11 +1,11 @@
 import AboutForm from "./AboutForm";
-import AboutList from "../../about/AboutList";
+import AdminAboutList from "./AdminAboutList";
 
 const AdminAboutPage = () => {
     return (
         <div>
             <AboutForm />
-            <AboutList />
+            <AdminAboutList />
         </div>
     );
 };
