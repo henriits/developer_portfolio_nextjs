@@ -44,7 +44,7 @@ export async function deleteExperience(id: string) {
     try {
         await prisma.experience.delete({ where: { id } });
     } catch (error) {
-        return "Error occurred while deleting Experience";
+        console.error(error);
     }
     revalidatePath("/");
 }

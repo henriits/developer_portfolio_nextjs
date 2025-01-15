@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/db";
-import DeleteButton from "./DeleteButton";
+
 import UpdateButton from "./UpdateButton";
+import DeleteButton from "@/components/ui/DeleteButton";
+import { deleteExperience } from "@/actions/experienceActions";
 
 export default async function AdminExperienceList() {
     const experiences = await prisma.experience.findMany();
@@ -36,7 +38,11 @@ export default async function AdminExperienceList() {
                                     </p>
 
                                     <p>{description}</p>
-                                    <DeleteButton id={id} />
+                                    <DeleteButton
+                                        id={id}
+                                        deleteAction={deleteExperience}
+                                        label="Delete Experience"
+                                    />
                                     <UpdateButton
                                         id={id}
                                         title={title}
