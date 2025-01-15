@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/db";
-import DeleteButton from "./DeleteButton";
+
 import UpdateButton from "./UpdateButton";
+import DeleteButton from "@/components/ui/DeleteButton";
+import { deleteProject } from "@/actions/projectActions";
 
 export default async function ProjectList() {
     const projects = await prisma.project.findMany();
@@ -32,7 +34,11 @@ export default async function ProjectList() {
                     <p className="text-sm text-gray-600">
                         Image URL: {project.imageUrl || "Not available"}
                     </p>
-                    <DeleteButton id={project.id} />
+                    <DeleteButton
+                        id={project.id} // Pass the id
+                        deleteAction={deleteProject} // Pass the delete action function
+                        label="Delete Project" // Customize the label
+                    />
                     <UpdateButton
                         id={project.id}
                         title={project.title}
