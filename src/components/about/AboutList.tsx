@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import DeleteButton from "../admin/about/DeleteButton";
+import UpdateButton from "../admin/about/UpdateButton";
 
 export default async function AboutList() {
     const abouts = await prisma.about.findMany();
@@ -18,6 +19,10 @@ export default async function AboutList() {
                             <p className="text-center max-w-3xl mx-auto ">
                                 {about.content}
                                 <DeleteButton id={about.id} />
+                                <UpdateButton
+                                    id={about.id}
+                                    content={about.content}
+                                />
                             </p>
                         </li>
                     ))}

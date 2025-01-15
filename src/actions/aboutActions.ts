@@ -31,11 +31,19 @@ export async function addAbout(previousState: any, formData: FormData) {
 }
 
 export async function updateAbout(id: string, formData: FormData) {
+    if (!(formData instanceof FormData)) {
+        return "Invalid form Data";
+    }
+    const aboutDataObject = Object.fromEntries(formData.entries());
+    const result = aboutSchema.safeParse(aboutDataObject);
+    if (!result.success) {
+        return "Invalid about data";
+    }
     try {
         await prisma.about.update({
             where: { id },
             data: {
-                content: formData.get("content") as string,
+                content: result.data.content,
             },
         });
     } catch (error) {
