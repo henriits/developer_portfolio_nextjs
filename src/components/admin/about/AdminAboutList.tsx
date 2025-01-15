@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/db";
-import DeleteButton from "./DeleteButton";
+
 import UpdateButton from "./UpdateButton";
+import DeleteButton from "@/components/ui/DeleteButton";
+import { deleteAbout } from "@/actions/aboutActions";
 
 export default async function AdminAboutList() {
     const abouts = await prisma.about.findMany();
@@ -19,7 +21,11 @@ export default async function AdminAboutList() {
                         <li key={about.id}>
                             <div className="text-center max-w-3xl mx-auto ">
                                 {about.content}
-                                <DeleteButton id={about.id} />
+                                <DeleteButton
+                                    id={about.id}
+                                    deleteAction={deleteAbout}
+                                    label="Delete About"
+                                />
                                 <UpdateButton
                                     id={about.id}
                                     content={about.content}

@@ -56,7 +56,7 @@ export async function deleteAbout(id: string) {
     try {
         await prisma.about.delete({ where: { id } });
     } catch (error) {
-        return "Error occurred while deleting About";
+        console.log(error)
     }
     revalidatePath("/");
 }
