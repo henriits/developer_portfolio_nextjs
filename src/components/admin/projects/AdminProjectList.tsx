@@ -1,12 +1,13 @@
 import { prisma } from "@/lib/db";
 import DeleteButton from "./DeleteButton";
+import UpdateButton from "./UpdateButton";
 
 export default async function ProjectList() {
     const projects = await prisma.project.findMany();
     return (
         <ul>
             {projects.map((project) => (
-                <li key={project.id} className="border-b p-3">
+                <div key={project.id} className="border-b p-3">
                     <h2 className="font-semibold">{project.title}</h2>
                     <p>{project.description}</p>
                     <p className="text-sm text-gray-600">
@@ -32,7 +33,16 @@ export default async function ProjectList() {
                         Image URL: {project.imageUrl || "Not available"}
                     </p>
                     <DeleteButton id={project.id} />
-                </li>
+                    <UpdateButton
+                        id={project.id}
+                        title={project.title}
+                        description={project.description}
+                        technologies={project.technologies}
+                        githubLink={project.githubLink}
+                        liveLink={project.liveLink}
+                        imageUrl={project.imageUrl}
+                    />
+                </div>
             ))}
         </ul>
     );

@@ -1,11 +1,11 @@
-import ExperienceList from "@/components/experience/ExperienceList";
+import AdminExperienceList from "./AdminExperienceList";
 import ExperienceForm from "./ExperienceForm";
 
 const AdminExperiencePage = () => {
     return (
         <div>
             <ExperienceForm />
-            <ExperienceList />
+            <AdminExperienceList />
         </div>
     );
 };

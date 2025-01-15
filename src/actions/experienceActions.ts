@@ -20,6 +20,26 @@ export async function addExperience(previousState: any, formData: FormData) {
     revalidatePath("/");
 }
 
+export async function updateExperience(id: string, formData: FormData) {
+    try {
+        await prisma.experience.update({
+            where: { id },
+            data: {
+                title: formData.get("title") as string,
+                company: formData.get("company") as string,
+                location: formData.get("location") as string,
+                startDate: formData.get("startDate") as string, // Convert string to number
+                endDate: formData.get("endDate") as string, // Convert string to number
+                description: formData.get("description") as string,
+            },
+        });
+    } catch (error) {
+        return "Error occurred while updating Experience";
+    }
+
+    revalidatePath("/");
+}
+
 export async function deleteExperience(id: string) {
     try {
         await prisma.experience.delete({ where: { id } });
