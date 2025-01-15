@@ -27,5 +27,5 @@ export function middleware(request: MiddlewareRequest): NextResponse {
 }
 
 export const config = {
-    matcher: "/api/:path*",
+    matcher: "/admin",
 };
