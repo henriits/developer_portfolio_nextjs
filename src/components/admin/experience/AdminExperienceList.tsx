@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import UpdateButton from "./UpdateButton";
+import UpdateExperienceButton from "./UpdateExperienceButton";
 import DeleteButton from "@/components/ui/DeleteButton";
 import { deleteExperience } from "@/actions/experienceActions";
 
@@ -43,7 +43,7 @@ export default async function AdminExperienceList() {
                                         deleteAction={deleteExperience}
                                         label="Delete Experience"
                                     />
-                                    <UpdateButton
+                                    <UpdateExperienceButton
                                         id={id}
                                         title={title}
                                         company={company}

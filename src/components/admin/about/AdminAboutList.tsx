@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import UpdateButton from "./UpdateButton";
+import UpdateAboutButton from "./UpdateAboutButton";
 import DeleteButton from "@/components/ui/DeleteButton";
 import { deleteAbout } from "@/actions/aboutActions";
 
@@ -26,7 +26,7 @@ export default async function AdminAboutList() {
                                     deleteAction={deleteAbout}
                                     label="Delete About"
                                 />
-                                <UpdateButton
+                                <UpdateAboutButton
                                     id={about.id}
                                     content={about.content}
                                 />

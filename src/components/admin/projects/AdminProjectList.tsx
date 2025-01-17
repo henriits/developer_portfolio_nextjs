@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import UpdateButton from "./UpdateButton";
+import UpdateProjectsButton from "./UpdateProjectsButton";
 import DeleteButton from "@/components/ui/DeleteButton";
 import { deleteProject } from "@/actions/projectActions";
 
@@ -39,7 +39,7 @@ export default async function ProjectList() {
                         deleteAction={deleteProject} // Pass the delete action function
                         label="Delete Project" // Customize the label
                     />
-                    <UpdateButton
+                    <UpdateProjectsButton
                         id={project.id}
                         title={project.title}
                         description={project.description}
