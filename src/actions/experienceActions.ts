@@ -14,10 +14,10 @@ export async function addExperience(previousState: any, formData: FormData) {
                 description: formData.get("description") as string,
             },
         });
+        revalidatePath("/");
     } catch (error) {
         return "There was an error adding experience";
     }
-    revalidatePath("/");
 }
 
 export async function updateExperience(id: string, formData: FormData) {
@@ -33,18 +33,17 @@ export async function updateExperience(id: string, formData: FormData) {
                 description: formData.get("description") as string,
             },
         });
+        revalidatePath("/");
     } catch (error) {
         return "Error occurred while updating Experience";
     }
-
-    revalidatePath("/");
 }
 
 export async function deleteExperience(id: string) {
     try {
         await prisma.experience.delete({ where: { id } });
+        revalidatePath("/");
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/");
 }

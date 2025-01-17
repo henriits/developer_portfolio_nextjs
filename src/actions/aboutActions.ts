@@ -24,10 +24,10 @@ export async function addAbout(previousState: any, formData: FormData) {
                 content: result.data.content,
             },
         });
+        revalidatePath("/");
     } catch (error) {
         return "An error occurred while creating About";
     }
-    revalidatePath("/");
 }
 
 export async function updateAbout(id: string, formData: FormData) {
@@ -46,17 +46,17 @@ export async function updateAbout(id: string, formData: FormData) {
                 content: result.data.content,
             },
         });
+        revalidatePath("/");
     } catch (error) {
         return "An error occurred while updating About";
     }
-    revalidatePath("/");
 }
 
 export async function deleteAbout(id: string) {
     try {
         await prisma.about.delete({ where: { id } });
+        revalidatePath("/");
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-    revalidatePath("/");
 }

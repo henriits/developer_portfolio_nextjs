@@ -18,10 +18,10 @@ export async function addProject(previousSatate: any, formData: FormData) {
                 technologies: formData.getAll("technologies") as string[],
             },
         });
+        revalidatePath("/"); // this will reload the page when its updated
     } catch (error) {
         return "There was an error adding a project.";
     }
-    revalidatePath("/"); // this will reload the page when its updated
 }
 
 export async function getProjects() {
@@ -46,10 +46,10 @@ export async function updateProject(id: string, formData: FormData) {
                 technologies: formData.getAll("technologies") as string[],
             },
         });
+        revalidatePath("/");
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/");
 }
 
 export async function deleteProject(id: string) {
@@ -57,8 +57,8 @@ export async function deleteProject(id: string) {
         await prisma.project.delete({
             where: { id },
         });
+        revalidatePath("/");
     } catch (error) {
         console.error(error);
     }
-    revalidatePath("/");
 }
