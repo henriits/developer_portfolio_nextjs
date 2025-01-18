@@ -39,7 +39,7 @@ export default async function AdminPage() {
                     <CustomButton text="Sign Out" href="/api/auth/signout" />
                 </div>
             </div>
-            <section id="update-about ">
+            <section id="update-about">
                 <h1 className="p-12 ">Update About Section</h1>
                 <div className="border-b">
                     <AdminAboutPage />
