@@ -4,10 +4,10 @@ import { FlipWords } from "@/components/animations/flip-words";
 
 const HeroSection = () => {
     const words = process.env.NEXT_PUBLIC_WORDS?.split(",") || [
-        "React",
-        "Web",
-        "Modern",
-        "Frontend",
+        "React Developer",
+        "Web Developer",
+        "Modern Developer",
+        "Frontend Developer",
     ];
     return (
         <BackgroundBeamsWithCollision>
