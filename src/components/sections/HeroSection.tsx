@@ -11,9 +11,9 @@ const HeroSection = () => {
     ];
     return (
         <BackgroundBeamsWithCollision>
-            <section className="min-h-screen  flex flex-col items-center justify-center  text-white px-6 py-12">
+            <section className=" min-h-screen  flex flex-col items-center justify-center  text-white px-6 py-12">
                 {/* Title */}
-                <h1 className="text-7xl font-extrabold mb-4 z-10 text-center">
+                <h1 className=" main-font text-7xl font-extrabold mb-4 z-10 text-center">
                     Hi, I am A
                     <span className="text-shadow-colored ">
                         <FlipWords words={words} />

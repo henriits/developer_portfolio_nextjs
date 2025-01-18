@@ -9,7 +9,7 @@ export default async function ProjectList() {
 
     return (
         <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
-            <h2 className="text-3xl font-bold mb-6 text-center z-10">
+            <h2 className="text-3xl main-font font-bold mb-6 text-center z-10">
                 <span className="text-[#13DF14]">My</span> Work
             </h2>
 

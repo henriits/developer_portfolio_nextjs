@@ -3,7 +3,7 @@ const ContactForm = () => {
 
     return (
         <section id="contact" className="py-16   px-6 ">
-            <h2 className="text-3xl font-bold mb-6 text-center z-10">
+            <h2 className=" main-font text-3xl font-bold mb-6 text-center z-10">
                 Contact <span className="text-[#13DF14]">Me</span>
             </h2>
             <form className="max-w-3xl mx-auto p-8  bg-neutral-900 ">

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-logo {
+    font-family: "Fleur De Leah", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.main-font {
+    font-family: "Gasoek One", serif;
+    font-weight: 400;
+    font-style: normal;
+}

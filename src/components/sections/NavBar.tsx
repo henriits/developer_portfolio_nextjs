@@ -7,6 +7,7 @@ import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 
 import { ReactNode } from "react";
 import { env } from "process";
+import Logo from "../ui/Logo";
 
 const NavLink = ({ href, children }: { href: string; children: ReactNode }) => (
     <motion.div whileHover={{ scale: 1.3 }}>
@@ -26,10 +27,7 @@ const Navbar = () => {
         <nav className="bg-opacity-10 backdrop-blur-md text-white p-4 shadow-md fixed top-0 left-0 right-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-2xl font-bold">
-                    <span className="text-[#13DF14]">
-                        {process.env.NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER}
-                    </span>
-                    {process.env.NEXT_PUBLIC_LOGO_LASTNAME}
+                    <Logo />
                 </Link>
                 <div className="hidden md:flex space-x-4">
                     <NavLink href="/">Home</NavLink>
