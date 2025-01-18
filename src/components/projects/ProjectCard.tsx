@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 // Only render image if imageUrl is available
                                 src={
                                     project.imageUrl ||
-                                    "https://th.bing.com/th/id/OIP.2PV99eYqHuspw4x27SGtAAHaEK?rs=1&pid=ImgDetMain"
+                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
                                 }
                                 className="rounded-lg shadow-md object-cover"
                                 width={300}
