@@ -12,14 +12,12 @@ const ProjectForm = () => {
                 name="title"
                 placeholder="Title"
                 className="py-2 px-2 rounded-sm text-black"
-                required
             />
             <textarea
                 name="description"
                 rows={2}
                 placeholder="Description"
                 className="py-2 px-2 rounded-sm text-black"
-                required
             />
             <input
                 type="text"
