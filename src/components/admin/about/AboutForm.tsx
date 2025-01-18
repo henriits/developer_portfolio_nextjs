@@ -6,7 +6,10 @@ import { useActionState } from "react";
 const AboutForm = () => {
     const [error, action, isPending] = useActionState(addAbout, null);
     return (
-        <form action={action} className="flex flex-col gap-y-2">
+        <form
+            action={action}
+            className="flex flex-col max-w-screen-md mx-auto gap-y-2"
+        >
             <textarea
                 rows={2}
                 name="content"

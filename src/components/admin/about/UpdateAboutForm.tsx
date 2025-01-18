@@ -13,7 +13,7 @@ const UpdateAboutForm = ({ id, content }: UpdateAboutFormProps) => {
 
     return (
         <form
-            className="flex flex-col gap-y-2"
+            className="flex flex-col gap-y-2 w-full mx-auto"
             onSubmit={async (e) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
@@ -27,7 +27,7 @@ const UpdateAboutForm = ({ id, content }: UpdateAboutFormProps) => {
                 name="content"
                 placeholder="write about yourself.."
                 defaultValue={content}
-                className="py-2 px-2 rounded-sm text-black"
+                className="py-2 px-2 rounded-sm text-black w-full"
             />
 
             <CustomButton
