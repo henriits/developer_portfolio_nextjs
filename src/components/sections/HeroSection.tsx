@@ -3,17 +3,21 @@ import { BackgroundBeamsWithCollision } from "@/components/animations/background
 import { FlipWords } from "@/components/animations/flip-words";
 
 const HeroSection = () => {
-    const words = ["React", "Web", "Modern", "Frontend"];
+    const words = process.env.NEXT_PUBLIC_WORDS?.split(",") || [
+        "React",
+        "Web",
+        "Modern",
+        "Frontend",
+    ];
     return (
         <BackgroundBeamsWithCollision>
-            <section className="min-h-screen w-full flex flex-col items-center justify-center  text-white px-6 py-12">
+            <section className="min-h-screen  flex flex-col items-center justify-center  text-white px-6 py-12">
                 {/* Title */}
-                <h1 className="text-7xl font-extrabold mb-4 z-10">
-                    Hi, I'm{" "}
-                    <span className="text-shadow-colored">
+                <h1 className="text-7xl font-extrabold mb-4 z-10 text-center">
+                    Hi, I am A
+                    <span className="text-shadow-colored ">
                         <FlipWords words={words} />
-                    </span>{" "}
-                    developer
+                    </span>
                 </h1>
 
                 {/* Description */}

@@ -205,6 +205,13 @@ NEXTAUTH_URL="http://localhost:3000"
 ADMIN_USERNAME="your-admin-username"
 ADMIN_PASSWORD="your-admin-password"
 
+
+# Logo
+NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER="one letter for logo"
+NEXT_PUBLIC_LOGO_LASTNAME="full-last-name"
+NEXT_PUBLIC_WORDS="React.js Developer, TypeScript Developer , Web Developer, FrontEnd Developer, Software Engineer" // example
+
+
 # Social Media Links
 NEXT_PUBLIC_LINKEDIN_URL="your-linkedin-url"
 NEXT_PUBLIC_GITHUB_URL="your-github-url"
