@@ -24,7 +24,7 @@ const TechStackSection = () => {
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
             />
-            <h2 className="text-center main-font text-3xl font-bold mb-6 p-12">
+            <h2 className="text-center main-font text-5xl font-bold mb-6 p-12">
                 Sk<span className="text-[#13DF14]">i</span>lls
             </h2>
             <div className="w-auto overflow-hidden">
