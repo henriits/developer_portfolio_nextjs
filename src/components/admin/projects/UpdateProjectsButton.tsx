@@ -2,6 +2,7 @@
 
 import { updateProject } from "@/actions/projectActions";
 import { useState } from "react";
+import UpdateProjectForm from "./UpdateProjectForm";
 
 type Project = {
     id: string;
@@ -41,62 +42,15 @@ const UpdateButton = ({
                         >
                             Close
                         </button>
-                        <form
-                            className="flex flex-col gap-y-2"
-                            onSubmit={async (e) => {
-                                e.preventDefault();
-                                const formData = new FormData(e.currentTarget);
-                                await updateProject(id, formData);
-                            }}
-                        >
-                            <input
-                                type="text"
-                                name="title"
-                                placeholder="Title"
-                                defaultValue={title}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-                            <textarea
-                                rows={2}
-                                name="description"
-                                placeholder="Description"
-                                defaultValue={description}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-                            <input
-                                type="text"
-                                name="githubLink"
-                                placeholder="Github Link"
-                                defaultValue={githubLink ? githubLink : ""}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-
-                            <input
-                                type="text"
-                                name="liveLink"
-                                placeholder="Live Link"
-                                defaultValue={liveLink ? liveLink : ""}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-                            <input
-                                type="text"
-                                name="imageUrl"
-                                placeholder="Image Url"
-                                defaultValue={imageUrl ? imageUrl : ""}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-                            <input
-                                type="text"
-                                name="technologies"
-                                placeholder="Technologies"
-                                defaultValue={technologies.join(", ")}
-                                className="py-2 px-2 rounded-sm  text-black"
-                            />
-
-                            <button type="submit" className="bg-slate-800">
-                                Update
-                            </button>
-                        </form>
+                        <UpdateProjectForm
+                            id={id}
+                            title={title}
+                            description={description}
+                            githubLink={githubLink}
+                            liveLink={liveLink}
+                            imageUrl={imageUrl}
+                            technologies={technologies}
+                        />
                     </div>
                 </div>
             )}
