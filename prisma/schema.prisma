@@ -14,8 +14,8 @@ model Project {
   description  String
   githubLink   String?
   liveLink     String?
-  imageUrl     String? // Optional field for storing the image URL
-  technologies String[] // Array of strings to store technologies
+  imageUrl     String?
+  technologies String[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
