@@ -1,5 +1,6 @@
 "use client";
 import { addAbout } from "@/actions/aboutActions";
+import CustomButton from "@/components/ui/CustomButton";
 import { useActionState } from "react";
 
 const AboutForm = () => {
@@ -13,9 +14,11 @@ const AboutForm = () => {
                 className="py-2 px-2 rounded-sm  text-black"
                 required
             />
-            <button type="submit" className="py-2 px-2 rounded-sm bg-slate-600">
-                Add About
-            </button>
+            <CustomButton
+                text="Add About"
+                type="submit"
+                className="py-2 px-2 rounded-sm"
+            />
             {isPending && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
         </form>

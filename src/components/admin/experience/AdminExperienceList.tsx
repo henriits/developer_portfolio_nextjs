@@ -9,7 +9,7 @@ export default async function AdminExperienceList() {
     const experiences = await prisma.experience.findMany();
     return (
         <section id="experience" className="w-full text-center px-6 py-12">
-            <h2 className="text-3xl font-bold mb-6 text-center z-10">
+            <h2 className="main-font text-5xl font-bold mb-6 text-center z-10">
                 E<span className="text-[#13DF14]">xp</span>erience
             </h2>
 
