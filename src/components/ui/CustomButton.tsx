@@ -16,7 +16,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     type = "button",
 }) => {
     const commonClasses =
-        "border-2 border-neonGreen text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden";
+        "border-2  text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 ";
 
     // Conditional rendering based on whether `href` is passed or not
     return href ? (
