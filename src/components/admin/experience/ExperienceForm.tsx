@@ -11,12 +11,14 @@ const ExperienceForm = () => {
                 name="title"
                 placeholder="enter job title"
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <input
                 type="text"
                 name="company"
                 placeholder="enter company name"
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <input
                 type="text"
@@ -41,6 +43,7 @@ const ExperienceForm = () => {
                 rows={2}
                 placeholder="description..."
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <button
                 type="submit"

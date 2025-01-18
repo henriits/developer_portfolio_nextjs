@@ -11,6 +11,7 @@ const AboutForm = () => {
                 name="content"
                 placeholder="write about yourself.."
                 className="py-2 px-2 rounded-sm  text-black"
+                required
             />
             <button type="submit" className="py-2 px-2 rounded-sm bg-slate-600">
                 Add About

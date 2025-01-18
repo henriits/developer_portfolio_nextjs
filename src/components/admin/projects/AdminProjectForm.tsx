@@ -12,12 +12,14 @@ const ProjectForm = () => {
                 name="title"
                 placeholder="Title"
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <textarea
                 name="description"
                 rows={2}
                 placeholder="Description"
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <input
                 type="text"
@@ -42,12 +44,13 @@ const ProjectForm = () => {
                 name="technologies"
                 placeholder="Technologies (comma-separated)"
                 className="py-2 px-2 rounded-sm text-black"
+                required
             />
             <button type="submit" className="bg-blue-500 py-2 rounded-sm">
                 Create Project
             </button>
-            {isPending && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
+            {isPending && <p>Loading...</p>}
         </form>
     );
 };
