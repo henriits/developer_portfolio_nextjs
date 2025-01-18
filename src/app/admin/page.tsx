@@ -6,6 +6,7 @@ import AdminExperiencePage from "@/components/admin/experience/AdminExperiencePa
 import CustomButton from "@/components/ui/CustomButton";
 import { redirect } from "next/navigation";
 import { authOptions } from "../utils/authOptions";
+import AdminHeader from "@/components/admin/AdminHeader";
 
 export default async function AdminPage() {
     const session = await getServerSession(authOptions);
@@ -18,9 +19,8 @@ export default async function AdminPage() {
 
     return (
         <div className="container mx-auto p-16">
-            <h1 className="text-3xl font-semibold text-center mb-6">
-                Admin Panel
-            </h1>
+            <AdminHeader />
+            {session.user && <h1>Hello {session.user.name}</h1>}
             <div className="mt-6 pb-6">
                 {/* Flex container to hold buttons */}
                 <div className="flex flex-col md:flex-row gap-7 justify-center md:justify-evenly space-y-4 md:space-y-0">
@@ -51,7 +51,7 @@ export default async function AdminPage() {
                     <AdminExperiencePage />
                 </div>
             </section>
-            <section id="update-projects ">
+            <section id="update-projects">
                 <h1 className="p-12">Update Projects</h1>
                 <AdminProjectPage />
             </section>

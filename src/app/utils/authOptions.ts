@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 // Define the NextAuth configuration
@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
                     credentials?.password === password
                 ) {
                     // Return the user object with 'id' as a string
-                    return { id: "1", name: "Admin" }; // Ensure 'id' is a string
+                    return { id: "1", name: process.env.ADMIN_USERNAME }; // Ensure 'id' is a string
                 }
                 return null; // Return null if authentication fails
             },
