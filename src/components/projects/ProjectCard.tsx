@@ -6,7 +6,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <div className="relative w-full h-full shadow-lg rounded-xl transition-all duration-300 group bg-stone-950">
                 {/* Neon Shadow Effect */}
                 <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14]"></div>
-                <div className="relative z-10 bg-transparent border-neutral-700 bg-neutral-800 rounded-xl flex flex-col h-full">
+                <div className="relative z-10 bg-transparent border-neutral-700 shadow-md shadow-[#13DF14] bg-neutral-800 rounded-xl flex flex-col h-full">
                     <div className="p-6 flex flex-col items-start gap-2">
                         <h2 className="text-xl font-semibold text-white">
                             <a href={`/projects/${project.slug}`}>
@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 // Only render image if imageUrl is available
                                 src={
                                     project.imageUrl ||
-                                    "https://th.bing.com/th/id/OIP.2PV99eYqHuspw4x27SGtAAHaEK?rs=1&pid=ImgDetMain"
+                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
                                 }
                                 className="rounded-lg shadow-md object-cover"
                                 width={300}

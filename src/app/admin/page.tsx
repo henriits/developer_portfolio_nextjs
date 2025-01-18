@@ -1,108 +1,60 @@
-"use client";
+import { getServerSession } from "next-auth";
 
-import { signOut, useSession } from "next-auth/react";
-import LoginForm from "../../components/auth/LoginForm";
-import {
-    addProject,
-    updateProject,
-    deleteProject,
-} from "@/actions/projectActions";
-import useFetch from "@/hooks/useFetch";
-import { useState, useEffect } from "react";
-import ProjectForm from "../../components/admin/AdminProjectForm";
-import ProjectList from "../../components/admin/AdminProjectList";
-import { Project } from "@/types";
+import AdminProjectPage from "@/components/admin/projects/AdminProjectPage";
+import AdminAboutPage from "@/components/admin/about/AdminAboutPage";
+import AdminExperiencePage from "@/components/admin/experience/AdminExperiencePage";
+import CustomButton from "@/components/ui/CustomButton";
+import { redirect } from "next/navigation";
+import { authOptions } from "../utils/authOptions";
+import AdminHeader from "@/components/admin/AdminHeader";
 
-const AdminPage = () => {
-    const { data: session } = useSession();
-    const {
-        data: projects,
-        loading,
-        error,
-        refetch,
-    } = useFetch<Project[]>("/api/projects");
-    const [selectedProject, setSelectedProject] = useState<Project | null>(
-        null
-    );
-    const [hydrationComplete, setHydrationComplete] = useState(false);
-
-    useEffect(() => {
-        setHydrationComplete(true);
-    }, []);
-
-    const handleFormSubmit = async (formData: FormData) => {
-        try {
-            if (selectedProject) {
-                await updateProject(selectedProject.id, formData);
-            } else {
-                await addProject(formData);
-            }
-            refetch();
-            setSelectedProject(null);
-        } catch (err) {
-            console.error("Failed to save project", err);
-        }
-    };
-
-    const handleDeleteProject = async (id: string) => {
-        try {
-            await deleteProject(id);
-            refetch();
-        } catch (err) {
-            console.error("Failed to delete project", err);
-        }
-    };
+export default async function AdminPage() {
+    const session = await getServerSession(authOptions);
 
     if (!session) {
-        return (
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-semibold text-center mb-6 p-12">
-                    Please Sign In
-                </h1>
-                <LoginForm />
-            </div>
-        );
-    }
-
-    if (!hydrationComplete || loading) {
-        return (
-            <div className="container mx-auto p-6">
-                <h1 className="text-3xl font-semibold text-center mb-6">
-                    Loading...
-                </h1>
-            </div>
-        );
+        // Redirect unauthorized users to the sign-in page
+        redirect("/admin/login");
+        return null; // Prevent further rendering
     }
 
     return (
-        <div className="container mx-auto p-6">
-            <h1 className="text-3xl font-semibold text-center mb-6">
-                Admin Panel
-            </h1>
-            <ProjectForm
-                selectedProject={selectedProject}
-                onSubmit={handleFormSubmit}
-                onCancel={() => setSelectedProject(null)}
-            />
-            {error && <p className="text-red-500">{error}</p>}
-            {projects && (
-                <ProjectList
-                    projects={projects}
-                    selectedProject={selectedProject}
-                    onEdit={setSelectedProject}
-                    onDelete={handleDeleteProject}
-                />
-            )}
-            <div className="mt-6">
-                <button
-                    onClick={() => signOut()}
-                    className="w-full p-2 bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                    Sign Out
-                </button>
+        <div className="container mx-auto p-16">
+            <AdminHeader />
+            {session.user && <h1>Hello {session.user.name}</h1>}
+            <div className="mt-6 pb-6">
+                {/* Flex container to hold buttons */}
+                <div className="flex flex-col md:flex-row gap-7 justify-center md:justify-evenly space-y-4 md:space-y-0">
+                    {/* Button 1: Update Projects */}
+                    <CustomButton
+                        text="Update Projects"
+                        href="#update-projects"
+                    />
+                    {/* Button 2: Update About */}
+                    <CustomButton text="Update About" href="#update-about" />
+                    {/* Button 3: Update Experience */}
+                    <CustomButton
+                        text="Update Experience"
+                        href="#update-experience"
+                    />
+                    <CustomButton text="Sign Out" href="/api/auth/signout" />
+                </div>
             </div>
+            <section id="update-about">
+                <h1 className="p-12 ">Update About Section</h1>
+                <div className="border-b">
+                    <AdminAboutPage />
+                </div>
+            </section>
+            <section id="update-experience">
+                <h1 className="p-12">Update Experience</h1>
+                <div className="border-b">
+                    <AdminExperiencePage />
+                </div>
+            </section>
+            <section id="update-projects">
+                <h1 className="p-12">Update Projects</h1>
+                <AdminProjectPage />
+            </section>
         </div>
     );
-};
-
-export default AdminPage;
+}

@@ -1,5 +1,3 @@
-// src/app/admin/components/LoginForm.tsx
-
 "use client";
 
 import { useState } from "react";
@@ -8,9 +6,12 @@ import { signIn } from "next-auth/react";
 const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError("");
+
         const res = await signIn("credentials", {
             redirect: false,
             username,
@@ -18,12 +19,15 @@ const LoginForm = () => {
         });
 
         if (res?.error) {
-            alert("Invalid username or password");
+            setError("Wrong username or password");
+        } else if (res?.ok) {
+            // Redirect user to admin dashboard
+            window.location.href = "/admin";
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto ">
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-20">
             <div className="mb-4">
                 <label
                     htmlFor="username"
@@ -59,6 +63,8 @@ const LoginForm = () => {
                     required
                 />
             </div>
+
+            {error && <p className="text-red-500 py-5">{error}</p>}
 
             <button
                 type="submit"
