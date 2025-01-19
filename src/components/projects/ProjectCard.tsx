@@ -86,10 +86,15 @@ export default function ProjectCard({ project }: { project: Project }) {
                         <div className="flex justify-between items-center mx-auto">
                             <a
                                 href={`/projects/${project.slug}`}
-                                className="flex items-center justify-center gap-2 px-6 py-3 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                                className="flex items-center justify-center text-sm rounded-lg hover:text-[#13DF14] transition-colors"
                             >
-                                <FaInfoCircle className="text-lg" />
-                                <span>See More</span>
+                                <span className="flex items-center gap-2">
+                                    Click to See More
+                                    <span>
+                                        <FaInfoCircle className="text-lg" />
+                                    </span>
+                                    About: <br /> {project.title}
+                                </span>
                             </a>
                         </div>
                     </div>

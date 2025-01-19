@@ -20,10 +20,6 @@ const TechStackData: Array<{ icon: string; label: string }> = [
 const TechStackSection = () => {
     return (
         <div className="w-full p-5  overflow-hidden">
-            <link
-                rel="stylesheet"
-                href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
-            />
             <h2 className="text-center main-font text-5xl font-bold mb-6 p-12">
                 Sk<span className="text-[#13DF14]">i</span>lls
             </h2>

@@ -24,6 +24,10 @@ export default function RootLayout({
                     href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Gasoek+One&display=swap"
                     rel="stylesheet"
                 />
+                <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.8/src/app/ci.min.css"
+                />
             </head>
             <body className="bg-neutral-900 text-white">
                 {/* Only the client layout will use SessionProvider */}
