@@ -1,6 +1,5 @@
 import { deleteProject } from "@/actions/projectActions";
 import DeleteButton from "@/components/ui/DeleteButton";
-import Image from "next/image";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
 
