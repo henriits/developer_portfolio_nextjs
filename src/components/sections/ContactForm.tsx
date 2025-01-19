@@ -1,34 +1,33 @@
-const ContactForm = () => {
-    // this is needed to avoid hydration mismatch error
+import { sendEmail } from "@/actions/sendEmail";
 
+const ContactForm = () => {
     return (
         <section id="contact" className="py-16   px-6 ">
             <h2 className=" main-font text-5xl font-bold mb-6 text-center z-10">
                 Contact <span className="text-[#13DF14]">Me</span>
             </h2>
-            <form className="max-w-3xl mx-auto p-8  bg-neutral-900 ">
+            <form
+                className="max-w-3xl mx-auto p-8  text-black bg-neutral-900 "
+                action={sendEmail}
+            >
                 <div className="mb-4">
                     <input
-                        type="text"
-                        id="name"
-                        className="w-full p-3 border-2 border-neutral-600 rounded-md focus:border-[#13DF14] focus:ring-2 focus:ring-[#13DF14] transition-all"
-                        placeholder="Your Name"
-                    />
-                </div>
-                <div className="mb-4">
-                    <input
+                        name="senderEmail"
                         type="email"
                         id="email"
                         className="w-full p-3 border-2 border-neutral-600 rounded-md focus:border-[#13DF14] focus:ring-2 focus:ring-[#13DF14] transition-all"
                         placeholder="Your Email"
+                        required
                     />
                 </div>
                 <div className="mb-4">
                     <textarea
+                        name="message"
                         id="message"
                         className="w-full p-3 border-2 border-neutral-600 rounded-md focus:border-[#13DF14] focus:ring-2 focus:ring-[#13DF14] transition-all"
                         placeholder="Your Message"
                         rows={5}
+                        required
                     ></textarea>
                 </div>
 

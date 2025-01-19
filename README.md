@@ -27,7 +27,7 @@ A dynamic developer portfolio built with Next.js 13+, featuring a hidden admin d
 
 ## Tech Stack
 
--   Next.js 13+ (App Router)
+-   Next.js 14+ (App Router)
 -   TypeScript
 -   Prisma (ORM)
 -   PostgreSQL
@@ -39,6 +39,8 @@ A dynamic developer portfolio built with Next.js 13+, featuring a hidden admin d
 -   React Hook Form
 -   Zod Validation
 -   Neon Database (PostgreSQL)
+-   Resend (email sending)
+-   React-Email (email styling)
 
 ## Feature Details
 
@@ -54,7 +56,7 @@ A dynamic developer portfolio built with Next.js 13+, featuring a hidden admin d
     -   Technology tags
     -   Project images
 -   **Tech Stack Section**: Display technical skills
--   **Contact Form**: Get in touch section
+-   **Contact Form**: Get in touch section ( send email )
 -   **Footer**: Social media integration
 
 ### Admin Dashboard Features
@@ -181,7 +183,7 @@ model Experience {
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/developer_portfolio_nextjs.git
+    git clone https://github.com/henriits/developer_portfolio_nextjs.git
     cd developer_portfolio_nextjs
     ```
 
@@ -205,6 +207,7 @@ NEXTAUTH_URL="http://localhost:3000"
 ADMIN_USERNAME="your-admin-username"
 ADMIN_PASSWORD="your-admin-password"
 
+RESEND_API_KEY="api key here"  https://resend.com/
 
 # Logo
 NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER="one letter for logo"
