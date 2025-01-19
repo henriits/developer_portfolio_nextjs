@@ -1,4 +1,5 @@
 import { Project } from "@prisma/client";
+import { FaExternalLinkAlt, FaGithub, FaInfoCircle } from "react-icons/fa";
 
 export default function ProjectCard({ project }: { project: Project }) {
     return (
@@ -28,15 +29,21 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 style={{ width: "300px", height: "200px" }}
                             />
                         </div>
-                        <div className="flex flex-wrap gap-2 mt-2">
-                            {project.technologies.map((tech, id) => (
-                                <span
-                                    key={id}
-                                    className="text-xs bg-gray-100 text-gray-800 rounded-full px-2 py-1"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
+                        <div className="flex flex-wrap gap-2 mt-2 border-2 rounded-full">
+                            {project.technologies ? (
+                                project.technologies.map((tech, index) => (
+                                    <span
+                                        key={index}
+                                        className="px-4 py-2 bg-neutral-800 rounded-full text-sm font-medium hover:bg-neutral-700 transition-colors"
+                                    >
+                                        {tech.trim()}
+                                    </span>
+                                ))
+                            ) : (
+                                <p className="text-gray-400">
+                                    No technologies specified
+                                </p>
+                            )}
                         </div>
                     </div>
                     <div className="p-6 flex flex-col gap-4 mt-auto">
@@ -50,11 +57,12 @@ export default function ProjectCard({ project }: { project: Project }) {
                                             ? project.githubLink
                                             : `https://${project.githubLink}`
                                     } // Ensure it's an absolute URL
-                                    target="_blank" // Open in new tab
-                                    rel="noopener noreferrer" // Security
-                                    className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-6 py-3 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
                                 >
-                                    GitHub
+                                    <FaGithub className="text-xl" />
+                                    <span>GitHub</span>
                                 </a>
                             )}
                             {/* Live Demo link */}
@@ -65,22 +73,23 @@ export default function ProjectCard({ project }: { project: Project }) {
                                             ? project.liveLink
                                             : `https://${project.liveLink}`
                                     } // Ensure it's an absolute URL
-                                    target="_blank" // Open in new tab
-                                    rel="noopener noreferrer" // Security
-                                    aria-label={`View ${project.title} Live`}
-                                    className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-6 py-3 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
                                 >
-                                    Live
+                                    <FaExternalLinkAlt className="text-lg" />
+                                    <span>Demo</span>
                                 </a>
                             )}
                         </div>
 
-                        <div className="flex justify-between items-center space-x-4">
+                        <div className="flex justify-between items-center mx-auto">
                             <a
                                 href={`/projects/${project.slug}`}
-                                className="text-gray-400 hover:text-[#13DF14] transition-colors duration-200"
+                                className="flex items-center justify-center gap-2 px-6 py-3 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
                             >
-                                Click to see more info about this project!
+                                <FaInfoCircle className="text-lg" />
+                                <span>See More</span>
                             </a>
                         </div>
                     </div>
