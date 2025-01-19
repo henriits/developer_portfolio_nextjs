@@ -6,15 +6,17 @@ interface CustomButtonProps {
     onClick?: MouseEventHandler<HTMLButtonElement>; // onClick is optional and only applies to <button> tags
     className?: string;
     type?: "button" | "submit" | "reset"; // specify the type for the button element
+    disabled?: boolean;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({
+const CustomButton = ({
     text,
     href,
     onClick,
     className = "",
     type = "button",
-}) => {
+    disabled = false,
+}: CustomButtonProps) => {
     const commonClasses =
         "border-2  text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 ";
 
@@ -28,6 +30,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
             type={type}
             onClick={onClick}
             className={`${commonClasses} ${className}`}
+            disabled={disabled}
         >
             {text}
         </button>

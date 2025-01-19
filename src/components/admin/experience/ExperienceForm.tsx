@@ -1,5 +1,6 @@
 "use client";
 import { addExperience } from "@/actions/experienceActions";
+import CustomButton from "@/components/ui/CustomButton";
 import { useActionState } from "react";
 
 const ExperienceForm = () => {
@@ -48,13 +49,12 @@ const ExperienceForm = () => {
                 className="py-2 px-2 rounded-sm text-black"
                 required
             />
-            <button
+            <CustomButton
+                text="Add Experience"
                 type="submit"
-                className="py-2 px-2 rounded-sm bg-slate-600"
+                className="py-2 px-2 rounded-sm"
                 disabled={isPending}
-            >
-                Add experience
-            </button>
+            />
             {isPending && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
         </form>
