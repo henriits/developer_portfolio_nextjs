@@ -74,7 +74,7 @@ export default function ProjectListBase({
                                 </span>
                             </p>
                             {project.imageUrl && (
-                                <Image
+                                <img
                                     src={project.imageUrl}
                                     alt={project.title}
                                     className="object-cover rounded-md mt-2"
