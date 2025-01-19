@@ -21,16 +21,17 @@ export default async function AdminAboutList() {
                     <li key={about.id}>
                         <div className="text-center max-w-3xl mx-auto space-y-4">
                             <div className="mx-10 m-4">{about.content}</div>
-
-                            <DeleteButton
-                                id={about.id}
-                                deleteAction={deleteAbout}
-                                label="Delete About"
-                            />
-                            <UpdateAboutButton
-                                id={about.id}
-                                content={about.content}
-                            />
+                            <div className="pt-4 flex gap-x-4 items-center justify-center">
+                                <DeleteButton
+                                    id={about.id}
+                                    deleteAction={deleteAbout}
+                                    label="Delete About"
+                                />
+                                <UpdateAboutButton
+                                    id={about.id}
+                                    content={about.content}
+                                />
+                            </div>
                         </div>
                     </li>
                 ))}

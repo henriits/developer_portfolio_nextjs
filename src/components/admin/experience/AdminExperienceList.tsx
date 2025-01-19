@@ -26,7 +26,7 @@ export default async function AdminExperienceList() {
                                 endDate,
                                 description,
                             }) => (
-                                <li key={id}>
+                                <li key={id} className="mb-3 p-3">
                                     <h3 className="text-xl font-bold">
                                         {title}
                                     </h3>
@@ -39,20 +39,22 @@ export default async function AdminExperienceList() {
                                     </p>
 
                                     <p>{description}</p>
-                                    <DeleteButton
-                                        id={id}
-                                        deleteAction={deleteExperience}
-                                        label="Delete Experience"
-                                    />
-                                    <UpdateExperienceButton
-                                        id={id}
-                                        title={title}
-                                        company={company}
-                                        location={location}
-                                        startDate={startDate}
-                                        endDate={endDate}
-                                        description={description}
-                                    />
+                                    <div className="pt-4 flex gap-x-4 items-center justify-center">
+                                        <DeleteButton
+                                            id={id}
+                                            deleteAction={deleteExperience}
+                                            label="Delete Experience"
+                                        />
+                                        <UpdateExperienceButton
+                                            id={id}
+                                            title={title}
+                                            company={company}
+                                            location={location}
+                                            startDate={startDate}
+                                            endDate={endDate}
+                                            description={description}
+                                        />
+                                    </div>
                                     <br />
                                     <span className="text-[#13DF14]">|</span>
                                 </li>

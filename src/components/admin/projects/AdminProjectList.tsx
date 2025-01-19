@@ -14,7 +14,10 @@ export default async function ProjectList() {
             </h2>
             <ul>
                 {projects.map((project) => (
-                    <div key={project.id} className="border-b p-3">
+                    <div
+                        key={project.id}
+                        className="border-2 mb-3 rounded-md p-3"
+                    >
                         <p className="text-sm text-gray-600">
                             Title:
                             <span className="text-white ml-2">

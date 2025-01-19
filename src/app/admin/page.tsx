@@ -20,7 +20,11 @@ export default async function AdminPage() {
     return (
         <div className="container mx-auto p-16">
             <AdminHeader />
-            {session.user && <h1>Hello {session.user.name}</h1>}
+            {session.user && (
+                <h1 className="main-font text-2xl text-center">
+                    Hello {session.user.name}
+                </h1>
+            )}
             <div className="mt-6 pb-6">
                 {/* Flex container to hold buttons */}
                 <div className="flex flex-col md:flex-row gap-7 justify-center md:justify-evenly space-y-4 md:space-y-0">
@@ -36,25 +40,27 @@ export default async function AdminPage() {
                         text="Update Experience"
                         href="#update-experience"
                     />
-                    <CustomButton text="Sign Out" href="/api/auth/signout" />
+                    <CustomButton
+                        text="Sign Out"
+                        href="/api/auth/signout"
+                        className="hover:text-red-500"
+                    />
                 </div>
             </div>
-            <section id="update-about">
-                <h1 className="p-12 ">Update About Section</h1>
-                <div className="border-b">
+            <div className="mt-24">
+                <section id="update-about">
                     <AdminAboutPage />
-                </div>
-            </section>
-            <section id="update-experience">
-                <h1 className="p-12">Update Experience</h1>
-                <div className="border-b">
+                </section>
+                <hr className="border-t border-white my-4" />
+                <section id="update-experience">
                     <AdminExperiencePage />
-                </div>
-            </section>
-            <section id="update-projects">
-                <h1 className="p-12">Update Projects</h1>
-                <AdminProjectPage />
-            </section>
+                </section>
+                <hr className="border-t border-white my-4" />
+                <section id="update-projects">
+                    <AdminProjectPage />
+                </section>
+            </div>
         </div>
     );
 }
+<hr className="border-t border-white my-4" />;
