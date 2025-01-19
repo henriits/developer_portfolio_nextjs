@@ -28,19 +28,19 @@ const ProjectForm = () => {
             <input
                 type="text"
                 name="githubLink"
-                placeholder="GitHub Link"
+                placeholder="GitHub Link (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="liveLink"
-                placeholder="Live Link"
+                placeholder="Live Link (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="imageUrl"
-                placeholder="Image URL"
+                placeholder="Image URL (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input

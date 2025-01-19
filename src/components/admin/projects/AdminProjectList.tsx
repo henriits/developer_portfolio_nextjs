@@ -8,38 +8,40 @@ import { deleteProject } from "@/actions/projectActions";
 export default async function ProjectList() {
     const projects = await prisma.project.findMany();
     return (
-        <div>
-            <h2 className="main-font text-5xl font-bold mb-6 text-center z-10">
+        <div className="w-full text-center px-6 py-12">
+            <h2 className="main-font text-5xl font-bold mb-6 z-10">
                 <span className="text-[#13DF14]">My </span>Work
             </h2>
             <ul>
                 {projects.map((project) => (
                     <div key={project.id} className="border-b p-3">
-                        <h2 className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600">
                             Title:
-                            <span className="text-white">{project.title}</span>
-                        </h2>
+                            <span className="text-white ml-2">
+                                {project.title}
+                            </span>
+                        </p>
                         <p className="text-sm text-gray-600">
                             Description:
-                            <span className="text-white">
+                            <span className="text-white ml-2">
                                 {project.description}
                             </span>
                         </p>
                         <p className="text-sm text-gray-600">
                             Technologies:
-                            <span className="text-white">
+                            <span className="text-white ml-2">
                                 {project.technologies.join(", ")}
                             </span>
                         </p>
                         <p className="text-sm text-gray-600">
                             GitHub Link:
-                            <span className="text-white">
+                            <span className="text-white ml-2">
                                 {project.githubLink || "Not available"}
                             </span>
                         </p>
                         <p className="text-sm text-gray-600">
                             Live Link:
-                            <span className="text-white">
+                            <span className="text-white ml-2">
                                 {project.liveLink || "Not available"}
                             </span>
                         </p>
@@ -55,24 +57,27 @@ export default async function ProjectList() {
                         )}
                         <p className="text-sm text-gray-600 mb-5">
                             Image URL:
-                            <span className="text-white">
+                            <span className="text-white ml-2">
                                 {project.imageUrl || "Not available"}
                             </span>
                         </p>
-                        <DeleteButton
-                            id={project.id} // Pass the id
-                            deleteAction={deleteProject} // Pass the delete action function
-                            label="Delete Project" // Customize the label
-                        />
-                        <UpdateProjectsButton
-                            id={project.id}
-                            title={project.title}
-                            description={project.description}
-                            technologies={project.technologies}
-                            githubLink={project.githubLink}
-                            liveLink={project.liveLink}
-                            imageUrl={project.imageUrl}
-                        />
+                        {/* Buttons with spacing */}
+                        <div className="flex gap-x-4 items-center justify-center">
+                            <DeleteButton
+                                id={project.id}
+                                deleteAction={deleteProject}
+                                label="Delete Project"
+                            />
+                            <UpdateProjectsButton
+                                id={project.id}
+                                title={project.title}
+                                description={project.description}
+                                technologies={project.technologies}
+                                githubLink={project.githubLink}
+                                liveLink={project.liveLink}
+                                imageUrl={project.imageUrl}
+                            />
+                        </div>
                     </div>
                 ))}
             </ul>

@@ -13,7 +13,7 @@ const AboutForm = () => {
             <textarea
                 rows={2}
                 name="content"
-                placeholder="write about yourself.."
+                placeholder="write about yourself.. (you can submit multiple sentences)"
                 className="py-2 px-2 rounded-sm  text-black"
                 required
             />
