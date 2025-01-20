@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
@@ -8,6 +8,8 @@ import { scrollTo } from "@/utils/scrollTo";
 import { ReactNode } from "react";
 import Logo from "../ui/Logo";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const NavItem = ({
     href,
@@ -17,20 +19,42 @@ const NavItem = ({
     href: string;
     children: ReactNode;
     isActive: boolean;
-}) => (
-    <motion.div whileHover={{ scale: 1.1 }}>
-        <button
-            onClick={() => scrollTo(href)}
-            className="relative text-white py-2 px-4 group"
-        >
-            {children}
-            <span
-                className={`absolute left-0 bottom-0 h-0.5 bg-[#13DF14] transition-all duration-300 
-                ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
-            ></span>
-        </button>
-    </motion.div>
-);
+}) => {
+    const pathname = usePathname();
+    const router = useRouter();
+    const [targetSection, setTargetSection] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (pathname === "/" && targetSection) {
+            scrollTo(targetSection);
+            setTargetSection(null);
+        }
+    }, [pathname, targetSection]);
+
+    const handleClick = () => {
+        if (pathname === "/") {
+            scrollTo(href);
+        } else {
+            setTargetSection(href);
+            router.push("/");
+        }
+    };
+
+    return (
+        <motion.div whileHover={{ scale: 1.1 }}>
+            <button
+                onClick={handleClick}
+                className="relative text-white py-2 px-4 group"
+            >
+                {children}
+                <span
+                    className={`absolute left-0 bottom-0 h-0.5 bg-[#13DF14] transition-all duration-300 
+                    ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+                ></span>
+            </button>
+        </motion.div>
+    );
+};
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
