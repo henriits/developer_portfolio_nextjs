@@ -39,10 +39,8 @@ export default async function PostPage({
                                 loading="lazy"
                             />
                         </div>
-
-                        {/* Technologies Section Moved Under Image */}
                         <div className="w-full max-w-[400px] mx-auto md:mx-0">
-                            <h2 className="text-xl lg:text-2xl font-semibold mb-4">
+                            <h2 className="text-xl lg:text-2xl font-semibold mt-4 mb-4">
                                 Technologies Used
                             </h2>
                             <div className="flex flex-wrap gap-2">
@@ -50,7 +48,7 @@ export default async function PostPage({
                                     project.technologies.map((tech, index) => (
                                         <span
                                             key={index}
-                                            className="px-3 py-1 bg-neutral-800 rounded-full text-sm font-medium hover:bg-neutral-700 transition-colors border-2"
+                                            className="px-3 py-1 text-gray-400 text-sm font-medium"
                                         >
                                             {tech.trim()}
                                         </span>
@@ -67,14 +65,16 @@ export default async function PostPage({
                     {/* Right Column - Title, Description, and Links */}
                     <div className="flex flex-col gap-6 md:pl-8">
                         <h1 className="text-3xl lg:text-4xl font-bold">
+                            <span className="text-gray-400">Title: </span>
                             {project.title}
                         </h1>
 
                         <div className="flex-grow">
-                            <h2 className="text-xl lg:text-2xl font-semibold mb-4">
-                                About this Project
-                            </h2>
                             <p className="text-gray-300 leading-relaxed">
+                                <span className="text-gray-400 border-b-2 border-[#13DF14] mb-3">
+                                    Description
+                                </span>
+                                <br />
                                 {project.description}
                             </p>
                         </div>
@@ -105,7 +105,7 @@ export default async function PostPage({
                                     } // Ensure it's an absolute URL
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14]transition-colors"
+                                    className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                                 >
                                     <FaExternalLinkAlt className="text-lg" />
                                     <span>Demo</span>

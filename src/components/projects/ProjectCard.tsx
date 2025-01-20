@@ -72,7 +72,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 project.technologies.map((tech, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-1 bg-neutral-700 rounded-full text-xs font-medium hover:bg-neutral-600 transition-colors"
+                                        className="px-3 py-1 text-xs text-gray-400"
                                     >
                                         {tech.trim()}
                                     </span>
