@@ -11,7 +11,10 @@ const HeroSection = () => {
     ];
     return (
         <BackgroundBeamsWithCollision>
-            <section className=" min-h-screen  flex flex-col items-center justify-center  text-white px-6 py-12">
+            <section
+                id="home"
+                className=" min-h-screen  flex flex-col items-center justify-center  text-white px-6 py-12"
+            >
                 {/* Title */}
                 <h1 className="main-font sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 z-10 text-center leading-tight">
                     Hello, I am A

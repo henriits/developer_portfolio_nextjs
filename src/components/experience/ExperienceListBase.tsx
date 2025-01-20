@@ -23,7 +23,7 @@ export default function ExperienceListBase({
     isAdmin = false,
 }: ExperienceListBaseProps) {
     return (
-        <section id="experience" className="w-full text-center px-6 py-12">
+        <>
             <h2 className="text-5xl main-font font-bold mb-6 text-center z-10">
                 E<span className="text-[#13DF14]">xp</span>erience
             </h2>
@@ -70,6 +70,6 @@ export default function ExperienceListBase({
                     </ul>
                 </div>
             </div>
-        </section>
+        </>
     );
 }

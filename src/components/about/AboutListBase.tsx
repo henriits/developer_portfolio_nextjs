@@ -17,10 +17,7 @@ export default function AboutListBase({
     isAdmin = false,
 }: AboutListBaseProps) {
     return (
-        <section
-            id="about"
-            className="w-full flex flex-col items-center justify-center px-6 py-12"
-        >
+        <>
             <h2 className="main-font text-5xl font-bold m-6 text-center">
                 About <span className="text-[#13DF14]">Me</span>
             </h2>
@@ -47,6 +44,6 @@ export default function AboutListBase({
                     </li>
                 ))}
             </ul>
-        </section>
+        </>
     );
 }
