@@ -24,15 +24,15 @@ export default function ExperienceListBase({
 }: ExperienceListBaseProps) {
     return (
         <>
-            <h2 className="text-5xl main-font font-bold mb-6 text-center z-10">
+            <h2 className="text-5xl main-font font-bold mb-6 text-center">
                 E<span className="text-[#13DF14]">xp</span>erience
             </h2>
 
-            <div className="flex flex-col justify-center items-center p-2">
+            <div className="flex flex-col justify-center items-center">
                 <div className="overflow-hidden">
                     <ul>
                         {experiences.map((experience) => (
-                            <li key={experience.id} className=" p-3">
+                            <li key={experience.id} className="">
                                 <h3 className="text-xl font-bold">
                                     {experience.title}
                                 </h3>
@@ -63,7 +63,7 @@ export default function ExperienceListBase({
                                         />
                                     </div>
                                 )}
-                                <br />
+
                                 <span className="text-[#13DF14]">|</span>
                             </li>
                         ))}

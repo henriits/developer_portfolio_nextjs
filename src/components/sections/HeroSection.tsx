@@ -30,35 +30,6 @@ const HeroSection = () => {
                     Let's connect and create something amazing together! Feel
                     free to reach out for collaboration.
                 </p>
-                {/* Social Icons */}
-                <div className="flex items-center space-x-6 mb-8 z-10 pt-12">
-                    <div>
-                        <a href={process.env.NEXT_PUBLIC_LINKEDIN_URL || "/"}>
-                            <i className="ci ci-linkedin ci-3x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href={process.env.NEXT_PUBLIC_GITHUB_URL || "/"}>
-                            <i className="ci ci-github-light ci-3x"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <a href={process.env.NEXT_PUBLIC_INSTAGRAM_URL || "/"}>
-                            <i className="ci ci-instagram ci-3x"></i>
-                        </a>
-                    </div>
-                </div>
-
-                {/* Contact Button */}
-
-                <div>
-                    <a
-                        href="#contact"
-                        className="border-2 text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 z-10 relative overflow-hidden"
-                    >
-                        Contact me!
-                    </a>
-                </div>
             </section>
         </BackgroundBeamsWithCollision>
     );

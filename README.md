@@ -4,60 +4,60 @@ A dynamic developer portfolio built with Next.js 13+, featuring a hidden admin d
 
 ## Key Features
 
--   Public Portfolio
+- Public Portfolio
 
-    -   Responsive design
-    -   Hero section
-    -   Social media integration (LinkedIn, GitHub, Instagram)
-    -   About section
-    -   Work experience timeline
-    -   Tech stack section
-    -   Dynamic project showcase with GitHub and live demo links
-    -   Contact form
-    -   Footer with social links
+    - Responsive design
+    - Hero section
+    - Social media integration (LinkedIn, GitHub, Instagram)
+    - About section
+    - Work experience timeline
+    - Tech stack section
+    - Dynamic project showcase with GitHub and live demo links
+    - Contact form
+    - Footer with social links
 
--   Protected Admin Dashboard (/admin)
-    -   Secure authentication with NextAuth.js
-    -   Full CRUD operations using Server Actions for:
-        -   Projects management
-        -   Experience/Work history
-        -   About section content
-    -   Real-time content updates with auto-revalidation
-    -   Protected routes with session validation
+- Protected Admin Dashboard (/admin)
+    - Secure authentication with NextAuth.js
+    - Full CRUD operations using Server Actions for:
+        - Projects management
+        - Experience/Work history
+        - About section content
+    - Real-time content updates with auto-revalidation
+    - Protected routes with session validation
 
 ## Tech Stack
 
--   Next.js 14+ (App Router)
--   TypeScript
--   Prisma (ORM)
--   PostgreSQL
--   NextAuth.js
--   Tailwind CSS
--   NextUI Components
--   Framer Motion
--   React Icons
--   React Hook Form
--   Zod Validation
--   Neon Database (PostgreSQL)
--   Resend (email sending)
--   React-Email (email styling)
+- Next.js 14+ (App Router)
+- TypeScript
+- Prisma (ORM)
+- PostgreSQL
+- NextAuth.js
+- Tailwind CSS
+- NextUI Components
+- Framer Motion
+- React Icons
+- React Hook Form
+- Zod Validation
+- Neon Database (PostgreSQL)
+- Resend (email sending)
+- React-Email (email styling)
 
 ## Feature Details
 
 ### Public Portfolio Sections
 
--   **Hero Section**: Introduction section
--   **About Section**: Dynamic content management
--   **Experience Section**: Work history with company, title, and date ranges
--   **Projects Section**: Showcase projects with:
-    -   Title and description
-    -   GitHub repository links
-    -   Live demo links
-    -   Technology tags
-    -   Project images
--   **Tech Stack Section**: Display technical skills
--   **Contact Form**: Get in touch section ( send email )
--   **Footer**: Social media integration
+- **Hero Section**: Introduction section
+- **About Section**: Dynamic content management
+- **Experience Section**: Work history with company, title, and date ranges
+- **Projects Section**: Showcase projects with:
+    - Title and description
+    - GitHub repository links
+    - Live demo links
+    - Technology tags
+    - Project images
+- **Tech Stack Section**: Display technical skills
+- **Contact Form**: Get in touch section ( send email )
+- **Footer**: Social media integration
 
 ### Admin Dashboard Features
 
@@ -117,12 +117,12 @@ This portfolio uses Next.js Server Actions for all CRUD operations instead of AP
 
 Benefits of Server Actions:
 
--   Built-in CSRF protection
--   Direct database operations
--   No API routes needed
--   Progressive enhancement
--   Better type safety
--   Reduced client-server code duplication
+- Built-in CSRF protection
+- Direct database operations
+- No API routes needed
+- Progressive enhancement
+- Better type safety
+- Reduced client-server code duplication
 
 ### Database Schema
 
@@ -174,9 +174,9 @@ model Experience {
 
 ### Prerequisites
 
--   Node.js (v14 or later)
--   npm or yarn
--   PostgreSQL (or any other database supported by Prisma)
+- Node.js (v14 or later)
+- npm or yarn
+- PostgreSQL (or any other database supported by Prisma)
 
 ### Installation
 
@@ -213,7 +213,8 @@ RESEND_API_KEY="api key here"  https://resend.com/
 NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER="one letter for logo"
 NEXT_PUBLIC_LOGO_LASTNAME="full-last-name"
 NEXT_PUBLIC_WORDS="React.js Developer, TypeScript Developer , Web Developer, FrontEnd Developer, Software Engineer" // example
-
+NEXT_PUBLIC_EMAIL="the email you want messages to be sent"
+NEXT_PUBLIC_LOCATION="your current location country"
 
 # Social Media Links
 NEXT_PUBLIC_LINKEDIN_URL="your-linkedin-url"
@@ -311,26 +312,26 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Admin Features
 
--   **Projects Management**
+- **Projects Management**
 
-    -   Create, edit, and delete projects
-    -   Upload project image with URL
-    -   Manage project technologies and links
+    - Create, edit, and delete projects
+    - Upload project image with URL
+    - Manage project technologies and links
 
--   **Experience Management**
+- **Experience Management**
 
-    -   Add/edit work history
-    -   Manage job descriptions and technologies
+    - Add/edit work history
+    - Manage job descriptions and technologies
 
--   **About Section**
+- **About Section**
 
-    -   Update personal information
-    -   Edit bio and professional summary
+    - Update personal information
+    - Edit bio and professional summary
 
--   **Security**
-    -   Protected routes
-    -   Secure authentication
-    -   Session management
+- **Security**
+    - Protected routes
+    - Secure authentication
+    - Session management
 
 ## Deployment
 
@@ -338,12 +339,12 @@ To deploy the project, you can use platforms like Vercel, Netlify, or any other 
 
 ## Security Considerations
 
--   All admin routes are protected
--   API routes validate authentication
--   Form inputs are validated using Zod
--   Security headers are implemented
--   Rate limiting on API routes
--   CSRF protection enabled
+- All admin routes are protected
+- API routes validate authentication
+- Form inputs are validated using Zod
+- Security headers are implemented
+- Rate limiting on API routes
+- CSRF protection enabled
 
 ## Contributing
 

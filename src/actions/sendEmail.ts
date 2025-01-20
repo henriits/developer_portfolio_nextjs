@@ -12,7 +12,7 @@ export async function sendEmail(formData: FormData) {
 
     await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: "henrifordevelopmentonly@gmail.com",
+        to: process.env.NEXT_PUBLIC_EMAIL as string,
         subject: "New Message from Portfolio",
         replyTo: senderEmail,
         react: React.createElement(ContactFormEmail, {
