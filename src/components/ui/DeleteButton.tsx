@@ -23,7 +23,7 @@ const DeleteButton = ({ id, deleteAction, label }: DeleteButtonProps) => {
             <CustomButton
                 text={label || "Delete"}
                 onClick={() => setIsModalOpen(true)}
-                className="hover:text-red-500 px-1 py-1 rounded-md"
+                className="hover:bg-red-500 text-white border-red-500 px-1 py-1 rounded-md"
             />
             <Modal
                 isOpen={isModalOpen}

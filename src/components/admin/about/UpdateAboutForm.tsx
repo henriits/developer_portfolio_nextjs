@@ -23,18 +23,14 @@ const UpdateAboutForm = ({ id, content }: UpdateAboutFormProps) => {
             }}
         >
             <textarea
-                rows={2}
+                rows={5}
                 name="content"
                 placeholder="write about yourself.."
                 defaultValue={content}
                 className="py-2 px-2 rounded-sm text-black w-full"
             />
 
-            <CustomButton
-                text="Update"
-                type="submit"
-                className="hover:text-[#13DF14]"
-            />
+            <CustomButton text="Update" type="submit" />
 
             {isUpdated && (
                 <p className="text-green-500 mt-2">Updated successfully!</p>

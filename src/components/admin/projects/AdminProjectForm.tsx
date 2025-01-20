@@ -53,7 +53,6 @@ const ProjectForm = () => {
             <CustomButton
                 text="Add Project"
                 type="submit"
-                className="hover:text-[#13DF14]"
                 disabled={isPending}
             />
             {error && <p className="text-red-500">{error}</p>}

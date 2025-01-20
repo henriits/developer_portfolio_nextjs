@@ -102,7 +102,7 @@ export default function ExperienceListBase({
                                                     deleteAction={
                                                         deleteExperience
                                                     }
-                                                    label="Delete Experience"
+                                                    label="Delete"
                                                 />
                                                 <UpdateExperienceButton
                                                     id={experience.id}

@@ -80,11 +80,7 @@ const UpdateProjectForm = ({
                 required
             />
 
-            <CustomButton
-                text="Update"
-                type="submit"
-                className="hover:text-[#13DF14]"
-            />
+            <CustomButton text="Update" type="submit" />
 
             {isUpdated && (
                 <p className="text-green-500 mt-2">Updated successfully!</p>

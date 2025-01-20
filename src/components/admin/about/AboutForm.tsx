@@ -17,12 +17,7 @@ const AboutForm = () => {
                 className="py-2 px-2 rounded-sm  text-black"
                 required
             />
-            <CustomButton
-                text="Add About"
-                type="submit"
-                className="py-2 px-2 rounded-sm"
-                disabled={isPending}
-            />
+            <CustomButton text="Add About" type="submit" disabled={isPending} />
             {isPending && <p>Loading...</p>}
             {error && <p className="text-red-500">{error}</p>}
         </form>

@@ -52,7 +52,6 @@ const ExperienceForm = () => {
             <CustomButton
                 text="Add Experience"
                 type="submit"
-                className="py-2 px-2 rounded-sm"
                 disabled={isPending}
             />
             {isPending && <p>Loading...</p>}

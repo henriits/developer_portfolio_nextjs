@@ -18,7 +18,7 @@ const CustomButton = ({
     disabled = false,
 }: CustomButtonProps) => {
     const commonClasses =
-        "border-2  text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-xl font-bold transition duration-300 ";
+        "border-2  text-white border-[#13DF14] hover:bg-[#13DF14]  py-3 px-8 rounded-lg text-xl font-bold transition duration-300 ";
 
     // Conditional rendering based on whether `href` is passed or not
     return href ? (

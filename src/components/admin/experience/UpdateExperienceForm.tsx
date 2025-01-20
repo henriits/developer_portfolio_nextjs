@@ -72,18 +72,14 @@ const UpdateExperienceForm = ({
                 className="py-2 px-2 rounded-sm text-black"
             />
             <textarea
-                rows={2}
+                rows={4}
                 name="description"
                 placeholder="Description"
                 defaultValue={description}
                 className="py-2 px-2 rounded-sm text-black"
                 required
             />
-            <CustomButton
-                text="Update"
-                type="submit"
-                className="hover:text-[#13DF14]"
-            />
+            <CustomButton text="Update" type="submit" />
             {isUpdated && (
                 <p className="text-green-500 mt-2">Updated successfully!</p>
             )}

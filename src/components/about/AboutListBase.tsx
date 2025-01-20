@@ -31,7 +31,7 @@ export default function AboutListBase({
                                     <DeleteButton
                                         id={about.id}
                                         deleteAction={deleteAbout}
-                                        label="Delete About"
+                                        label="Delete"
                                     />
 
                                     <UpdateAboutButton

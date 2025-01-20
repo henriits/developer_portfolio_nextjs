@@ -86,7 +86,7 @@ export default function ProjectListBase({
                                 <DeleteButton
                                     id={project.id}
                                     deleteAction={deleteProject}
-                                    label="Delete Project"
+                                    label="Delete"
                                 />
                                 <UpdateProjectsButton
                                     id={project.id}

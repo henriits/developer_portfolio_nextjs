@@ -19,14 +19,10 @@ const Modal = ({ isOpen, onClose, onConfirm, children }: ModalProps) => {
                     <CustomButton
                         text="Cancel"
                         onClick={onClose}
-                        className="hover:text-green-600"
+                        className="border-red-500 hover:bg-red-500"
                     />
 
-                    <CustomButton
-                        text="Confirm"
-                        onClick={onConfirm}
-                        className="hover:text-red-500"
-                    />
+                    <CustomButton text="Confirm" onClick={onConfirm} />
                 </div>
             </div>
         </div>

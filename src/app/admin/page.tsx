@@ -43,7 +43,7 @@ export default async function AdminPage() {
                     <CustomButton
                         text="Sign Out"
                         href="/api/auth/signout"
-                        className="hover:text-red-500"
+                        className="hover:bg-red-500 text-white border-red-500"
                     />
                 </div>
             </div>
