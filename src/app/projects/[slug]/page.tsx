@@ -90,7 +90,7 @@ export default async function PostPage({
                                     } // Ensure it's an absolute URL
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                                    className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                                 >
                                     <FaGithub className="text-xl" />
                                     <span>GitHub</span>
@@ -105,7 +105,7 @@ export default async function PostPage({
                                     } // Ensure it's an absolute URL
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                                    className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14]transition-colors"
                                 >
                                     <FaExternalLinkAlt className="text-lg" />
                                     <span>Demo</span>
@@ -114,14 +114,14 @@ export default async function PostPage({
 
                             <Link
                                 href="/projects"
-                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                             >
                                 <FaArrowLeft className="text-lg" />
                                 <span>Back to Projects</span>
                             </Link>
                             <Link
                                 href="/"
-                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                             >
                                 <FaHome className="text-lg" />
                                 <span>Home</span>

@@ -1,5 +1,6 @@
 import { sendEmail } from "@/actions/sendEmail";
 import { HiMail, HiLocationMarker } from "react-icons/hi";
+import CustomButton from "../ui/CustomButton";
 
 const ContactForm = () => {
     return (
@@ -69,7 +70,7 @@ const ContactForm = () => {
                             <input
                                 name="senderEmail"
                                 type="email"
-                                className="w-full p-3  rounded-md  focus:border-[#13DF14] transition-all"
+                                className="w-full p-3 border-2 rounded-md  focus:border-[#13DF14] focus:ring-2 focus:ring-[#13DF14] transition-all"
                                 placeholder="Your Email"
                                 required
                             />
@@ -83,12 +84,8 @@ const ContactForm = () => {
                                 required
                             ></textarea>
                         </div>
-                        <button
-                            type="submit"
-                            className="border-2 bg-neutral-950 text-white py-3 px-8 rounded-lg text-xl font-bold transition duration-300 hover:text-[#13DF14] hover:scale-105"
-                        >
-                            Send Message
-                        </button>
+
+                        <CustomButton text="Send Message" type="submit" />
                     </form>
                 </div>
             </div>

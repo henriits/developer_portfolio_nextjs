@@ -31,7 +31,7 @@ export default function ProjectListBase({
 
     return (
         <div className="w-full text-center px-6 py-12">
-            <h2 className="main-font text-5xl font-bold mb-6 z-10">
+            <h2 className="main-font text-5xl font-bold mb-12">
                 <span className="text-[#13DF14]">My </span>Work
             </h2>
             <ul className="flex flex-wrap justify-center gap-5">

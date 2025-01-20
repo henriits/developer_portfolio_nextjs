@@ -23,7 +23,7 @@ export default async function ProjectsPage() {
             </ul>
             <Link
                 href="/"
-                className=" inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg hover:bg-neutral-700 hover:text-[#13DF14] transition-colors"
+                className=" inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg  border-[#13DF14] hover:bg-[#13DF14] transition-colors"
             >
                 <FaHome className="text-lg" />
                 <span>Home</span>
