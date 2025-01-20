@@ -17,7 +17,7 @@ const HeroSection = () => {
             >
                 {/* Title */}
                 <h1 className="main-font sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 z-10 text-center leading-tight">
-                    Hello, I am A
+                    Hello, I am a
                     <span className="text-shadow-colored ">
                         <FlipWords words={words} />
                     </span>

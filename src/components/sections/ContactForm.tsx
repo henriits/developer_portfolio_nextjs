@@ -3,7 +3,7 @@ import { sendEmail } from "@/actions/sendEmail";
 const ContactForm = () => {
     return (
         <section id="contact" className="py-16   px-6 ">
-            <h2 className=" main-font text-5xl font-bold mb-6 text-center z-10">
+            <h2 className=" main-font text-5xl font-bold  text-center z-10">
                 Contact <span className="text-[#13DF14]">Me</span>
             </h2>
             <form
