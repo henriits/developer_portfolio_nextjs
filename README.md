@@ -214,7 +214,7 @@ NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER="one letter for logo"
 NEXT_PUBLIC_LOGO_LASTNAME="full-last-name"
 NEXT_PUBLIC_WORDS="React.js Developer, TypeScript Developer , Web Developer, FrontEnd Developer, Software Engineer" // example
 NEXT_PUBLIC_EMAIL="the email you want messages to be sent"
-NEXT_PUBLIC_LOCATION="your current location country"
+NEXT_PUBLIC_LOCATION="your current location country"  // "City, Country"
 
 # Social Media Links
 NEXT_PUBLIC_LINKEDIN_URL="your-linkedin-url"

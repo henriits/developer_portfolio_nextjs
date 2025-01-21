@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .font-logo {
-    font-family: "Fleur De Leah", serif;
+    font-family: "Nanum Brush Script", serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -12,4 +12,8 @@
     font-family: "Gasoek One", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+body {
+    font-family: "Nanum Gothic", sans-serif;
 }
