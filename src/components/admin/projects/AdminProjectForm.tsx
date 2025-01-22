@@ -1,12 +1,16 @@
 "use client";
 
 import { addProject } from "@/actions/projectActions";
+import CustomButton from "@/components/ui/CustomButton";
 import { useActionState } from "react";
 
 const ProjectForm = () => {
     const [error, action, isPending] = useActionState(addProject, null);
     return (
-        <form action={action} className="flex flex-col gap-y-2">
+        <form
+            action={action}
+            className="flex mx-auto max-w-screen-md flex-col gap-y-2 pb-12"
+        >
             <input
                 type="text"
                 name="title"
@@ -24,19 +28,19 @@ const ProjectForm = () => {
             <input
                 type="text"
                 name="githubLink"
-                placeholder="GitHub Link"
+                placeholder="GitHub Link (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="liveLink"
-                placeholder="Live Link"
+                placeholder="Live Link (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input
                 type="text"
                 name="imageUrl"
-                placeholder="Image URL"
+                placeholder="Image URL (optional)"
                 className="py-2 px-2 rounded-sm text-black"
             />
             <input
@@ -46,9 +50,11 @@ const ProjectForm = () => {
                 className="py-2 px-2 rounded-sm text-black"
                 required
             />
-            <button type="submit" className="bg-blue-500 py-2 rounded-sm">
-                Create Project
-            </button>
+            <CustomButton
+                text="Add Project"
+                type="submit"
+                disabled={isPending}
+            />
             {error && <p className="text-red-500">{error}</p>}
             {isPending && <p>Loading...</p>}
         </form>

@@ -1,4 +1,12 @@
 import { prisma } from "@/lib/db";
+import { notFound } from "next/navigation";
+import {
+    FaGithub,
+    FaExternalLinkAlt,
+    FaArrowLeft,
+    FaHome,
+} from "react-icons/fa";
+import Link from "next/link";
 
 export default async function PostPage({
     params,
@@ -7,97 +15,121 @@ export default async function PostPage({
 }) {
     const { slug } = await params;
     const project = await prisma.project.findUnique({
-        where: {
-            slug: slug,
-        },
+        where: { slug },
     });
+
+    if (!project) {
+        notFound();
+    }
+
     return (
-        <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
-            <main className="flex flex-col items-center gap-y-16 pt-24 px-4 lg:px-32 text-center text-white bg-neutral-900 min-h-screen">
-                {/* Hero Section */}
-                <section className="w-full flex flex-col items-center gap-y-6">
-                    <img
-                        src={
-                            project?.imageUrl ||
-                            "https://th.bing.com/th/id/OIP.2PV99eYqHuspw4x27SGtAAHaEK?rs=1&pid=ImgDetMain"
-                        }
-                        alt={project?.title ?? "Default title"}
-                        className="lg:h-96 object-cover rounded-xl shadow-lg border-4 "
-                        width={500}
-                        height={500}
-                        loading="lazy"
-                    />
-                    <h1 className="text-4xl lg:text-6xl font-bold ">
-                        {project?.title ?? "No title available"}
-                    </h1>
-                </section>
+        <main className="min-h-screen bg-neutral-900 text-white">
+            <div className="container mx-auto px-4 py-8 lg:py-12 max-w-screen-xl">
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 pt-12">
+                    {/* Left Column - Image and Technologies */}
+                    <div className="flex flex-col gap-2 md:items-end sm:pr-8 md:pr-8">
+                        <div className="relative w-full max-w-[400px] aspect-square mx-auto md:mx-0">
+                            <img
+                                src={
+                                    project.imageUrl ||
+                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                }
+                                alt={project.title}
+                                className="object-cover w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="w-full max-w-[400px] mx-auto md:mx-0">
+                            <h2 className="text-xl lg:text-2xl font-semibold mt-4 mb-4">
+                                Technologies Used
+                            </h2>
+                            <div className="flex flex-wrap gap-2">
+                                {project.technologies ? (
+                                    project.technologies.map((tech, index) => (
+                                        <span
+                                            key={index}
+                                            className="px-3 py-1 text-gray-400 text-sm font-medium"
+                                        >
+                                            {tech.trim()}
+                                        </span>
+                                    ))
+                                ) : (
+                                    <p className="text-gray-400">
+                                        No technologies specified
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
 
-                {/* Description Section */}
-                <section className="w-full max-w-4xl">
-                    <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
-                        Description
-                    </h2>
-                    <p className="text-lg text-gray-300">
-                        {project?.description ?? "No description available"}
-                    </p>
-                </section>
+                    {/* Right Column - Title, Description, and Links */}
+                    <div className="flex flex-col gap-6 md:pl-8">
+                        <h1 className="text-3xl lg:text-4xl font-bold">
+                            <span className="text-gray-400">Title: </span>
+                            {project.title}
+                        </h1>
 
-                {/* Technologies Section */}
-                <section className="w-full max-w-4xl">
-                    <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
-                        Technologies
-                    </h2>
-                    <ul className="flex flex-wrap gap-2 justify-center">
-                        {project?.technologies.map((tech) => (
-                            <li
-                                key={tech}
-                                className="bg-gray-100 text-gray-800 rounded-full px-2 py-1 text-xs"
-                            >
-                                {tech}
-                            </li>
-                        ))}
-                    </ul>
-                </section>
+                        <div className="flex-grow">
+                            <p className="text-gray-300 leading-relaxed">
+                                <span className="text-gray-400 border-b-2 border-[#13DF14] mb-3">
+                                    Description
+                                </span>
+                                <br />
+                                {project.description}
+                            </p>
+                        </div>
 
-                {/* Links Section */}
-                {(project?.githubLink || project?.liveLink) && (
-                    <section className="w-full max-w-4xl">
-                        <h2 className="text-2xl lg:text-3xl font-semibold mb-4">
-                            Project Links
-                        </h2>
-                        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-4">
-                            {project?.githubLink && (
+                        {/* Links Section */}
+                        <div className="flex flex-wrap gap-4 mt-auto">
+                            {project.githubLink && (
                                 <a
                                     href={
                                         project.githubLink.startsWith("http")
                                             ? project.githubLink
                                             : `https://${project.githubLink}`
-                                    }
-                                    className="border-2  text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-lg font-bold transition duration-300"
+                                    } // Ensure it's an absolute URL
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                                 >
-                                    GitHub
+                                    <FaGithub className="text-xl" />
+                                    <span>GitHub</span>
                                 </a>
                             )}
-                            {project?.liveLink && (
+                            {project.liveLink && (
                                 <a
                                     href={
                                         project.liveLink.startsWith("http")
                                             ? project.liveLink
                                             : `https://${project.liveLink}`
-                                    }
-                                    className="border-2  text-white hover:text-[#13DF14] py-3 px-8 rounded-lg text-lg font-bold transition duration-300"
+                                    } // Ensure it's an absolute URL
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
                                 >
-                                    Live Demo
+                                    <FaExternalLinkAlt className="text-lg" />
+                                    <span>Demo</span>
                                 </a>
                             )}
+
+                            <Link
+                                href="/projects"
+                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
+                            >
+                                <FaArrowLeft className="text-lg" />
+                                <span>Back to Projects</span>
+                            </Link>
+                            <Link
+                                href="/"
+                                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
+                            >
+                                <FaHome className="text-lg" />
+                                <span>Home</span>
+                            </Link>
                         </div>
-                    </section>
-                )}
-            </main>
+                    </div>
+                </div>
+            </div>
         </main>
     );
 }

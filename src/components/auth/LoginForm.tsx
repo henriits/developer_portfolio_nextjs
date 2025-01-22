@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import CustomButton from "../ui/CustomButton";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("");
@@ -66,12 +67,11 @@ const LoginForm = () => {
 
             {error && <p className="text-red-500 py-5">{error}</p>}
 
-            <button
+            <CustomButton
+                text="Sign In"
                 type="submit"
-                className="mt-4 w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Sign In
-            </button>
+                className="mt-4 w-full p-2"
+            />
         </form>
     );
 };
