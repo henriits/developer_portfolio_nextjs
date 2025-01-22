@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import { describe, test } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import ProjectCard from "./ProjectCard";
 
 describe("<ProjectCard />", () => {
@@ -15,7 +15,38 @@ describe("<ProjectCard />", () => {
         updatedAt: new Date(),
         technologies: ["React", "TypeScript"],
     };
+
     test("Render Project Card", () => {
         render(<ProjectCard project={project} />);
+    });
+
+    test("Displays project title", () => {
+        render(<ProjectCard project={project} />);
+        expect(screen.getByText("Project Title")).toBeInTheDocument();
+    });
+
+    test("Displays project image", () => {
+        render(<ProjectCard project={project} />);
+        const img = screen.getByAltText(`Project ${project.title}`);
+        expect(img).toHaveAttribute("src", project.imageUrl);
+    });
+
+    test("Displays GitHub link", () => {
+        render(<ProjectCard project={project} />);
+        const githubLink = screen.getByTitle("GitHub Repository");
+        expect(githubLink).toHaveAttribute("href", project.githubLink);
+    });
+
+    test("Displays live demo link", () => {
+        render(<ProjectCard project={project} />);
+        const liveLink = screen.getByTitle("Live Demo");
+        expect(liveLink).toHaveAttribute("href", project.liveLink);
+    });
+
+    test("Displays project technologies", () => {
+        render(<ProjectCard project={project} />);
+        project.technologies.forEach((tech) => {
+            expect(screen.getByText(tech)).toBeInTheDocument();
+        });
     });
 });
