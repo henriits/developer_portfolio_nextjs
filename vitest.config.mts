@@ -5,8 +5,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
     plugins: [tsconfigPaths(), react()],
     test: {
-        globals: true, // Vitest provides globals like `expect`
-        environment: "jsdom", // Simulate a browser environment
-        setupFiles: "./tests/setupTest.ts", // Path to your setup file
+        globals: true,
+        environment: "jsdom",
+        setupFiles: "./tests/setupTest.ts",
     },
 });
