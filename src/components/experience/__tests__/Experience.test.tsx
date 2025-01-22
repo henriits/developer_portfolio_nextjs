@@ -1,7 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import ExperienceListBase from "./ExperienceListBase"; // Ensure correct import
+import ExperienceListBase from "../ExperienceListBase"; // Ensure correct import
 
 describe("<ExperienceListBase />", () => {
     const experiences = [

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { describe, test } from "vitest";
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 
 describe("<Button />", () => {
     test("renders a button with the Update text", () => {
