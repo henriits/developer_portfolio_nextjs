@@ -41,6 +41,8 @@ A dynamic developer portfolio built with Next.js 13+, featuring a hidden admin d
 - Neon Database (PostgreSQL)
 - Resend (email sending)
 - React-Email (email styling)
+- Vitest (Unit testing)
+- Playwright (E2E)
 
 ## Feature Details
 
