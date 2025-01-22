@@ -17,18 +17,29 @@ export default function AboutListBase({
     isAdmin = false,
 }: AboutListBaseProps) {
     return (
-        <>
-            <h2 className="main-font text-5xl font-bold m-6 text-center">
+        <div data-testid="about-section">
+            <h2
+                className="main-font text-5xl font-bold m-6 text-center"
+                data-testid="about-title"
+            >
                 About <span className="text-[#13DF14]">Me</span>
             </h2>
             {abouts && abouts.length > 0 ? (
-                <ul>
+                <ul data-testid="about-content-list">
                     {abouts.map((about) => (
                         <li key={about.id}>
                             <div className="text-center max-w-3xl mx-auto space-y-4">
-                                <div className="mx-10 m-4">{about.content}</div>
+                                <div
+                                    className="mx-10 m-4"
+                                    data-testid="about-content-item"
+                                >
+                                    {about.content}
+                                </div>
                                 {isAdmin && (
-                                    <div className="pt-4 flex gap-x-4 items-center justify-center">
+                                    <div
+                                        className="pt-4 flex gap-x-4 items-center justify-center"
+                                        data-testid="about-admin-controls"
+                                    >
                                         <DeleteButton
                                             id={about.id}
                                             deleteAction={deleteAbout}
@@ -46,10 +57,13 @@ export default function AboutListBase({
                     ))}
                 </ul>
             ) : (
-                <p className="text-center text-gray-400">
+                <p
+                    className="text-center text-gray-400"
+                    data-testid="about-empty-message"
+                >
                     No about entries found.
                 </p>
             )}
-        </>
+        </div>
     );
 }
