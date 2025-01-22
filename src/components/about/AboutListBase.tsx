@@ -30,7 +30,7 @@ export default function AboutListBase({
                         <li key={about.id}>
                             <div className="text-center max-w-3xl mx-auto space-y-4">
                                 <div
-                                    className="mx-10 m-4"
+                                    className="mx-10"
                                     data-testid="about-content-item"
                                 >
                                     {about.content}

@@ -1,8 +1,34 @@
+"use client";
 import { sendEmail } from "@/actions/sendEmail";
 import { HiMail, HiLocationMarker } from "react-icons/hi";
 import CustomButton from "../ui/CustomButton";
+import { useState } from "react";
 
 const ContactForm = () => {
+    const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        setMessage("");
+        setError("");
+
+        const formData = new FormData(event.target as HTMLFormElement);
+        const response = await sendEmail(formData);
+
+        if (response.success) {
+            setMessage("Email has been sent successfully!");
+            (event.target as HTMLFormElement).reset();
+        } else {
+            setError(`There was an error sending the email: ${response.error}`);
+        }
+
+        setTimeout(() => {
+            setMessage("");
+            setError("");
+        }, 3000);
+    };
+
     return (
         <section
             id="contact"
@@ -86,7 +112,7 @@ const ContactForm = () => {
                 >
                     <form
                         className="bg-neutral-900 rounded-lg p-8 w-full mx-auto"
-                        action={sendEmail}
+                        onSubmit={handleSubmit}
                         data-testid="contact-form"
                     >
                         <div className="mb-4 text-black">
@@ -110,11 +136,17 @@ const ContactForm = () => {
                             ></textarea>
                         </div>
 
-                        <CustomButton
-                            text="Send Message"
-                            type="submit"
-                            data-testid="submit-button"
-                        />
+                        <div className="flex items-center space-x-4">
+                            <CustomButton
+                                text="Send Message"
+                                type="submit"
+                                data-testid="submit-button"
+                            />
+                            {message && (
+                                <p className="text-green-500">{message}</p>
+                            )}
+                            {error && <p className="text-red-500">{error}</p>}
+                        </div>
                     </form>
                 </div>
             </div>

@@ -15,7 +15,7 @@ export default async function ProjectsPage() {
         console.error("Error fetching projects:", error);
     }
     return (
-        <main className="flex flex-col items-center gap-y-5 pt-24 text-center  pb-12">
+        <main className="min-h-screen flex flex-col items-center gap-y-5 pt-24 text-center  pb-12">
             <ul className="flex flex-wrap justify-center gap-5">
                 {projects?.map((project) => (
                     <ProjectCard key={project.id} project={project} />

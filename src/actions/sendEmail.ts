@@ -10,16 +10,23 @@ export async function sendEmail(formData: FormData) {
     const senderEmail = formData.get("senderEmail") as string;
     const message = formData.get("message") as string;
 
-    await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: process.env.NEXT_PUBLIC_EMAIL as string,
-        subject: "New Message from Portfolio",
-        replyTo: senderEmail,
-        react: React.createElement(ContactFormEmail, {
-            message: message,
-            senderEmail: senderEmail,
-        }),
-        // this is the same as <ContactFormEmail message={message} senderEmail={senderEmail} />
-        // but this way we dont have to turn sendEmail.ts into a tsx file
-    });
+    try {
+        await resend.emails.send({
+            from: "onboarding@resend.dev",
+            to: process.env.NEXT_PUBLIC_EMAIL as string,
+            subject: "New Message from Portfolio",
+            replyTo: senderEmail,
+            react: React.createElement(ContactFormEmail, {
+                message: message,
+                senderEmail: senderEmail,
+            }),
+        });
+        return { success: true };
+    } catch (error) {
+        if (error instanceof Error) {
+            return { success: false, error: error.message };
+        } else {
+            return { success: false, error: "An unknown error occurred" };
+        }
+    }
 }
