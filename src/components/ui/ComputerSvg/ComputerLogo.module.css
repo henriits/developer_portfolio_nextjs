@@ -1,0 +1,18 @@
+.logo {
+    animation: float 4s ease-in-out infinite;
+}
+
+.logoShadow {
+    animation: float 4s ease-in-out infinite;
+}
+
+.button {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-40px);
+    }
+}
