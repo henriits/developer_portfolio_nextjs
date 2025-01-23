@@ -1,22 +1,24 @@
 import { motion, useInView, useAnimation } from "framer-motion";
 import { useRef, useEffect } from "react";
 
-type props = {
+type Props = {
     children: React.ReactNode;
     className?: string;
     delay?: number;
 };
 
-export default function Slide({ children, delay, className }: props) {
+export default function Slide({ children, delay, className }: Props) {
     const ref = useRef(null);
-    const isInview = useInView(ref, { once: true });
+    const isInView = useInView(ref); // Removed `{ once: true }` to allow continuous triggering
     const controls = useAnimation();
 
     useEffect(() => {
-        if (isInview) {
+        if (isInView) {
             controls.start("visible");
+        } else {
+            controls.start("hidden"); // Return to hidden state when out of view
         }
-    }, [isInview]);
+    }, [isInView, controls]);
 
     return (
         <motion.div
@@ -28,7 +30,7 @@ export default function Slide({ children, delay, className }: props) {
             transition={{
                 type: "spring",
                 duration: 0.2,
-                damping: 8,
+                damping: 4,
                 delay: delay,
                 stiffness: 100,
             }}
