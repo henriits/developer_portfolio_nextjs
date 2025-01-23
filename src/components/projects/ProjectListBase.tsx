@@ -58,7 +58,33 @@ export default function ProjectListBase({
                                 <p className="text-sm text-gray-600">
                                     Technologies:
                                     <span className="text-white ml-2">
-                                        {project.technologies.join(", ")}
+                                        {project.technologies ? (
+                                            project.technologies.flatMap(
+                                                (tech, index) =>
+                                                    tech
+                                                        .split(",")
+                                                        .map(
+                                                            (
+                                                                singleTech,
+                                                                subIndex
+                                                            ) => (
+                                                                <span
+                                                                    key={`${index}-${subIndex}`}
+                                                                    className="py-1 text-xs text-gray-400"
+                                                                    title={singleTech.trim()} // Display the text on hover
+                                                                >
+                                                                    <i
+                                                                        className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
+                                                                    ></i>
+                                                                </span>
+                                                            )
+                                                        )
+                                            )
+                                        ) : (
+                                            <p className="text-gray-400 text-sm">
+                                                No technologies specified
+                                            </p>
+                                        )}
                                     </span>
                                 </p>
                                 <p className="text-sm text-gray-600">

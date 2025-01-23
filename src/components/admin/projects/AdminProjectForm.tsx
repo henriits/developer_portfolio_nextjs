@@ -46,10 +46,21 @@ const ProjectForm = () => {
             <input
                 type="text"
                 name="technologies"
-                placeholder="Technologies (comma-separated)"
+                placeholder="Technologies (comma-separated) js,react,tailwindcss,ts"
                 className="py-2 px-2 rounded-sm text-black"
                 required
             />
+            <p className="text-gray-400">
+                Look for possible icons at:{" "}
+                <a
+                    href="https://colored-icons.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#13DF14]"
+                >
+                    Colored icons
+                </a>
+            </p>
             <CustomButton
                 text="Add Project"
                 type="submit"
