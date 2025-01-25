@@ -1,9 +1,10 @@
 "use client";
-import { Project } from "@prisma/client";
+
 import { FaExternalLinkAlt, FaGithub, FaInfoCircle } from "react-icons/fa";
 import Slide from "../animations/Slide";
+import { ProjectProps } from "../../../types/portfolioTypes";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project }: { project: ProjectProps }) {
     return (
         <li className="flex-shrink-0 w-96" data-testid="project-card">
             <Slide delay={0.5} data-testid="project-slide">

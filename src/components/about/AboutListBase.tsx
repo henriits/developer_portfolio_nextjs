@@ -3,21 +3,12 @@ import { deleteAbout } from "@/actions/aboutActions";
 import DeleteButton from "../ui/DeleteButton";
 import UpdateAboutButton from "../admin/about/UpdateAboutButton";
 import Slide from "../animations/Slide";
-
-type AboutItem = {
-    id: string;
-    content: string;
-};
-
-type AboutListBaseProps = {
-    abouts: AboutItem[];
-    isAdmin?: boolean;
-};
+import { AboutListProps } from "../../../types/portfolioTypes";
 
 export default function AboutListBase({
     abouts,
     isAdmin = false,
-}: AboutListBaseProps) {
+}: AboutListProps) {
     return (
         <div data-testid="about-section">
             <h2
@@ -35,7 +26,13 @@ export default function AboutListBase({
                                     className="mx-10"
                                     data-testid="about-content-item"
                                 >
-                                    <Slide delay={0.5}>{about.content}</Slide>
+                                    {isAdmin ? (
+                                        about.content
+                                    ) : (
+                                        <Slide delay={0.5}>
+                                            {about.content}
+                                        </Slide>
+                                    )}
                                 </div>
                                 {isAdmin && (
                                     <div

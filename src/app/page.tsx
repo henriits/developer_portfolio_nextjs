@@ -1,9 +1,9 @@
 import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/AboutSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
-import TechStackSection from "../components/sections/TechStackSection";
+import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectSection from "../components/sections/ProjectSection";
-import ContactForm from "../components/sections/ContactForm";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
     return (
@@ -11,9 +11,9 @@ export default function Home() {
             <HeroSection />
             <AboutSection />
             <ExperienceSection />
-            <TechStackSection />
+            <SkillsSection />
             <ProjectSection />
-            <ContactForm />
+            <ContactSection />
         </div>
     );
 }

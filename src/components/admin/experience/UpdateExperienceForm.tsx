@@ -2,16 +2,7 @@
 import { updateExperience } from "@/actions/experienceActions";
 import CustomButton from "@/components/ui/CustomButton";
 import { useState } from "react";
-
-type ExperienceFormProps = {
-    id: string;
-    title: string;
-    company: string;
-    location: string | null;
-    startDate: string | null;
-    endDate: string | null;
-    description: string;
-};
+import { ExperienceProps } from "../../../../types/portfolioTypes";
 
 const UpdateExperienceForm = ({
     id,
@@ -21,7 +12,7 @@ const UpdateExperienceForm = ({
     startDate,
     endDate,
     description,
-}: ExperienceFormProps) => {
+}: ExperienceProps) => {
     const [isUpdated, setIsUpdated] = useState(false);
     return (
         <form

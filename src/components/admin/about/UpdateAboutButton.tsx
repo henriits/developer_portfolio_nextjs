@@ -2,13 +2,9 @@
 import { useState } from "react";
 import UpdateAboutForm from "./UpdateAboutForm";
 import CustomButton from "@/components/ui/CustomButton";
+import { AboutProps } from "../../../../types/portfolioTypes";
 
-interface UpdateButtonProps {
-    id: string;
-    content: string;
-}
-
-const UpdateButton = ({ id, content }: UpdateButtonProps) => {
+const UpdateButton = ({ id, content }: AboutProps) => {
     const [isEditing, setIsEditing] = useState(false);
 
     return (

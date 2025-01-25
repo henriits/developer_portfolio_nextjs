@@ -1,18 +1,8 @@
 "use client";
-import { updateExperience } from "@/actions/experienceActions";
 import { useState } from "react";
 import UpdateExperienceForm from "./UpdateExperienceForm";
 import CustomButton from "@/components/ui/CustomButton";
-
-type Experience = {
-    id: string;
-    title: string;
-    company: string;
-    location: string | null;
-    startDate: string | null;
-    endDate: string | null;
-    description: string;
-};
+import { ExperienceProps } from "../../../../types/portfolioTypes";
 
 const UpdateButton = ({
     id,
@@ -22,7 +12,7 @@ const UpdateButton = ({
     startDate,
     endDate,
     description,
-}: Experience) => {
+}: ExperienceProps) => {
     const [isEditing, setIsEditing] = useState(false);
 
     return (
