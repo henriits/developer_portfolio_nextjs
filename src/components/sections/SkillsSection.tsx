@@ -1,5 +1,3 @@
-"use client";
-
 import { ComputerSvg } from "../ui/ComputerSvg/ComputerSvg";
 import SkillList from "../skills/SkillList";
 
