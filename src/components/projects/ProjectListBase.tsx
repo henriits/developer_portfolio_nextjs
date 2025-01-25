@@ -12,15 +12,18 @@ export default function ProjectListBase({
     const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
     return (
-        <div className="w-full px-6 py-12">
-            <h2 className="main-font text-5xl font-bold mb-12">
-                <span className="text-[#13DF14]">My </span>Work
-            </h2>
+        <>
+            {isAdmin && (
+                <h2 className="main-font text-5xl font-bold mb-12 text-center">
+                    <span className="text-[#13DF14]">My </span>Work
+                </h2>
+            )}
             {projects && projects.length > 0 ? (
                 <ul className="flex flex-wrap justify-center gap-5">
                     {displayedProjects.map((project) =>
                         isAdmin ? (
                             // Admin view
+
                             <div
                                 key={project.id}
                                 className="border-2 rounded-md p-3 w-full max-w-md"
@@ -124,6 +127,6 @@ export default function ProjectListBase({
                     No project entries found.
                 </p>
             )}
-        </div>
+        </>
     );
 }
