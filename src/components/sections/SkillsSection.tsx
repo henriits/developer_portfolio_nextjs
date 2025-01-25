@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import React from "react";
+import { ComputerSvg } from "../ui/ComputerSvg/ComputerSvg";
 
-const TechStackData: Array<{ icon: string; label: string }> = [
+const SkillsData: Array<{ icon: string; label: string }> = [
     { icon: "ci-js", label: "JavaScript" },
     { icon: "ci-react", label: "React" },
     { icon: "ci-html5", label: "HTML5" },
@@ -17,9 +18,14 @@ const TechStackData: Array<{ icon: string; label: string }> = [
     { icon: "ci-vscode", label: "VS Code" },
 ];
 
-const TechStackSection = () => {
+const SkillsSection = () => {
     return (
         <div className="w-full p-5  overflow-hidden">
+            <div className="flex justify-center items-center w-full mt-8">
+                <div className="w-96">
+                    <ComputerSvg />
+                </div>
+            </div>
             <h2 className="text-center main-font text-5xl font-bold mb-6 p-12">
                 Sk<span className="text-[#13DF14]">i</span>lls
             </h2>
@@ -36,7 +42,7 @@ const TechStackSection = () => {
                 >
                     {[...new Array(2)].fill(0).map((_, index) => (
                         <React.Fragment key={index}>
-                            {TechStackData.map(({ icon, label }) => (
+                            {SkillsData.map(({ icon, label }) => (
                                 <div
                                     key={label}
                                     className="text-center flex-none"
@@ -55,4 +61,4 @@ const TechStackSection = () => {
     );
 };
 
-export default TechStackSection;
+export default SkillsSection;

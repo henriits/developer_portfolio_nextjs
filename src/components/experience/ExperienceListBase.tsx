@@ -4,7 +4,6 @@ import { deleteExperience } from "@/actions/experienceActions";
 import DeleteButton from "../ui/DeleteButton";
 import UpdateExperienceButton from "../admin/experience/UpdateExperienceButton";
 import Slide from "../animations/Slide";
-import { ComputerSvg } from "../ui/ComputerSvg/ComputerSvg";
 
 export interface ExperienceItem {
     id: string;
@@ -152,11 +151,6 @@ export default function ExperienceListBase({
                             No experience entries found.
                         </p>
                     )}
-                    <div className="flex justify-center items-center w-full mt-8">
-                        <div className="w-96">
-                            <ComputerSvg />
-                        </div>
-                    </div>
                 </div>
             </div>
         </>
