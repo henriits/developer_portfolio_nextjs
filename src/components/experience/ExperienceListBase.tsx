@@ -1,33 +1,18 @@
 "use client";
-
 import { deleteExperience } from "@/actions/experienceActions";
 import DeleteButton from "../ui/DeleteButton";
 import UpdateExperienceButton from "../admin/experience/UpdateExperienceButton";
 import Slide from "../animations/Slide";
-import { ComputerSvg } from "../ui/ComputerSvg/ComputerSvg";
+import {
+    ExperienceListProps,
+    ExperienceProps,
+} from "../../../types/portfolioTypes";
 
-export interface ExperienceItem {
-    id: string;
-    title: string;
-    company: string;
-    location: string | null;
-    startDate: string | null;
-    endDate: string | null;
-    description: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-type ExperienceListBaseProps = {
-    experiences: ExperienceItem[];
-    isAdmin?: boolean;
-};
-
-function ExperienceItemContent({
+function ExperienceContent({
     experience,
     isAdmin,
 }: {
-    experience: ExperienceItem;
+    experience: ExperienceProps;
     isAdmin: boolean;
 }) {
     return (
@@ -93,7 +78,7 @@ function ExperienceItemContent({
 export default function ExperienceListBase({
     experiences,
     isAdmin = false,
-}: ExperienceListBaseProps) {
+}: ExperienceListProps) {
     return (
         <>
             <h2 className="text-5xl main-font font-bold pt-12 mb-6 text-center">
@@ -107,13 +92,13 @@ export default function ExperienceListBase({
                             {experiences.map((experience) => (
                                 <li key={experience.id}>
                                     {isAdmin ? (
-                                        <ExperienceItemContent
+                                        <ExperienceContent
                                             experience={experience}
                                             isAdmin={isAdmin}
                                         />
                                     ) : (
                                         <Slide delay={0.5}>
-                                            <ExperienceItemContent
+                                            <ExperienceContent
                                                 experience={experience}
                                                 isAdmin={isAdmin}
                                             />

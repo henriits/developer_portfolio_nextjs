@@ -2,31 +2,13 @@ import { deleteProject } from "@/actions/projectActions";
 import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
-
-export interface ProjectItem {
-    id: string;
-    title: string;
-    slug: string;
-    description: string;
-    githubLink: string | null;
-    liveLink: string | null;
-    imageUrl: string | null;
-    technologies: string[];
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-type ProjectListBaseProps = {
-    projects: ProjectItem[];
-    isAdmin?: boolean;
-    limit?: number;
-};
+import { ProjectListProps } from "../../../types/portfolioTypes";
 
 export default function ProjectListBase({
     projects,
     isAdmin = false,
     limit,
-}: ProjectListBaseProps) {
+}: ProjectListProps) {
     const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
     return (

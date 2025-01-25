@@ -2,13 +2,9 @@
 import { useState } from "react";
 import { updateAbout } from "@/actions/aboutActions";
 import CustomButton from "@/components/ui/CustomButton";
+import { AboutProps } from "../../../../types/portfolioTypes";
 
-interface UpdateAboutFormProps {
-    id: string;
-    content: string;
-}
-
-const UpdateAboutForm = ({ id, content }: UpdateAboutFormProps) => {
+const UpdateAboutForm = ({ id, content }: AboutProps) => {
     const [isUpdated, setIsUpdated] = useState(false);
 
     return (
@@ -19,7 +15,7 @@ const UpdateAboutForm = ({ id, content }: UpdateAboutFormProps) => {
                 const formData = new FormData(e.currentTarget);
                 await updateAbout(id, formData);
                 setIsUpdated(true);
-                setTimeout(() => setIsUpdated(false), 3000); // Hide message after 3 seconds
+                setTimeout(() => setIsUpdated(false), 3000);
             }}
         >
             <textarea
