@@ -45,16 +45,24 @@ export default async function PostPage({
                             </h2>
                             <div className="flex flex-wrap gap-2">
                                 {project.technologies ? (
-                                    project.technologies.map((tech, index) => (
-                                        <span
-                                            key={index}
-                                            className="px-3 py-1 text-gray-400 text-sm font-medium"
-                                        >
-                                            {tech.trim()}
-                                        </span>
-                                    ))
+                                    project.technologies.flatMap(
+                                        (tech, index) =>
+                                            tech
+                                                .split(",")
+                                                .map((singleTech, subIndex) => (
+                                                    <span
+                                                        key={`${index}-${subIndex}`}
+                                                        className="py-1 text-xs text-gray-400"
+                                                        title={singleTech.trim()} // Display the text on hover
+                                                    >
+                                                        <i
+                                                            className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
+                                                        ></i>
+                                                    </span>
+                                                ))
+                                    )
                                 ) : (
-                                    <p className="text-gray-400">
+                                    <p className="text-gray-400 text-sm">
                                         No technologies specified
                                     </p>
                                 )}

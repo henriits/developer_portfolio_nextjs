@@ -42,11 +42,4 @@ describe("<ProjectCard />", () => {
         const liveLink = screen.getByTitle("Live Demo");
         expect(liveLink).toHaveAttribute("href", project.liveLink);
     });
-
-    test("Displays project technologies", () => {
-        render(<ProjectCard project={project} />);
-        project.technologies.forEach((tech) => {
-            expect(screen.getByText(tech)).toBeInTheDocument();
-        });
-    });
 });

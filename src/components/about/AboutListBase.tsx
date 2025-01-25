@@ -1,6 +1,8 @@
+"use client";
 import { deleteAbout } from "@/actions/aboutActions";
 import DeleteButton from "../ui/DeleteButton";
 import UpdateAboutButton from "../admin/about/UpdateAboutButton";
+import Slide from "../animations/Slide";
 
 type AboutItem = {
     id: string;
@@ -33,7 +35,7 @@ export default function AboutListBase({
                                     className="mx-10"
                                     data-testid="about-content-item"
                                 >
-                                    {about.content}
+                                    <Slide delay={0.5}>{about.content}</Slide>
                                 </div>
                                 {isAdmin && (
                                     <div
