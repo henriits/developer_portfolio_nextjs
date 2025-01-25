@@ -35,7 +35,13 @@ export default function AboutListBase({
                                     className="mx-10"
                                     data-testid="about-content-item"
                                 >
-                                    <Slide delay={0.5}>{about.content}</Slide>
+                                    {isAdmin ? (
+                                        about.content
+                                    ) : (
+                                        <Slide delay={0.5}>
+                                            {about.content}
+                                        </Slide>
+                                    )}
                                 </div>
                                 {isAdmin && (
                                     <div

@@ -1,4 +1,3 @@
-import ContactForm from "../contact/ContactForm";
 import ContactInfo from "../contact/ContactInfo";
 import SendEmailForm from "../contact/SendEmailForm";
 
