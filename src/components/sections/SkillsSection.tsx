@@ -1,5 +1,6 @@
 import { ComputerSvg } from "../ui/ComputerSvg/ComputerSvg";
 import SkillList from "../skills/SkillList";
+import { fontClasses } from "@/utils/fonts";
 
 const SkillsSection = () => {
     return (
@@ -9,7 +10,9 @@ const SkillsSection = () => {
                     <ComputerSvg />
                 </div>
             </div>
-            <h2 className="text-center main-font text-5xl font-bold mb-6 p-12">
+            <h2
+                className={`text-center  text-5xl font-bold mb-6 p-12 ${fontClasses.main}`}
+            >
                 Sk<span className="text-[#13DF14]">i</span>lls
             </h2>
             <SkillList />

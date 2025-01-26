@@ -1,6 +1,8 @@
+import { fontClasses } from "@/utils/fonts";
+
 const Logo = () => {
     return (
-        <span className="font-logo text-4xl">
+        <span className={`text-4xl ${fontClasses.logo}`}>
             <span className="text-[#13DF14]">
                 {process.env.NEXT_PUBLIC_LOGO_FIRSTNAME_LETTER}
             </span>

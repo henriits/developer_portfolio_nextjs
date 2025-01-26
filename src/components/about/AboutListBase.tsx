@@ -4,6 +4,7 @@ import DeleteButton from "../ui/DeleteButton";
 import UpdateAboutButton from "../admin/about/UpdateAboutButton";
 import Slide from "../animations/Slide";
 import { AboutListProps } from "../../../types/portfolioTypes";
+import { fontClasses } from "@/utils/fonts";
 
 export default function AboutListBase({
     abouts,
@@ -12,7 +13,7 @@ export default function AboutListBase({
     return (
         <div data-testid="about-section">
             <h2
-                className="main-font text-5xl font-bold m-6 text-center"
+                className={`text-5xl font-bold m-6 text-center ${fontClasses.main}`}
                 data-testid="about-title"
             >
                 About <span className="text-[#13DF14]">Me</span>

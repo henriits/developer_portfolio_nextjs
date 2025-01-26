@@ -7,6 +7,7 @@ import {
     ExperienceListProps,
     ExperienceProps,
 } from "../../../types/portfolioTypes";
+import { fontClasses } from "@/utils/fonts";
 
 function ExperienceContent({
     experience,
@@ -81,7 +82,9 @@ export default function ExperienceListBase({
 }: ExperienceListProps) {
     return (
         <>
-            <h2 className="text-5xl main-font font-bold pt-12 mb-6 text-center">
+            <h2
+                className={`text-5xl font-bold pt-12 mb-6 text-center ${fontClasses.main}`}
+            >
                 E<span className="text-[#13DF14]">xp</span>erience
             </h2>
 

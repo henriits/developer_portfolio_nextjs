@@ -1,6 +1,7 @@
 "use client";
 import { BackgroundBeamsWithCollision } from "@/components/animations/BackgroundBeamsWithCollision";
 import { FlipWords } from "@/components/animations/FlipWords";
+import { fontClasses } from "@/utils/fonts";
 
 const HeroSection = () => {
     const words = process.env.NEXT_PUBLIC_WORDS?.split(",") || [
@@ -18,7 +19,7 @@ const HeroSection = () => {
             >
                 {/* Title */}
                 <h1
-                    className="main-font text-3xl md:text-5xl lg:text-7xl font-extrabold mb-4 z-10 text-center leading-tight"
+                    className={` text-3xl md:text-5xl lg:text-7xl font-extrabold mb-4 z-10 text-center leading-tight ${fontClasses.main}`}
                     data-testid="hero-title"
                 >
                     Hello, I am a

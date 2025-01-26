@@ -1,3 +1,4 @@
+import { fontClasses } from "@/utils/fonts";
 import { HiMail, HiLocationMarker } from "react-icons/hi";
 const ContactInfo = () => {
     return (
@@ -6,7 +7,7 @@ const ContactInfo = () => {
             data-testid="contact-info"
         >
             <h2
-                className="main-font text-5xl font-bold lg:mt-0"
+                className={`text-5xl font-bold lg:mt-0 ${fontClasses.main}`}
                 data-testid="contact-title"
             >
                 Contact <span className="text-[#13DF14]">Me</span>
