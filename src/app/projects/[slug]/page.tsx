@@ -7,6 +7,7 @@ import {
     FaHome,
 } from "react-icons/fa";
 import Link from "next/link";
+import { Img } from "@react-email/components";
 
 export default async function PostPage({
     params,
@@ -29,7 +30,7 @@ export default async function PostPage({
                     {/* Left Column - Image and Technologies */}
                     <div className="flex flex-col gap-2 md:items-end sm:pr-8 md:pr-8">
                         <div className="relative w-full max-w-[400px] aspect-square mx-auto md:mx-0">
-                            <img
+                            <Img
                                 src={
                                     project.imageUrl ||
                                     "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"

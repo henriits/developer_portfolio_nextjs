@@ -37,8 +37,8 @@ const HeroSection = () => {
                 >
                     Explore my journey, skills, and projects.
                     <br />
-                    Let's connect and create something amazing together! Feel
-                    free to reach out for collaboration.
+                    Let&rsquo;s connect and create something amazing together!
+                    Feel free to reach out for collaboration.
                 </p>
             </section>
         </BackgroundBeamsWithCollision>

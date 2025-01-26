@@ -1,6 +1,5 @@
 "use client";
 
-import { updateProject } from "@/actions/projectActions";
 import { useState } from "react";
 import UpdateProjectForm from "./UpdateProjectForm";
 import CustomButton from "@/components/ui/CustomButton";

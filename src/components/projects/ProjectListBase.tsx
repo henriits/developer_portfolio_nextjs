@@ -3,6 +3,7 @@ import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
 import { ProjectListProps } from "../../../types/portfolioTypes";
+import { Img } from "@react-email/components";
 
 export default function ProjectListBase({
     projects,
@@ -90,7 +91,7 @@ export default function ProjectListBase({
                                 </p>
 
                                 {project.imageUrl && (
-                                    <img
+                                    <Img
                                         src={project.imageUrl}
                                         alt={project.title}
                                         className="object-cover rounded-md mt-2"
