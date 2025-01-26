@@ -1,6 +1,6 @@
 "use client";
-import { BackgroundBeamsWithCollision } from "@/components/animations/background-beams-with-collision";
-import { FlipWords } from "@/components/animations/flip-words";
+import { BackgroundBeamsWithCollision } from "@/components/animations/BackgroundBeamsWithCollision";
+import { FlipWords } from "@/components/animations/FlipWords";
 
 const HeroSection = () => {
     const words = process.env.NEXT_PUBLIC_WORDS?.split(",") || [
