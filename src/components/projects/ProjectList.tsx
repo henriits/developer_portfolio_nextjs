@@ -9,7 +9,7 @@ export default async function ProjectList() {
     return (
         <main className="pt-24 text-center">
             <div className="w-full px-6 py-12">
-                <h2 className={`text-5xl font-bold mb-12 ${fontClasses.main}`}>
+                <h2 className={`text-5xl mb-12 ${fontClasses.main}`}>
                     <span className="text-[#13DF14]">My </span>Work
                 </h2>
                 <ProjectListBase projects={projects} limit={3} />

@@ -15,7 +15,7 @@ export default function ProjectListBase({
     return (
         <>
             {isAdmin && (
-                <h2 className="main-font text-5xl mb-12 text-center">
+                <h2 className="text-5xl mb-12 text-center">
                     <span className="text-[#13DF14]">My </span>Work
                 </h2>
             )}
