@@ -3,7 +3,7 @@ import { deleteAbout } from "@/actions/aboutActions";
 import DeleteButton from "../ui/DeleteButton";
 import UpdateAboutButton from "../admin/about/UpdateAboutButton";
 import Slide from "../animations/Slide";
-import { AboutListProps } from "../../../types/portfolioTypes";
+import { AboutListProps } from "../../types/portfolioTypes";
 import { fontClasses } from "@/utils/fonts";
 
 export default function AboutListBase({

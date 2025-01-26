@@ -6,7 +6,7 @@ import Slide from "../animations/Slide";
 import {
     ExperienceListProps,
     ExperienceProps,
-} from "../../../types/portfolioTypes";
+} from "../../types/portfolioTypes";
 import { fontClasses } from "@/utils/fonts";
 
 function ExperienceContent({

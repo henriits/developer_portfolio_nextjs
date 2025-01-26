@@ -2,7 +2,7 @@
 
 import { FaExternalLinkAlt, FaGithub, FaInfoCircle } from "react-icons/fa";
 import Slide from "../animations/Slide";
-import { ProjectProps } from "../../../types/portfolioTypes";
+import { ProjectProps } from "../../types/portfolioTypes";
 import { Img } from "@react-email/components";
 
 export default function ProjectCard({ project }: { project: ProjectProps }) {

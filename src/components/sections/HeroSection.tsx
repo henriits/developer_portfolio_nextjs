@@ -19,7 +19,7 @@ const HeroSection = () => {
             >
                 {/* Title */}
                 <h1
-                    className={` text-3xl md:text-5xl lg:text-7xl font-extrabold mb-4 z-10 text-center leading-tight ${fontClasses.main}`}
+                    className={` text-3xl md:text-5xl lg:text-7xl mb-4 z-10 text-center leading-tight ${fontClasses.main}`}
                     data-testid="hero-title"
                 >
                     Hello, I am a

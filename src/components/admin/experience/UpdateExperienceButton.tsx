@@ -2,7 +2,7 @@
 import { useState } from "react";
 import UpdateExperienceForm from "./UpdateExperienceForm";
 import CustomButton from "@/components/ui/CustomButton";
-import { ExperienceProps } from "../../../../types/portfolioTypes";
+import { ExperienceProps } from "../../../types/portfolioTypes";
 
 const UpdateButton = ({
     id,

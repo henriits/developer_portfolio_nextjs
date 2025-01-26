@@ -2,7 +2,7 @@ import { deleteProject } from "@/actions/projectActions";
 import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
-import { ProjectListProps } from "../../../types/portfolioTypes";
+import { ProjectListProps } from "../../types/portfolioTypes";
 import { Img } from "@react-email/components";
 
 export default function ProjectListBase({
