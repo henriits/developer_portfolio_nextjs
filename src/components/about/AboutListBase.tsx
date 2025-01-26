@@ -13,7 +13,7 @@ export default function AboutListBase({
     return (
         <div data-testid="about-section">
             <h2
-                className={`text-5xl font-bold m-6 text-center ${fontClasses.main}`}
+                className={`text-5xl m-6 text-center ${fontClasses.main}`}
                 data-testid="about-title"
             >
                 About <span className="text-[#13DF14]">Me</span>

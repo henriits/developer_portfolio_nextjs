@@ -11,7 +11,7 @@ const SkillsSection = () => {
                 </div>
             </div>
             <h2
-                className={`text-center  text-5xl font-bold mb-6 p-12 ${fontClasses.main}`}
+                className={`text-center text-5xl mb-6 p-12 ${fontClasses.main}`}
             >
                 Sk<span className="text-[#13DF14]">i</span>lls
             </h2>

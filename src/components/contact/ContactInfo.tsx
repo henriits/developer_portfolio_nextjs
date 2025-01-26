@@ -7,7 +7,7 @@ const ContactInfo = () => {
             data-testid="contact-info"
         >
             <h2
-                className={`text-5xl font-bold lg:mt-0 ${fontClasses.main}`}
+                className={`text-5xl lg:mt-0 ${fontClasses.main}`}
                 data-testid="contact-title"
             >
                 Contact <span className="text-[#13DF14]">Me</span>

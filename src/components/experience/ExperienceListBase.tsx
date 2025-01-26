@@ -83,7 +83,7 @@ export default function ExperienceListBase({
     return (
         <>
             <h2
-                className={`text-5xl font-bold pt-12 mb-6 text-center ${fontClasses.main}`}
+                className={`text-5xl pt-12 mb-6 text-center ${fontClasses.main}`}
             >
                 E<span className="text-[#13DF14]">xp</span>erience
             </h2>
