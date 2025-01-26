@@ -237,72 +237,13 @@ NEXT_PUBLIC_BASE_URL="http://localhost:3000"
 
     This will create a `prisma` directory with a `schema.prisma` file.
 
-2. Update `schema.prisma` with your database schema. For example:
-
-````prisma
-  datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  }
-
-  generator client {
-  provider = "prisma-client-js"
-  }
-
-  model Project {
-  id           String   @id @default(cuid())
-  title        String
-  slug         String   @unique
-  description  String
-  githubLink   String?
-  liveLink     String?
-  imageUrl     String?
-  technologies String[]
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  @@index(slug)
-  }
-
-  model About {
-  id      String @id @default(cuid())
-  content String
-  }
-
-  model Experience {
-  id          String   @id @default(cuid())
-  title       String
-  company     String
-  location    String? // remote, onsite, or hybrid
-  startDate   String?
-  endDate     String?
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  }
-  ```
-
-3. Run the Prisma migration to create the database tables:
-
-  ```bash
-  npx prisma migrate dev --name init
-  ```
-
-4. Generate the Prisma client:
-
-  ```bash
-  npx prisma generate
-  ```
-
-### Running the Development Server
-
 Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

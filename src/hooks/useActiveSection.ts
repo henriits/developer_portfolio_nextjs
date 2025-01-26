@@ -39,11 +39,10 @@ export const useActiveSection = () => {
             }
         });
 
-        // Cleanup function
         return () => {
             observers.forEach((observer) => observer.disconnect());
         };
-    }, [pathname]); // Re-run when pathname changes
+    }, [pathname]);
 
     return activeSection;
 };
