@@ -15,7 +15,7 @@ const projectSchema = z.object({
         .nonempty("At least one technology is required"),
 });
 
-export async function addProject(previousState: any, formData: FormData) {
+export async function addProject(previousState: unknown, formData: FormData) {
     try {
         const projectData = {
             title: formData.get("title") as string,

@@ -13,7 +13,10 @@ const experienceSchema = z.object({
     description: z.string().min(1, "Description is required"),
 });
 
-export async function addExperience(previousState: any, formData: FormData) {
+export async function addExperience(
+    previousState: unknown,
+    formData: FormData
+) {
     try {
         // Convert FormData to an object
         const data = {

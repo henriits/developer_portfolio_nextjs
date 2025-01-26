@@ -8,7 +8,7 @@ const aboutSchema = z.object({
     content: z.string().min(1),
 });
 
-export async function addAbout(previousState: any, formData: FormData) {
+export async function addAbout(previousState: unknown, formData: FormData) {
     if (!(formData instanceof FormData)) {
         return "Invalid form Data";
     }
@@ -25,7 +25,7 @@ export async function addAbout(previousState: any, formData: FormData) {
             },
         });
         revalidatePath("/");
-    } catch (error) {
+    } catch {
         return "An error occurred while creating About";
     }
 }
@@ -47,7 +47,7 @@ export async function updateAbout(id: string, formData: FormData) {
             },
         });
         revalidatePath("/");
-    } catch (error) {
+    } catch {
         return "An error occurred while updating About";
     }
 }
