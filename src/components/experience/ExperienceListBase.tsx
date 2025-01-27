@@ -7,7 +7,6 @@ import {
     ExperienceListProps,
     ExperienceProps,
 } from "../../types/portfolioTypes";
-import { fontClasses } from "@/utils/fonts";
 
 function ExperienceContent({
     experience,
