@@ -1,5 +1,4 @@
 "use server";
-
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -17,7 +16,6 @@ export async function addAbout(previousState: unknown, formData: FormData) {
     if (!result.success) {
         return "Invalid about data";
     }
-
     try {
         await prisma.about.create({
             data: {
