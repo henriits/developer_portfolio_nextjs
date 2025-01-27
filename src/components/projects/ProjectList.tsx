@@ -6,8 +6,8 @@ export default async function ProjectList() {
     const projects = await prisma.project.findMany();
 
     return (
-        <main className="pt-24 text-center">
-            <div className="w-full px-6 py-12">
+        <main className=" text-center">
+            <div className="w-full px-6 ">
                 <ProjectListBase projects={projects} limit={3} />
 
                 {projects.length > 3 && (
