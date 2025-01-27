@@ -7,7 +7,7 @@
         "build": "next build && prisma generate",
         "start": "next start",
         "lint": "next lint",
-        "test": "vitest",
+        "test:unit": "vitest",
         "test:e2e": "playwright test",
         "postinstall": "prisma generate"
     },
