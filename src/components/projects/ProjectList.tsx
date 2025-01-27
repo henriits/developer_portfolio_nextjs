@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/db";
 import ProjectListBase from "./ProjectListBase";
 import Link from "next/link";
-import { fontClasses } from "@/utils/fonts";
 
 export default async function ProjectList() {
     const projects = await prisma.project.findMany();
@@ -9,9 +8,6 @@ export default async function ProjectList() {
     return (
         <main className="pt-24 text-center">
             <div className="w-full px-6 py-12">
-                <h2 className={`text-5xl mb-12 ${fontClasses.main}`}>
-                    <span className="text-[#13DF14]">My </span>Work
-                </h2>
                 <ProjectListBase projects={projects} limit={3} />
 
                 {projects.length > 3 && (

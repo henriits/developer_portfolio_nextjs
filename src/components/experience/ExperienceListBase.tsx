@@ -82,12 +82,6 @@ export default function ExperienceListBase({
 }: ExperienceListProps) {
     return (
         <>
-            <h2
-                className={`text-5xl pt-12 mb-6 text-center ${fontClasses.main}`}
-            >
-                E<span className="text-[#13DF14]">xp</span>erience
-            </h2>
-
             <div className="flex justify-center w-full">
                 <div className="max-w-3xl w-full px-4">
                     {experiences && experiences.length > 0 ? (

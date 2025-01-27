@@ -11,8 +11,6 @@ describe("<ProjectCard />", () => {
         imageUrl: "https://example.com/image.png",
         githubLink: "https://github.com",
         liveLink: "https://example.com",
-        createdAt: new Date(),
-        updatedAt: new Date(),
         technologies: ["React", "TypeScript"],
     };
 
