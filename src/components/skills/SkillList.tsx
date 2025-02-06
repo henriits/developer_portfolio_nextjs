@@ -17,6 +17,8 @@ const SkillList = () => {
         { icon: "ci-git", label: "Git" },
         { icon: "ci-css3", label: "CSS3" },
         { icon: "ci-vscode", label: "VS Code" },
+        { icon: "ci-github", label: "GitHub" },
+        { icon: "ci-vuejs", label: "Vue.js" },
     ];
 
     return (
