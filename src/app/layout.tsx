@@ -4,8 +4,8 @@ import { fontClasses } from "@/utils/fonts";
 import ClientLayout from "@/app/ClientLayout";
 
 export const metadata: Metadata = {
-    title: "Portfolio",
-    description: "Portfolio application with Next.js",
+    title: "Henri Tsarents",
+    description: "Henri Tsarents Portfolio made with Next.js",
 };
 
 export default function RootLayout({
