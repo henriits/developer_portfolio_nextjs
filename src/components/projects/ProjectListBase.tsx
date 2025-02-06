@@ -2,8 +2,91 @@ import { deleteProject } from "@/actions/projectActions";
 import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
-import { ProjectListProps } from "../../types/portfolioTypes";
+import { ProjectListProps, ProjectProps } from "../../types/portfolioTypes";
 import { Img } from "@react-email/components";
+
+function ProjectDetail({
+    label,
+    value,
+}: {
+    label: string;
+    value: string | null | undefined;
+}) {
+    return (
+        <p className="text-sm text-gray-600">
+            {label}:
+            <span className="text-white ml-2">{value || "Not available"}</span>
+        </p>
+    );
+}
+
+function ProjectTechnologies({ technologies }: { technologies?: string[] }) {
+    if (!technologies)
+        return (
+            <p className="text-gray-400 text-sm">No technologies specified</p>
+        );
+    return (
+        <p className="text-sm text-gray-600">
+            Technologies:
+            <span className="text-white ml-2">
+                {technologies.flatMap((tech, index) =>
+                    tech.split(",").map((singleTech, subIndex) => (
+                        <span
+                            key={`${index}-${subIndex}`}
+                            className="py-1 text-xs text-gray-400"
+                            title={singleTech.trim()}
+                        >
+                            <i
+                                className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
+                            ></i>
+                        </span>
+                    ))
+                )}
+            </span>
+        </p>
+    );
+}
+
+function AdminProjectView({ project }: { project: ProjectProps }) {
+    return (
+        <div className="border-2 rounded-md p-3 w-full max-w-md">
+            <ProjectDetail label="Title" value={project.title} />
+            <ProjectDetail label="Description" value={project.description} />
+            <ProjectTechnologies technologies={project.technologies} />
+            <ProjectDetail label="GitHub Link" value={project.githubLink} />
+            <ProjectDetail label="Live Link" value={project.liveLink} />
+            <p className="text-sm text-gray-600 break-words">
+                Image Url: {project.imageUrl}
+            </p>
+            {project.imageUrl && (
+                <Img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="object-cover rounded-md mt-2"
+                    width={50}
+                    height={50}
+                    loading="lazy"
+                />
+            )}
+            <div className="flex gap-x-4 items-center justify-center mt-4">
+                <DeleteButton
+                    id={project.id}
+                    deleteAction={deleteProject}
+                    label="Delete"
+                />
+                <UpdateProjectsButton
+                    id={project.id}
+                    title={project.title}
+                    description={project.description}
+                    technologies={project.technologies}
+                    githubLink={project.githubLink}
+                    liveLink={project.liveLink}
+                    imageUrl={project.imageUrl}
+                />
+            </div>
+        </div>
+    );
+}
 
 export default function ProjectListBase({
     projects,
@@ -18,102 +101,11 @@ export default function ProjectListBase({
                 <ul className="flex flex-wrap justify-center gap-5">
                     {displayedProjects.map((project) =>
                         isAdmin ? (
-                            // Admin view
-
-                            <div
+                            <AdminProjectView
                                 key={project.id}
-                                className="border-2 rounded-md p-3 w-full max-w-md"
-                            >
-                                <p className="text-sm text-gray-600">
-                                    Title:
-                                    <span className="text-white ml-2">
-                                        {project.title}
-                                    </span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    Description:
-                                    <span className="text-white ml-2">
-                                        {project.description}
-                                    </span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    Technologies:
-                                    <span className="text-white ml-2">
-                                        {project.technologies ? (
-                                            project.technologies.flatMap(
-                                                (tech, index) =>
-                                                    tech
-                                                        .split(",")
-                                                        .map(
-                                                            (
-                                                                singleTech,
-                                                                subIndex
-                                                            ) => (
-                                                                <span
-                                                                    key={`${index}-${subIndex}`}
-                                                                    className="py-1 text-xs text-gray-400"
-                                                                    title={singleTech.trim()} // Display the text on hover
-                                                                >
-                                                                    <i
-                                                                        className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                                                                    ></i>
-                                                                </span>
-                                                            )
-                                                        )
-                                            )
-                                        ) : (
-                                            <p className="text-gray-400 text-sm">
-                                                No technologies specified
-                                            </p>
-                                        )}
-                                    </span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    GitHub Link:
-                                    <span className="text-white ml-2">
-                                        {project.githubLink || "Not available"}
-                                    </span>
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    Live Link:
-                                    <span className="text-white ml-2">
-                                        {project.liveLink || "Not available"}
-                                    </span>
-                                </p>
-
-                                <p className="text-sm text-gray-600 break-words">
-                                    Image Url: {project.imageUrl}
-                                </p>
-
-                                {project.imageUrl && (
-                                    <Img
-                                        src={project.imageUrl}
-                                        alt={project.title}
-                                        className="object-cover rounded-md mt-2"
-                                        width={50}
-                                        height={50}
-                                        loading="lazy"
-                                    />
-                                )}
-                                <div className="flex gap-x-4 items-center justify-center mt-4">
-                                    <DeleteButton
-                                        id={project.id}
-                                        deleteAction={deleteProject}
-                                        label="Delete"
-                                    />
-                                    <UpdateProjectsButton
-                                        id={project.id}
-                                        title={project.title}
-                                        description={project.description}
-                                        technologies={project.technologies}
-                                        githubLink={project.githubLink}
-                                        liveLink={project.liveLink}
-                                        imageUrl={project.imageUrl}
-                                    />
-                                </div>
-                            </div>
+                                project={project}
+                            />
                         ) : (
-                            // Non-admin view (render as a card)
                             <ProjectCard key={project.id} project={project} />
                         )
                     )}

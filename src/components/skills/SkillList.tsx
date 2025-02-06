@@ -1,4 +1,5 @@
 "use client";
+import { fontClasses } from "@/utils/fonts";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -16,13 +17,15 @@ const SkillList = () => {
         { icon: "ci-git", label: "Git" },
         { icon: "ci-css3", label: "CSS3" },
         { icon: "ci-vscode", label: "VS Code" },
+        { icon: "ci-github", label: "GitHub" },
+        { icon: "ci-vuejs", label: "Vue.js" },
     ];
 
     return (
         <div className="w-auto overflow-hidden">
             <motion.div
                 transition={{
-                    duration: 10,
+                    duration: 40,
                     ease: "linear",
                     repeat: Infinity,
                 }}
@@ -33,10 +36,17 @@ const SkillList = () => {
                 {[...new Array(2)].fill(0).map((_, index) => (
                     <React.Fragment key={index}>
                         {SkillsData.map(({ icon, label }) => (
-                            <div key={label} className="text-center flex-none">
+                            <span
+                                key={index + label}
+                                className="flex items-center"
+                            >
                                 <i className={`ci ${icon} ci-2x md:ci-4x`}></i>
-                                <p className="mt-2">{label}</p>
-                            </div>
+                                <p
+                                    className={`ml-2 text-4xl ${fontClasses.logo}`}
+                                >
+                                    {label}
+                                </p>
+                            </span>
                         ))}
                     </React.Fragment>
                 ))}
