@@ -1,29 +1,18 @@
-import { getProjects } from "@/actions/projectActions";
-import ProjectCard from "@/components/projects/ProjectCard";
-import { Project } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
 import { FaHome } from "react-icons/fa";
+import { prisma } from "@/lib/db";
+import ProjectListBase from "@/components/projects/ProjectListBase";
 
 export default async function ProjectsPage() {
-    // under page we are fetching the projects from the database
-    let projects: Project[] = [];
+    const projects = await prisma.project.findMany();
 
-    try {
-        projects = await getProjects();
-    } catch (error) {
-        console.error("Error fetching projects:", error);
-    }
     return (
-        <main className="min-h-screen flex flex-col items-center gap-y-5 pt-24 text-center  pb-12">
-            <ul className="flex flex-wrap justify-center gap-5">
-                {projects?.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
-                ))}
-            </ul>
+        <main className="min-h-screen flex flex-col items-center gap-y-5 pt-24 text-center pb-12">
+            <ProjectListBase projects={projects} />
             <Link
                 href="/"
-                className=" inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg  border-[#13DF14] hover:bg-[#13DF14] transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
             >
                 <FaHome className="text-lg" />
                 <span>Home</span>
