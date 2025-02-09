@@ -4,7 +4,7 @@ import { FaHome } from "react-icons/fa";
 import { prisma } from "@/lib/db";
 import ProjectListBase from "@/components/projects/ProjectListBase";
 
-export const revalidate = 60; // Revalidate data every 60 seconds
+export const revalidate = 1;
 
 const ProjectsPage = async () => {
     const projects = await prisma.project.findMany();
