@@ -36,9 +36,19 @@ export default async function PostPage({
                                     "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
                                 }
                                 alt={project.title}
-                                className="object-cover w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
+                                className=" w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
                                 loading="lazy"
                             />
+                            <a
+                                href={
+                                    project.imageUrl ||
+                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="absolute inset-0"
+                                aria-label="View full size image"
+                            ></a>
                         </div>
                         <div className="w-full max-w-[400px] mx-auto md:mx-0">
                             <h2 className="text-xl lg:text-2xl font-semibold mt-4 mb-4">

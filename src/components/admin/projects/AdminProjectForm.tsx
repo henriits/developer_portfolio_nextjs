@@ -51,6 +51,17 @@ const ProjectForm = () => {
                         placeholder="Image URL (optional)"
                         className="py-2 px-2 rounded-sm text-black"
                     />
+                    <p className="text-gray-400">
+                        You can turn image to url here:{" "}
+                        <a
+                            href="https://www.imghippo.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#13DF14]"
+                        >
+                            Imghippo
+                        </a>
+                    </p>
                     <input
                         type="text"
                         name="technologies"
