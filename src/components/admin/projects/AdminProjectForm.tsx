@@ -54,12 +54,12 @@ const ProjectForm = () => {
                     <p className="text-gray-400">
                         You can turn image to url here:{" "}
                         <a
-                            href="https://www.imghippo.com/"
+                            href="https://app.uploadcare.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-[#13DF14]"
                         >
-                            Imghippo
+                            UploadCare
                         </a>
                     </p>
                     <input
@@ -69,17 +69,7 @@ const ProjectForm = () => {
                         className="py-2 px-2 rounded-sm text-black"
                         required
                     />
-                    <p className="text-gray-400">
-                        Look for possible icons at:{" "}
-                        <a
-                            href="https://colored-icons.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#13DF14]"
-                        >
-                            Colored icons
-                        </a>
-                    </p>
+
                     <CustomButton
                         text="Add Project"
                         type="submit"

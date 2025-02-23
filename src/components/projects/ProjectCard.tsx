@@ -3,7 +3,8 @@
 import { FaExternalLinkAlt, FaGithub, FaInfoCircle } from "react-icons/fa";
 import Slide from "../animations/Slide";
 import { ProjectProps } from "../../types/portfolioTypes";
-import { Img } from "@react-email/components";
+import Image from "next/image"; // Using Next.js Image component
+import { SkillsData } from "@/utils/skillData";
 
 export default function ProjectCard({ project }: { project: ProjectProps }) {
     return (
@@ -12,15 +13,17 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                 <div className="relative w-full h-full shadow-lg rounded-xl transition-all duration-300 group bg-stone-900">
                     <div className="absolute inset-0 rounded-xl z-0 transition-all duration-300 ease-in-out group-hover:shadow-[0_0_30px_#13DF14]"></div>
                     <div className="relative z-10 bg-transparent border-neutral-700 shadow-md shadow-[#13DF14] bg-neutral-800 rounded-xl">
-                        <Img
+                        <Image
                             data-testid="project-image"
                             alt={`Project ${project.title}`}
                             src={
                                 project.imageUrl ||
-                                "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
                             }
                             className="rounded-t-xl w-full h-52 object-cover"
-                            loading="lazy"
+                            width={400}
+                            height={0}
+                            priority
                         />
 
                         <div className="p-6 flex flex-col gap-4">
@@ -93,17 +96,42 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                                         (tech, index) =>
                                             tech
                                                 .split(",")
-                                                .map((singleTech, subIndex) => (
-                                                    <span
-                                                        key={`${index}-${subIndex}`}
-                                                        className="py-1 text-xs text-gray-400"
-                                                        title={singleTech.trim()} // Display the text on hover
-                                                    >
-                                                        <i
-                                                            className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                                                        ></i>
-                                                    </span>
-                                                ))
+                                                .map((singleTech, subIndex) => {
+                                                    const trimmedTech =
+                                                        singleTech.trim();
+                                                    const skill =
+                                                        SkillsData.find(
+                                                            (skill) =>
+                                                                skill.label.toLowerCase() ===
+                                                                trimmedTech.toLowerCase()
+                                                        );
+
+                                                    return skill ? (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="flex items-center gap-1"
+                                                            title={skill.label}
+                                                        >
+                                                            <Image
+                                                                src={skill.icon}
+                                                                alt={
+                                                                    skill.label
+                                                                }
+                                                                width={20}
+                                                                height={20}
+                                                                className="rounded-md"
+                                                            />
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="py-1 text-xs text-gray-400"
+                                                            title={trimmedTech}
+                                                        >
+                                                            {trimmedTech}
+                                                        </span>
+                                                    );
+                                                })
                                     )
                                 ) : (
                                     <p className="text-gray-400 text-sm">

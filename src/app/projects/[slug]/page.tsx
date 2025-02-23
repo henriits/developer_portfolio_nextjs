@@ -7,7 +7,8 @@ import {
     FaHome,
 } from "react-icons/fa";
 import Link from "next/link";
-import { Img } from "@react-email/components";
+import Image from "next/image";
+import { SkillsData } from "@/utils/skillData";
 
 export default async function PostPage({
     params,
@@ -30,19 +31,21 @@ export default async function PostPage({
                     {/* Left Column - Image and Technologies */}
                     <div className="flex flex-col gap-2 md:items-end sm:pr-8 md:pr-8">
                         <div className="relative w-full max-w-[400px] aspect-square mx-auto md:mx-0">
-                            <Img
+                            <Image
                                 src={
                                     project.imageUrl ||
-                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                    "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
                                 }
                                 alt={project.title}
-                                className=" w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
-                                loading="lazy"
+                                className="w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
+                                priority
+                                width={400}
+                                height={0}
                             />
                             <a
                                 href={
                                     project.imageUrl ||
-                                    "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                    "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -60,17 +63,42 @@ export default async function PostPage({
                                         (tech, index) =>
                                             tech
                                                 .split(",")
-                                                .map((singleTech, subIndex) => (
-                                                    <span
-                                                        key={`${index}-${subIndex}`}
-                                                        className="py-1 text-xs text-gray-400"
-                                                        title={singleTech.trim()} // Display the text on hover
-                                                    >
-                                                        <i
-                                                            className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                                                        ></i>
-                                                    </span>
-                                                ))
+                                                .map((singleTech, subIndex) => {
+                                                    const trimmedTech =
+                                                        singleTech.trim();
+                                                    const skill =
+                                                        SkillsData.find(
+                                                            (skill) =>
+                                                                skill.label.toLowerCase() ===
+                                                                trimmedTech.toLowerCase()
+                                                        );
+
+                                                    return skill ? (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="flex items-center gap-1"
+                                                            title={skill.label}
+                                                        >
+                                                            <Image
+                                                                src={skill.icon}
+                                                                alt={
+                                                                    skill.label
+                                                                }
+                                                                width={20}
+                                                                height={20}
+                                                                className="rounded-md"
+                                                            />
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="py-1 text-xs text-gray-400"
+                                                            title={trimmedTech}
+                                                        >
+                                                            {trimmedTech}
+                                                        </span>
+                                                    );
+                                                })
                                     )
                                 ) : (
                                     <p className="text-gray-400 text-sm">
@@ -106,7 +134,7 @@ export default async function PostPage({
                                         project.githubLink.startsWith("http")
                                             ? project.githubLink
                                             : `https://${project.githubLink}`
-                                    } // Ensure it's an absolute URL
+                                    }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 px-4 py-2 border-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"
@@ -121,7 +149,7 @@ export default async function PostPage({
                                         project.liveLink.startsWith("http")
                                             ? project.liveLink
                                             : `https://${project.liveLink}`
-                                    } // Ensure it's an absolute URL
+                                    }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center border-2 gap-2 px-4 py-2 rounded-lg border-[#13DF14] hover:bg-[#13DF14] transition-colors"

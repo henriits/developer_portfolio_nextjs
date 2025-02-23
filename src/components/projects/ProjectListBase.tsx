@@ -3,7 +3,9 @@ import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
 import { ProjectListProps, ProjectProps } from "../../types/portfolioTypes";
-import { Img } from "@react-email/components";
+
+import { SkillsData } from "@/utils/skillData";
+import Image from "next/image";
 
 function ProjectDetail({
     label,
@@ -25,22 +27,43 @@ function ProjectTechnologies({ technologies }: { technologies?: string[] }) {
         return (
             <p className="text-gray-400 text-sm">No technologies specified</p>
         );
+
     return (
         <p className="text-sm text-gray-600">
             Technologies:
-            <span className="text-white ml-2">
+            <span className="text-white ml-2 flex flex-wrap gap-2">
                 {technologies.flatMap((tech, index) =>
-                    tech.split(",").map((singleTech, subIndex) => (
-                        <span
-                            key={`${index}-${subIndex}`}
-                            className="py-1 text-xs text-gray-400"
-                            title={singleTech.trim()}
-                        >
-                            <i
-                                className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                            ></i>
-                        </span>
-                    ))
+                    tech.split(",").map((singleTech, subIndex) => {
+                        const trimmedTech = singleTech.trim();
+                        const skill = SkillsData.find(
+                            (skill) =>
+                                skill.label.toLowerCase() ===
+                                trimmedTech.toLowerCase()
+                        );
+
+                        return skill ? (
+                            <span
+                                key={`${index}-${subIndex}`}
+                                className="flex items-center gap-1"
+                                title={skill.label}
+                            >
+                                <Image
+                                    src={skill.icon}
+                                    alt={skill.label}
+                                    width={20}
+                                    height={20}
+                                    className="rounded-md"
+                                />
+                            </span>
+                        ) : (
+                            <span
+                                key={`${index}-${subIndex}`}
+                                className="py-1 text-xs text-gray-400"
+                            >
+                                {trimmedTech}
+                            </span>
+                        );
+                    })
                 )}
             </span>
         </p>
@@ -59,13 +82,17 @@ function AdminProjectView({ project }: { project: ProjectProps }) {
                 Image Url: {project.imageUrl}
             </p>
             {project.imageUrl && (
-                <Img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="object-cover rounded-md mt-2"
-                    width={50}
-                    height={50}
-                    loading="lazy"
+                <Image
+                    data-testid="project-image"
+                    alt={`Project ${project.title}`}
+                    src={
+                        project.imageUrl ||
+                        "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
+                    }
+                    className="rounded-t-xl w-full h-52 object-cover"
+                    width={400} // Specifying both width and height
+                    height={0} // Providing height for optimization
+                    priority // Use priority to load this image eagerly
                 />
             )}
             <div className="flex gap-x-4 items-center justify-center mt-4">
