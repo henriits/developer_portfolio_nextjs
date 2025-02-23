@@ -121,9 +121,6 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                                                                 height={20}
                                                                 className="rounded-md"
                                                             />
-                                                            <span className="text-xs text-gray-400">
-                                                                {skill.label}
-                                                            </span>
                                                         </span>
                                                     ) : (
                                                         <span

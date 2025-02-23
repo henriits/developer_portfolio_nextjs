@@ -15,6 +15,7 @@ import Tailwindcss from "@/../public/img/icons/tailwindcss.svg";
 import TypeScript from "@/../public/img/icons/typescript.svg";
 import VScode from "@/../public/img/icons/vscode.svg";
 import Vue from "@/../public/img/icons/vue.svg";
+import Vite from "@/../public/img/icons/vite.svg";
 
 export const SkillsData: Array<{ icon: any; label: string }> = [
     { icon: JS, label: "JavaScript" },
@@ -34,4 +35,5 @@ export const SkillsData: Array<{ icon: any; label: string }> = [
     { icon: Prisma, label: "Prisma" },
     { icon: Postgres, label: "Postgres" },
     { icon: Express, label: "Express" },
+    { icon: Vite, label: "Vite" },
 ];
