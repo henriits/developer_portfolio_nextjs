@@ -3,6 +3,8 @@ import DeleteButton from "@/components/ui/DeleteButton";
 import UpdateProjectsButton from "../admin/projects/UpdateProjectsButton";
 import ProjectCard from "./ProjectCard";
 import { ProjectListProps, ProjectProps } from "../../types/portfolioTypes";
+
+import { SkillsData } from "@/utils/skillData";
 import { Img } from "@react-email/components";
 
 function ProjectDetail({
@@ -25,22 +27,46 @@ function ProjectTechnologies({ technologies }: { technologies?: string[] }) {
         return (
             <p className="text-gray-400 text-sm">No technologies specified</p>
         );
+
     return (
         <p className="text-sm text-gray-600">
             Technologies:
-            <span className="text-white ml-2">
+            <span className="text-white ml-2 flex flex-wrap gap-2">
                 {technologies.flatMap((tech, index) =>
-                    tech.split(",").map((singleTech, subIndex) => (
-                        <span
-                            key={`${index}-${subIndex}`}
-                            className="py-1 text-xs text-gray-400"
-                            title={singleTech.trim()}
-                        >
-                            <i
-                                className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                            ></i>
-                        </span>
-                    ))
+                    tech.split(",").map((singleTech, subIndex) => {
+                        const trimmedTech = singleTech.trim();
+                        const skill = SkillsData.find(
+                            (skill) =>
+                                skill.label.toLowerCase() ===
+                                trimmedTech.toLowerCase()
+                        );
+
+                        return skill ? (
+                            <span
+                                key={`${index}-${subIndex}`}
+                                className="flex items-center gap-1"
+                                title={skill.label}
+                            >
+                                <Img
+                                    src={skill.icon}
+                                    alt={skill.label}
+                                    width={24}
+                                    height={24}
+                                    className="rounded-md"
+                                />
+                                <span className="text-xs text-gray-400">
+                                    {skill.label}
+                                </span>
+                            </span>
+                        ) : (
+                            <span
+                                key={`${index}-${subIndex}`}
+                                className="py-1 text-xs text-gray-400"
+                            >
+                                {trimmedTech}
+                            </span>
+                        );
+                    })
                 )}
             </span>
         </p>

@@ -5,6 +5,9 @@ import Slide from "../animations/Slide";
 import { ProjectProps } from "../../types/portfolioTypes";
 import { Img } from "@react-email/components";
 
+import Image from "next/image"; // For rendering SVGs
+import { SkillsData } from "@/utils/skillData";
+
 export default function ProjectCard({ project }: { project: ProjectProps }) {
     return (
         <li className="flex-shrink-0 w-96" data-testid="project-card">
@@ -93,17 +96,45 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                                         (tech, index) =>
                                             tech
                                                 .split(",")
-                                                .map((singleTech, subIndex) => (
-                                                    <span
-                                                        key={`${index}-${subIndex}`}
-                                                        className="py-1 text-xs text-gray-400"
-                                                        title={singleTech.trim()} // Display the text on hover
-                                                    >
-                                                        <i
-                                                            className={`ci ci-${singleTech.trim()} ci-2x rounded-md`}
-                                                        ></i>
-                                                    </span>
-                                                ))
+                                                .map((singleTech, subIndex) => {
+                                                    const trimmedTech =
+                                                        singleTech.trim();
+                                                    const skill =
+                                                        SkillsData.find(
+                                                            (skill) =>
+                                                                skill.label.toLowerCase() ===
+                                                                trimmedTech.toLowerCase()
+                                                        );
+
+                                                    return skill ? (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="flex items-center gap-1"
+                                                            title={skill.label}
+                                                        >
+                                                            <Image
+                                                                src={skill.icon}
+                                                                alt={
+                                                                    skill.label
+                                                                }
+                                                                width={20}
+                                                                height={20}
+                                                                className="rounded-md"
+                                                            />
+                                                            <span className="text-xs text-gray-400">
+                                                                {skill.label}
+                                                            </span>
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            key={`${index}-${subIndex}`}
+                                                            className="py-1 text-xs text-gray-400"
+                                                            title={trimmedTech}
+                                                        >
+                                                            {trimmedTech}
+                                                        </span>
+                                                    );
+                                                })
                                     )
                                 ) : (
                                     <p className="text-gray-400 text-sm">
