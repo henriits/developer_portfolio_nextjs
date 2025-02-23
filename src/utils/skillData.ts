@@ -17,7 +17,7 @@ import VScode from "@/../public/img/icons/vscode.svg";
 import Vue from "@/../public/img/icons/vue.svg";
 import Vite from "@/../public/img/icons/vite.svg";
 
-export const SkillsData: Array<{ icon: any; label: string }> = [
+export const SkillsData: Array<{ icon: string; label: string }> = [
     { icon: JS, label: "JavaScript" },
     { icon: ReactIcon, label: "React" },
     { icon: HTML, label: "HTML" },

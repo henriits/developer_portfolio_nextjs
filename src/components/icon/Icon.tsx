@@ -3,7 +3,7 @@ import React from "react";
 import { fontClasses } from "@/utils/fonts";
 
 type IconProps = {
-    icon: any;
+    icon: string;
     label: string;
 };
 
