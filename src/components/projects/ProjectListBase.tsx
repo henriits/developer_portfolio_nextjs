@@ -5,7 +5,6 @@ import ProjectCard from "./ProjectCard";
 import { ProjectListProps, ProjectProps } from "../../types/portfolioTypes";
 
 import { SkillsData } from "@/utils/skillData";
-import { Img } from "@react-email/components";
 import Image from "next/image";
 
 function ProjectDetail({
@@ -83,13 +82,17 @@ function AdminProjectView({ project }: { project: ProjectProps }) {
                 Image Url: {project.imageUrl}
             </p>
             {project.imageUrl && (
-                <Img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="object-cover rounded-md mt-2"
-                    width={50}
-                    height={50}
-                    loading="lazy"
+                <Image
+                    data-testid="project-image"
+                    alt={`Project ${project.title}`}
+                    src={
+                        project.imageUrl ||
+                        "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
+                    }
+                    className="rounded-t-xl w-full h-52 object-cover"
+                    width={400} // Specifying both width and height
+                    height={0} // Providing height for optimization
+                    priority // Use priority to load this image eagerly
                 />
             )}
             <div className="flex gap-x-4 items-center justify-center mt-4">

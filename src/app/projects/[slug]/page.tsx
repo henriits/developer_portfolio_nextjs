@@ -38,9 +38,9 @@ export default async function PostPage({
                                 }
                                 alt={project.title}
                                 className="w-full h-full rounded-xl shadow-lg border-2 border-neutral-700"
-                                loading="lazy"
-                                fill
-                                sizes="600px"
+                                priority
+                                width={400}
+                                height={0}
                             />
                             <a
                                 href={
