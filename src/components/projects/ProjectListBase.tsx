@@ -6,6 +6,7 @@ import { ProjectListProps, ProjectProps } from "../../types/portfolioTypes";
 
 import { SkillsData } from "@/utils/skillData";
 import { Img } from "@react-email/components";
+import Image from "next/image";
 
 function ProjectDetail({
     label,
@@ -47,16 +48,13 @@ function ProjectTechnologies({ technologies }: { technologies?: string[] }) {
                                 className="flex items-center gap-1"
                                 title={skill.label}
                             >
-                                <Img
+                                <Image
                                     src={skill.icon}
                                     alt={skill.label}
-                                    width={24}
-                                    height={24}
+                                    width={20}
+                                    height={20}
                                     className="rounded-md"
                                 />
-                                <span className="text-xs text-gray-400">
-                                    {skill.label}
-                                </span>
                             </span>
                         ) : (
                             <span
