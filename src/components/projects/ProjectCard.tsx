@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                             alt={`Project ${project.title}`}
                             src={
                                 project.imageUrl ||
-                                "https://upload.wikimedia.org/wikipedia/commons/6/63/Code_Icon.PNG?20141006223220"
+                                "https://ucarecdn.com/b18f07b1-e370-47d5-9c0c-11aec3ffa497/Code_Icon.png"
                             }
                             className="rounded-t-xl w-full h-52 object-cover"
                             loading="lazy"
