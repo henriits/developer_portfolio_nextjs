@@ -17,7 +17,7 @@ function ExperienceDetail({
 }) {
     if (!value) return null;
     return (
-        <div className="flex gap-x-2">
+        <div className="flex gap-10">
             <span className="text-gray-400 w-24">{label}:</span>
             <p>{value}</p>
         </div>
@@ -33,8 +33,8 @@ function ExperiencePeriod({
 }) {
     if (!startDate && !endDate) return null;
     return (
-        <div className="flex gap-x-2">
-            <span className="text-gray-400 w-24">Period:</span>
+        <div className="flex gap-x-20">
+            <span className="text-gray-400">Period:</span>
             <p>
                 {startDate && <span>{startDate}</span>}
                 {startDate && endDate && <span> - </span>}
